@@ -1,0 +1,14 @@
+import React, {Component} from "react";
+
+class __classname__ extends Component {
+    render(){
+        return(
+            <div>
+                Counter Work !
+            </div>
+        )
+    }
+}
+
+
+export default __classname__;
