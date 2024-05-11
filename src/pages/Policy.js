@@ -8,7 +8,7 @@ export default function Policy() {
     <div>
       <NavbarTop />
       <div className="Policy">
-        <h2>תנאי שימוש</h2>
+        <h2>מדיניות ופרטיות</h2>
       </div>
       <NavbarBottom />
     </div>

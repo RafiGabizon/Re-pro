@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/styles.css'; // Import the CSS styles
+import '../styles/styles.css'; 
 
 export default function NavbarTop() {
   return (
@@ -8,7 +8,7 @@ export default function NavbarTop() {
       <h1 className="title"></h1>
       <nav className="links">
         <div className="log_in_Link">
-          <Link to="/log_in" className="Link-7">איזור אישי</Link>
+          <Link to="/LogIn" className="Link-7">איזור אישי</Link>
         </div>
 
         <div className="left-links">
