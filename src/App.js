@@ -24,6 +24,7 @@ function App() {
                 <Route path="/LogIn" element={<LogIn />} />
                 <Route path="/TermsOfUse" element={<TermsOfUse />} />
                 <Route path="/Policy" element={<Policy />} />
+                
             </Routes>
         </BrowserRouter>
     );
