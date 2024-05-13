@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/styles.css'; 
+import '../styles/styles.css';
+import images from '../images/Repro_Logo.jpg'; 
 
 export default function NavbarTop() {
   return (
     <div className="navbar">
-      <h1 className="title"></h1>
       <nav className="links">
         <div className="log_in_Link">
           <Link to="/LogIn" className="Link-7">איזור אישי</Link>
@@ -13,7 +13,7 @@ export default function NavbarTop() {
 
         <div className="left-links">
           <Link to="/" className="Link-1">
-            <img src="../assets/Repro_Logo.jpg" className="logo" alt="דף בית" />
+            <img src={images} className="logo" alt="דף בית" title='Re_Pro' />
           </Link>
           <Link to="/Jobs_Abroad" className="Link-5">עבודות בחו"ל</Link>
           <Link to="/Employers" className="Link-4">מעסיקים</Link>

@@ -1,17 +1,24 @@
 
 .navbar {
-
     background-color: #5082c8;
     padding: 10px;
     display: flex;
     align-items: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
 }
+
 .title {
     color: #fff;
     font-size: 24px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     margin: 0 auto 0 0;
+}
+
+.logo {
+    width: 100px;
+    height: auto; 
+    margin-right: auto; 
 }
 
 .links {
@@ -41,7 +48,8 @@
     text-decoration: none;
     font-size: 16px;
     margin-right: auto;
-    /* Add this line */
+    display: flex;
+    align-items: center; /* This is necessary for vertical alignment */
 }
 
 
@@ -210,6 +218,21 @@ CSS for BottomBar
 }
 
 .link_item:hover {
-  color: #fff; 
+    background-color: #fff;
+    color: #5082c8;
 }
 
+/* Jobs_Abroad.css */
+.Jobs_Abroad {
+    direction: rtl;
+    text-align: right;
+}
+  
+.Jobs_Abroad select {
+    direction: rtl;
+    text-align: right;
+    padding: 5px;
+    margin: 5px 0;
+}
+
+  
