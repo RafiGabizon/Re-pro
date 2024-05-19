@@ -5,12 +5,12 @@ import NavbarBottom from '../Components/NavbarBottom';
 import JobsComp from "../Components/JobsComp";
 import Recommands from "../Components/RecoComp";
 import OpenComp from "../Components/OpenComp";
+import Stages from "../Components/Stages";
 
 export default function Home() {
   return (
     <div className="App">
       <NavbarTop />
-
       <OpenComp/>
       <br></br>
       <h2>
@@ -19,9 +19,11 @@ export default function Home() {
       </h2>
       <JobsComp/>
       <br></br>
+      <Stages/>
+      <br></br>
       <h2>
       : הממליצים שלנו
-      <br></br>
+      <br></br><br></br>
       </h2>
       <Recommands/>
       <br></br>

@@ -29,7 +29,6 @@ export default function OpenComp() {
             </h5>
             </div>
             
-            
         </div>
 
 

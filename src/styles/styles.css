@@ -270,3 +270,22 @@ CSS for BottomBar
     text-align: right;
     /* יישור הטקסט מימין */
 }
+
+
+
+
+/* stages (how it done ?) styles : */
+
+.stages{
+
+        /* גובה האובייקט */
+        margin: auto;
+        /* מרכז את האובייקט באמצעות המרווח */
+        display: flex;
+        /* הגדרת מיכל כגמיש */
+        justify-content: center;
+        /* יישור תוכן אופקי למרכז */
+         align-items: center;
+        /* יישור תוכן אנכי למרכז */
+        flex-wrap: wrap;
+    }
