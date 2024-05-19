@@ -17,10 +17,16 @@
     margin: 0 0 0 auto; /* יישור הכותרת לימין */
 }
 
+.Whatsapp {
+    width: 40px;
+    height: auto; 
+    margin-right: 580px;
+}
+
 .logo {
     width: 100px;
     height: auto; 
-    margin-right: auto; 
+    margin-right: 200px; 
 }
 
 .links {
@@ -34,16 +40,14 @@
     font-size: 16px; /* גודל פונט קטן יותר */
     margin: 0 10px; /* התאמת הריווחים */
     transition: background-color 0.3s, color 0.3s; /* הוספת אנימציה על פייהם */
-    position: relative; /* הוספת פוזיצייה יחסית לאחר */
+    /* position: relative; הוספת פוזיצייה יחסית לאחר */
 }
 
 .links a:hover {
     background-color: #425e92; /* קישוט בצבע כחול כהה */
     color: #fff; /* שינוי צבע הטקסט ללבן */
     border-radius: 5px; /* מעגלות מעוגלות */
-    padding: 5px 12px; /* הוספת מרווח */
     font-weight: bold; /* הופעת גודל הטקסט */
-    transform: translateY(-2px); /* אנימציה קלה כלפי מעלה */
 }
 
 .links a::after {
@@ -53,13 +57,8 @@
     left: 0; /* מיקום בראש הטקסט */
     width: 0;
     height: 2px;
-    background-color: #fff; /* צבע הקו התחתון */
-    transition: width 0.3s; /* אנימציה */
 }
 
-.links a:hover::after {
-    width: 100%; /* תצורת האנימציה של הקו */
-}
 
 .log_in_Link {
     color: #fff;
@@ -68,34 +67,23 @@
     margin-right: auto; /* יישור הקישור לשמאל */
     display: flex;
     align-items: center; /* הצגת אלמנטים באופן אנכי */
-    transition: background-color 0.3s, color 0.3s;
 }
 
 .log_in_Link:hover {
-    background-color: #425e92;
-    color: #fff;
-    border-radius: 5px;
-    padding: 5px 12px;
-    font-weight: bold;
-    transform: translateY(-2px);
+    background-color: #425e92; /* קישוט בצבע כחול כהה */
+    color: #fff; /* שינוי צבע הטקסט ללבן */
+    border-radius: 5px; /* מעגלות מעוגלות */
+    font-weight: bold; /* הופעת גודל הטקסט */
 }
 
 .log_in_Link::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: #fff;
-    transition: width 0.3s;
+    position: absolute; /* פוזיציונינג אבסולוטי */
+    bottom: -2px; /* פירושו שהעיגול יהיה ישר מתחת לטקסט */
+    left: 0; /* מיקום בראש הטקסט */
+    /* width: 0; */
+    /* height: 2px; */
+    /* transition: width 0.3s; אנימציה */
 }
-
-.log_in_Link:hover::after {
-    width: 100%; /* תצורת האנימציה של הקו */
-}
-
-
 
 
 /* Style Login Movements */

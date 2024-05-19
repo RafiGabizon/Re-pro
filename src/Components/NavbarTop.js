@@ -1,19 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/styles.css';
-import images from '../images/Repro_Logo.jpg';
+import Repro from '../images/Repro_Logo.jpg';
+import Whatsapp from '../images/Whatsapp_Logo.png';
 
 export default function NavbarTop() {
   return (
     <div className="navbar">
       <div className="log_in_Link">
-        <Link to="/LogIn" className="Link-7">איזור אישי</Link>
+        <div>
+          <Link to="/LogIn" className="log_in_Link" >איזור אישי</Link>
+        </div>
       </div>
-      <nav className="links">
 
-        <Link to="/" className="Link-1">
-          <img src={images} className="logo" alt="דף בית" title='Re_Pro' />
+      <div>
+        <Link to="https://wa.link/oc0fb6">
+          <img src={Whatsapp} className="Whatsapp" alt="דף בית" title='Re_Pro' />
         </Link>
+      </div>
+
+
+      <Link to="/" >
+        <img src={Repro} className="logo" alt="דף בית" title='Re_Pro' />
+      </Link>
+
+      <nav className="links">
 
         <div className="left-links">
           <Link to="/Jobs_Abroad" className="Link-5">עבודות בחו"ל</Link>
