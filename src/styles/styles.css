@@ -1,18 +1,20 @@
-
 .navbar {
-    background-color: #5082c8;
+    background: linear-gradient(to bottom, #5082c8, #335c99); /* הוספת רקע גרדיאנט */
+    color: #fff;
     padding: 10px;
     display: flex;
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    justify-content: flex-end; /* יישור התפריט לימין */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* הוספת צל לעומק */
     margin: 0 auto;
 }
+
 
 .title {
     color: #fff;
     font-size: 24px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    margin: 0 auto 0 0;
+    margin: 0 0 0 auto; /* יישור הכותרת לימין */
 }
 
 .logo {
@@ -23,63 +25,77 @@
 
 .links {
     display: flex;
-    align-items: cen;
-    justify-content: right;
-    flex-grow: 1;
+    align-items: center;
 }
 
 .links a {
     color: #fff;
     text-decoration: none;
-    font-size: 20px;
-    padding: 10px;
-    margin: 0 5px;
-    transition: color 0.3s ease;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    font-size: 16px; /* גודל פונט קטן יותר */
+    margin: 0 10px; /* התאמת הריווחים */
+    transition: background-color 0.3s, color 0.3s; /* הוספת אנימציה על פייהם */
+    position: relative; /* הוספת פוזיצייה יחסית לאחר */
 }
 
 .links a:hover {
-    color: #5082c8;
+    background-color: #425e92; /* קישוט בצבע כחול כהה */
+    color: #fff; /* שינוי צבע הטקסט ללבן */
+    border-radius: 5px; /* מעגלות מעוגלות */
+    padding: 5px 12px; /* הוספת מרווח */
+    font-weight: bold; /* הופעת גודל הטקסט */
+    transform: translateY(-2px); /* אנימציה קלה כלפי מעלה */
+}
+
+.links a::after {
+    content: '';
+    position: absolute; /* פוזיציונינג אבסולוטי */
+    bottom: -2px; /* פירושו שהעיגול יהיה ישר מתחת לטקסט */
+    left: 0; /* מיקום בראש הטקסט */
+    width: 0;
+    height: 2px;
+    background-color: #fff; /* צבע הקו התחתון */
+    transition: width 0.3s; /* אנימציה */
+}
+
+.links a:hover::after {
+    width: 100%; /* תצורת האנימציה של הקו */
 }
 
 .log_in_Link {
-    justify-content: left;
     color: #fff;
     text-decoration: none;
     font-size: 16px;
-    margin-right: auto;
+    margin-right: auto; /* יישור הקישור לשמאל */
     display: flex;
-    align-items: center; /* This is necessary for vertical alignment */
+    align-items: center; /* הצגת אלמנטים באופן אנכי */
+    transition: background-color 0.3s, color 0.3s;
 }
 
-
-h2 {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    animation: fadeIn 1s ease-in-out;
-}
-
-input {
-    padding: 10px;
-    margin-bottom: 10px;
-    width: 250px;
-    animation: slideIn 1s ease-in-out;
-}
-
-button {
-    padding: 10px 20px;
-    background-color: #ffffff;
+.log_in_Link:hover {
+    background-color: #425e92;
     color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    animation: scaleIn 1s ease-in-out;
+    border-radius: 5px;
+    padding: 5px 12px;
+    font-weight: bold;
+    transform: translateY(-2px);
 }
 
-button:hover {
-    background-color: #5082c8;
+.log_in_Link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    transition: width 0.3s;
 }
+
+.log_in_Link:hover::after {
+    width: 100%; /* תצורת האנימציה של הקו */
+}
+
+
 
 
 /* Style Login Movements */
@@ -116,8 +132,6 @@ button:hover {
         transform: scale(1);
     }
 }
-
-
 
 
 /* job-item contains the job div (all data is inside) . */
@@ -163,13 +177,12 @@ button:hover {
     overflow: auto;
 }
 .text-content {
-    margin-top: 13px;
     line-height: 0.4;
     font-size: 15px;
     font-weight: 400;
     color: rgb(0, 0, 0);
     font-family: 'Times New Roman', Times, serif;
-    margin-left: 19px;
+    margin-right: auto; 
 }
 
 .button-link {
@@ -188,38 +201,100 @@ button:hover {
 }
 
 
-CSS for BottomBar
+/* CSS for NavbarBottom */
 .bottom_bar {
-  background-color: #5082c8;
-  color: #5082c8;
-  padding: 20px;
-  text-align: right;
+    background: linear-gradient(to bottom, #5082c8, #335c99); /* Add gradient background */
+    color: #fff; /* Change text color to white */
+    padding: 20px;
+    text-align: right;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+  }
+  
+  .bottom_bar_links {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+  }
+  
+  .link_group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 20px; /* Add margin for spacing */
+  }
+  
+  .link_item {
+    color: #fff; /* Change link text color to white */
+    font-size: 16px;
+    text-decoration: none;
+    margin: 5px 0;
+    transition: background-color 0.3s, color 0.3s; /* Add transition for smoother hover effect */
+  }
+  
+  .link_item:hover {
+    background-color: #425e92; /* Darken the background color on hover */
+    color: #fff; /* Change link text color to white on hover */
+    border-radius: 5px; /* Add rounded corners */
+    padding: 5px 12px; /* Add padding for better visual feedback */
+    font-weight: bold; /* Make font bold on hover */
+    transform: translateY(-2px); /* Add a slight upward movement on hover */
+  }
+  
+  .link_group:nth-child(even) .link_item {
+    transform: translateX(-3px); /* Add a slight horizontal movement for even link groups */
+  }
+  
+  .link_group:nth-child(odd) .link_item {
+    transform: translateX(3px); /* Add a slight horizontal movement for odd link groups */
+  }
+  
+  .link_item::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background-color: #fff; /* Underline color */
+    transition: width 0.3s; /* Add transition for underline effect */
+  }
+  
+  .link_item:hover::after {
+    width: 100%; /* Expand underline on hover */
+  }
+  
+  
+
+
+.About {
+    text-align: right;
 }
 
-.bottom_bar_links {
-  display: flex;
-  justify-content: space-between;
-  list-style: none;
-  padding: 0;
+.Articles {
+    text-align: right;
 }
 
-.link_group {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+.Contact {
+    text-align: right;
 }
 
-.link_item {
-  color: #5082c8;
-  font-size: 16px;
-  text-decoration: none;
-  margin: 5px 0;
-  transition: color 0.3s ease;
+.Employers {
+    text-align: right;
 }
 
-.link_item:hover {
-    background-color: #fff;
-    color: #5082c8;
+.LogIn {
+    text-align: right;
+}
+
+.Policy {
+    text-align: right;
+}
+
+.Qustion_Ask {
+    text-align: right;
+}
+
+.TermsOfUse {
+    text-align: right;
 }
 
 /* Jobs_Abroad.css */
@@ -234,5 +309,3 @@ CSS for BottomBar
     padding: 5px;
     margin: 5px 0;
 }
-
-  

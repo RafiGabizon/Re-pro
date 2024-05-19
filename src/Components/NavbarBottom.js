@@ -5,8 +5,7 @@ export default function NavbarBottom() {
   return (
     <div className="bottom_bar" aria-label="Footer navigation">
       <div className="bottom_bar_links">
-        <p className="bottom_bar_text">
-          תודה שבחרתם ריפרו! אנחנו זמינים בשבילכם כל העת לשאלות, ייעוץ, הכוונה ובקשות נוספות.
+        <p className="bottom_bar">
         </p>
         <div className="link_group">
           <Link to="/About" className="link_item">אודות</Link>
@@ -23,5 +22,5 @@ export default function NavbarBottom() {
         </div>
       </div>
     </div>
-  );
+  )
 }
