@@ -1,7 +1,6 @@
 import React from "react";
 import { jobs_ar } from "../data/jobs";
 import '../styles/styles.css';
-import { Link } from "react-router-dom/dist";
 
 export default function JobsComp() {
     return(

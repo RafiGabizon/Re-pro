@@ -131,7 +131,7 @@ button:hover {
     background-color: rgb(72, 119, 189);
     transition: 0.5s;
 }
-/* conteiner contains thw whole main div . */
+/* conteiner contains the whole main div . */
 .container {
     display: flex;
     justify-content: center;
@@ -213,3 +213,60 @@ CSS for BottomBar
   color: #fff; 
 }
 
+
+
+
+/* recommands styles : */
+
+.recoContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.main-vid {
+    margin-top: -40px;
+    width: 150px;
+    height: 150px;
+    max-height: 30%;
+    object-fit: cover;
+
+}
+.reco-content {
+    margin-top: 13px;
+    line-height: 0.4;
+    font-size: 15px;
+    font-weight: 400;
+    color: rgb(0, 0, 0);
+    font-family: 'Times New Roman', Times, serif;
+    margin-left: 19px;
+}
+
+
+
+
+
+/* open vid&text styles : */
+
+
+.container_open {
+    /* הוסף קלאסה חדשה לגוף המרכיב */
+    display: flex;
+}
+
+.left_vid {
+    flex: 0 0 560px;
+    /* הגדר רוחב קבוע לסרטון */
+    margin-right: 20px;
+    /* רווח בין הסרטון לטקסט */
+}
+
+.right_words {
+    flex: 1;
+    /* תן ל-div "right_words" להתפשט יתרה */
+}
+.right_words h5 {
+    direction: rtl;
+    /* הגדר כיוון מימין לשמאל */
+    text-align: right;
+    /* יישור הטקסט מימין */
+}
