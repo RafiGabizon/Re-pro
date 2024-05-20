@@ -274,10 +274,12 @@ CSS for BottomBar
 
 
 
-/* stages (how it done ?) styles : */
+/* stages and button (how it done ?) styles : */
 
 .stages{
-
+        display: flex;/* הפיכת הדיב למיכל Flexbox */
+        flex-direction: column;/* כיוון פריטים אנכי */
+        align-items: center;/* יישור פריטים במרכז אופקית */
         /* גובה האובייקט */
         margin: auto;
         /* מרכז את האובייקט באמצעות המרווח */
@@ -289,3 +291,23 @@ CSS for BottomBar
         /* יישור תוכן אנכי למרכז */
         flex-wrap: wrap;
     }
+.button-container button {
+    background-color: #007bff;
+    /* צבע התחלה */
+    background-image: linear-gradient(to right, #007bff 0%, #0056b3 100%);
+    /* שיפוע צבעים */
+    color: white;
+    /* צבע טקסט לבן */
+    border: none;
+    /* הסרת גבול */
+    padding: 10px 20px;
+    /* מרווח פנימי */
+    border-radius: 5px;
+    /* פינות מעוגלות */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* צללית */
+}
+.modal {
+    width: 100px;
+    height: 600px;
+}
