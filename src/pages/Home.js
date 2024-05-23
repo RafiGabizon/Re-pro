@@ -1,13 +1,12 @@
 import React from "react";
 import { jobs_ar } from "../data/jobs";
 import '../styles/styles.css';
-import NavbarTop from '../Components/NavbarTop';
-import NavbarBottom from '../Components/NavbarBottom';
+
 
 export default function Home() {
   return (
     <div className="App">
-      <NavbarTop />
+      
       <div className="container">
         {jobs_ar.map((item, index) => (
           <div key={index} className="job-item">
@@ -28,7 +27,7 @@ export default function Home() {
           </div>
         ))}
       </div>
-      <NavbarBottom />
+      
     </div>
   )
 }

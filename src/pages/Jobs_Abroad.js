@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/styles.css';
-import NavbarTop from '../Components/NavbarTop';
-import NavbarBottom from '../Components/NavbarBottom';
+
 
 export default function Jobs_Abroad() {
   const [filter, setFilter] = useState("all"); // ערך ראשי למסנן
@@ -24,7 +23,6 @@ export default function Jobs_Abroad() {
 
   return (
     <div>
-      <NavbarTop />
       <div className="Jobs_Abroad">
         <h2>עבודות בחו"ל</h2>
         {/* תיבת בחירת מסנן */}
@@ -46,7 +44,6 @@ export default function Jobs_Abroad() {
           ))}
         </div>
       </div>
-      <NavbarBottom />
     </div>
   );
 }
