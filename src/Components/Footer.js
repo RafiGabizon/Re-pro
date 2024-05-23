@@ -5,6 +5,7 @@ import facebook_logo from '../images/facebook_logo.png';
 import instagram_logo from '../images/instagram_logo.png';
 import tiktok_logo from '../images/tiktok_logo.png';
 import whatsapp_logo from '../images/whatsapp_logo.png';
+import linkedin_icon from '../images/linkedin_icon.png';
 
 export default function Footer() {
   return (
@@ -41,7 +42,9 @@ export default function Footer() {
         </div>
       </div>
       <div className="credits">
-        <p>© 2024 כל הזכויות שמורות | פותח על ידי [אלמוג ורפי]</p>
+        <p><a href="https://www.linkedin.com/in/almog-kinnan-a7a870223/">
+          <img src={linkedin_icon} className="social-icon" alt="Linkedin" />
+        </a>© 2024 כל הזכויות שמורות | פותח על ידי [אלמוג ורפי]</p>
       </div>
     </footer>
   );
