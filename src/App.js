@@ -9,10 +9,13 @@ import Jobs_Abroad from "./pages/Jobs_Abroad";
 import LogIn from "./pages/LogIn";
 import TermsOfUse from "./pages/TermsOfUse";
 import Policy from "./pages/Policy";
+import Footer from "./Components/Footer";
+import Navbar from "./Components/Navbar";
 
 function App() {
     return (
         <BrowserRouter>
+            <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/About" element={<About />} />
@@ -25,6 +28,7 @@ function App() {
                 <Route path="/TermsOfUse" element={<TermsOfUse />} />
                 <Route path="/Policy" element={<Policy />} />
             </Routes>
+            <Footer />
         </BrowserRouter>
     );
 }
