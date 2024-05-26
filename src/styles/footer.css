@@ -1,0 +1,81 @@
+/* Footer - Gradient & Subtle Design (Hebrew) */
+
+.footer {
+  background: linear-gradient(to right, #f2f2f2, #e3e3e3); /* Subtle gradient for depth */
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for definition */
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: row; /* Default order for RTL */
+  justify-content: space-between;
+  align-items: flex-start; /* Content aligned at top for a modern feel */
+}
+
+.link-group {
+  flex: 1; /* Flexible sizing for responsive layout */
+  margin-right: 0; /* Remove right margin for a tighter layout */
+  text-align: right; /* Right-align content for RTL */
+}
+
+/* Optional: Additional styling for RTL readability */
+.footer-container a {
+  direction: rtl; /* Explicitly set direction for RTL support */
+  color: #333; /* Dark gray for links */
+}
+
+.link-group-title {
+  font-size: 16px; /* Maintain readability for titles */
+  margin-bottom: 10px; /* Spacing for separation */
+  color: #666; /* Darker gray for emphasis */
+  font-weight: bold;
+  text-transform: none; /* Standard text capitalization */
+}
+
+.link-item {
+  display: block; /* Links stacked vertically */
+  margin-bottom: 5px; /* Spacing between links */
+  color: #999; /* Lighter gray for a subtle look */
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.link-item:hover {
+  color: #007bff; /* Blue on hover for subtle accent */
+}
+
+/* Social Media Links */
+.social-icons {
+  display: flex;
+  margin-top: 10px; /* Spacing from link group */
+}
+
+.social-icon {
+  width: 20px; /* Consistent icon size */
+  height: 20px;
+  margin-left: 10px; /* Spacing between icons */
+  border-radius: 50%; /* Rounded icons */
+  background-color: transparent; /* Transparent background for subtle icons */
+  color: #999; /* Lighter gray for the icons */
+  transition: color 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.social-icon img {
+  width: 100%; /* Ensure icons fill the container */
+}
+
+.social-icon:hover {
+  color: #007bff; /* Blue on hover for subtle accent */
+}
+
+/* Credits */
+
+.credits {
+  margin-top: 15px; /* Spacing from social icons */
+  text-align: right; /* Align text to the right for RTL */
+  color: #8b8b8b; /* Light gray for a subtle footer note */
+  font-size: 12px;
+  font-style: italic; /* Italics for a creative touch */
+}
