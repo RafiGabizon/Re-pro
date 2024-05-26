@@ -16,7 +16,7 @@
   .Whatsapp {
     width: 24px; /* Consistent icon size */
     height: 24px;
-    margin-right: 15px; /* Consistent spacing with other elements */
+    margin-left: 15px; /* Consistent spacing with other elements */
     fill: #888787; /* Lighter gray for a subtle icon */
     transition: fill 0.2s ease-in-out; /* Smooth hover effect */
   }
