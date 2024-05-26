@@ -1,21 +1,19 @@
 .container_open {
-    /* הוסף קלאסה חדשה לגוף המרכיב */
     display: flex;
     max-width: 1100px;
     justify-content: center;
     align-items: center;
+    margin-top: 20px;
 }
 
 .left_vid {
-    flex: 0 0 560px;
-    /* הגדר רוחב קבוע לסרטון */
-    margin-right: 20px;
-    /* רווח בין הסרטון לטקסט */
+    display: flex;
 }
 
 .right_words {
-    flex: 1;
-   
+    display: flex;
+    flex: 1px;
+    margin-right: 150px;
 }
 
 .right_words h5 {
