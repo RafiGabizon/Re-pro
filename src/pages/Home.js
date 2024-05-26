@@ -1,35 +1,28 @@
 import React from "react";
+import { jobs_ar } from "../data/jobs";
 import '../styles/styles.css';
-import NavbarTop from '../Components/NavbarTop';
-import NavbarBottom from '../Components/NavbarBottom';
 import JobsComp from "../Components/JobsComp";
-import Recommands from "../Components/RecoComp";
 import OpenComp from "../Components/OpenComp";
-import Stages from "../Components/Stages";
+import Recommands from "../Components/RecoComp";
+import Stages from "../Components/StagesComp";
+import '../styles/styles.css';
 
 export default function Home() {
   return (
     <div className="App">
-      <NavbarTop />
+      
       <OpenComp/>
       <br></br>
-      <h2>
-      : משרות חמות
-      <br></br>
-      </h2>
       <JobsComp/>
-      <br></br>
-      <Stages/>
-      <br></br>
-      <h2>
-      : הממליצים שלנו
       <br></br><br></br>
-      </h2>
+      <Stages/>
+      <br></br><br></br><br></br>
       <Recommands/>
-      <br></br>
-      <NavbarBottom />
+
+
+      
     </div>
-  );
+  )
 }
 
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { reco_ar } from "../data/recommands";
-import '../styles/styles.css';
+import '../styles/recoStyles.css';
 
 export default function Recommands() {
     return(

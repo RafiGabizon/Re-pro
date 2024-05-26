@@ -1,0 +1,24 @@
+.recoContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.main-vid {
+    margin-top: -40px;
+    width: 150px;
+    height: 150px;
+    max-height: 30%;
+    object-fit: cover;
+
+}
+
+.reco-content {
+    margin-top: 13px;
+    line-height: 0.4;
+    font-size: 15px;
+    font-weight: 400;
+    color: rgb(0, 0, 0);
+    font-family: 'Times New Roman', Times, serif;
+    margin-left: 19px;
+}

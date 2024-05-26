@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import "../styles/styles.css";
+import "../styles/stagesStyles.css";
 import myImage from "../images/stages.png";
 import Modal from "react-modal";
+
 const customStyles = {
   content: {
     top: "50%",

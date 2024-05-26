@@ -1,18 +1,10 @@
 import React from "react";
-
-
-
-import '../styles/styles.css';
+import '../styles/openingStyle.css';
 
 export default function OpenComp() {
     return(
         <div className="container_open">
             
-            <div className="left_vid">
-                <br></br><br></br>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/N1QtAXj9y48?si=7F_4SPD5-_aw1uyg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-            </div>
             <div className="right_words">
                 <br></br><br></br>
                 <h5>
@@ -27,6 +19,11 @@ export default function OpenComp() {
                 צרו קשר עוד היום ונשמח לעזור לכם למצוא את משרת החלומות שלכם בחו"ל!
 
             </h5>
+            </div>
+            <div className="left_vid">
+                <br></br><br></br>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/N1QtAXj9y48?si=7F_4SPD5-_aw1uyg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
             </div>
             
         </div>
