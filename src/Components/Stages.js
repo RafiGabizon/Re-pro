@@ -39,7 +39,6 @@ export default function Stages() {
         isOpen={modalIsOpen}
         onRequestClose={handleCloseModal}
         style={customStyles}
-        size="SMALL"
       >
         <iframe 
           width="500" 
