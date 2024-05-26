@@ -1,0 +1,26 @@
+.container_open {
+    /* הוסף קלאסה חדשה לגוף המרכיב */
+    display: flex;
+    max-width: 1100px;
+    justify-content: center;
+    align-items: center;
+}
+
+.left_vid {
+    flex: 0 0 560px;
+    /* הגדר רוחב קבוע לסרטון */
+    margin-right: 20px;
+    /* רווח בין הסרטון לטקסט */
+}
+
+.right_words {
+    flex: 1;
+   
+}
+
+.right_words h5 {
+    direction: rtl;
+    /* הגדר כיוון מימין לשמאל */
+    text-align: right;
+    /* יישור הטקסט מימין */
+}
