@@ -1,6 +1,6 @@
 export const jobs_ar = [
     {
-        "mainImg": "",
+        "mainImg": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/94765_holon_from_the_drone_PikiWiki_Israel.jpg/1280px-94765_holon_from_the_drone_PikiWiki_Israel.jpg",
         "country": "Israel",
         "countryFlag": "https://media.istockphoto.com/id/1347113664/vector/israel-3d-rounded-country-flag-button-icon.jpg?s=612x612&w=0&k=20&c=xK4fvanHZhyYHUU1_8qMI8bT0N0RxhBRBoSp-jEHxAM=",
         "city": "Holon",
