@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/jobs_abroad.css';
+import '../styles/styles.css'; // Ensure this stylesheet is included
+import { jobs_ar as jobs } from '../data/jobs'; // Assuming jobs data is imported from a separate file
 
 export default function JobsAbroad() {
-  const [filterTypes, setFilterTypes] = useState({ continent: '', location: '', jobTitle: '' }); // Object for filters
+  const [filterTypes, setFilterTypes] = useState({ country: '', city: '', jobType: '' }); // Object for filters
   const [searchText, setSearchText] = useState(''); // Search keyword
-  const [jobs, setJobs] = useState([ // Sample job data
-    { id: 1, title: 'עבודה כמפתח תוכנה', location: 'ארצות הברית', continent: 'צפון אמריקה' },
-    { id: 2, title: 'עבודה בתחום השיווק', location: 'קנדה', continent: 'צפון אמריקה' },
-    { id: 3, title: 'עבודה כמנהל פרויקטים', location: 'אוסטרליה', continent: 'אוקיאניה' },
-    // Add more jobs as needed
-  ]);
+  const [filteredJobs, setFilteredJobs] = useState([]); // State for filtered jobs
+
+  useEffect(() => {
+    setFilteredJobs(jobs); // Set initial filtered jobs to all jobs
+  }, []); // Empty dependency array ensures the effect runs only once on component mount
 
   // Function to handle filter changes (updates filterTypes state)
   const handleFilterChange = (event) => {
@@ -25,78 +26,92 @@ export default function JobsAbroad() {
   };
 
   // Function to filter jobs based on selected filters and search text
-  const filteredJobs = () => {
-    return jobs.filter((job) => {
-      const { continent, location, jobTitle } = filterTypes;
-      const jobTitleLower = job.title.toLowerCase(); // Convert job title to lowercase for case-insensitive search
+  useEffect(() => {
+    const filtered = jobs.filter((job) => {
+      const { country, city, jobType } = filterTypes;
+      const jobTypeLower = job.jobType ? job.jobType.toLowerCase() : ''; // Ensure job.jobType is defined
       return (
-        (!continent || continent === job.continent) &&
-        (!location || location === job.location) &&
-        (!jobTitle || job.title === jobTitle) &&
-        jobTitleLower.includes(searchText) // Check if job title includes search text (case-insensitive)
+        (!country || country === job.country) &&
+        (!city || city === job.city) &&
+        (!jobType || jobType === job.jobType) &&
+        jobTypeLower.includes(searchText) // Case-insensitive search
       );
     });
-  };
+    setFilteredJobs(filtered);
+  }, [filterTypes, searchText]); // Dependency array for filter changes and search text
 
-  // Get unique job titles for the job title filter
-  const uniqueJobTitles = [...new Set(jobs.map(job => job.title))];
+  // Get unique job types for the job type filter
+  const uniqueJobTypes = [...new Set(jobs.map(job => job.jobType))];
 
   return (
-    <div>
-      <div className="JobsAbroad">
-        <h2> משרות בחו"ל</h2> {/* Title: Jobs Abroad */}
-        {/* Search box and filter buttons together */}
-        <div className="search-and-filters">
-          <div className="search-box">
-            <input type="text" placeholder="חיפוש משרות" value={searchText} onChange={handleSearchChange} />
+    <div className="JobsAbroad">
+      <h2>משרות בחו"ל</h2> {/* Title: Jobs Abroad */}
+      {/* Search box and filter buttons together */}
+      <div className="search-and-filters">
+        <div className="search-box">
+          <input type="text" placeholder="חיפוש משרות" value={searchText} onChange={handleSearchChange} />
+        </div>
+        <div className="filter-buttons">
+          <div className="filter-group">
+            <label htmlFor="country">סינון לפי מדינה:</label>
+            <select id="country" name="country" value={filterTypes.country} onChange={handleFilterChange}>
+              <option value="">כל המדינות</option>
+              <option value="Israel">ישראל</option>
+              <option value="USA">ארצות הברית</option>
+              {/* ... other countries ... */}
+            </select>
           </div>
-          <div className="filter-buttons">
-            <div className="filter-group">
-              <label htmlFor="continent">סינון לפי יבשת:</label>
-              <select id="continent" name="continent" value={filterTypes.continent} onChange={handleFilterChange}>
-                <option value="">כל היבשות</option>
-                <option value="צפון אמריקה">צפון אמריקה</option>
-                <option value="דרום אמריקה">דרום אמריקה</option>
-                <option value="אירופה">אירופה</option>
-                <option value="אסיה">אסיה</option>
-                <option value="אפריקה">אפריקה</option>
-                <option value="אוקיאניה">אוקיאניה</option>
-              </select>
-            </div>
-            <div className="filter-group">
-              <label htmlFor="location">סינון לפי מיקום:</label>
-              <select id="location" name="location" value={filterTypes.location} onChange={handleFilterChange}>
-                <option value="">כל המיקומים</option>
-                {jobs.map((job) => (
-                  <option key={job.id} value={job.location}>
-                    {job.location}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="filter-group">
-              <label htmlFor="jobTitle">סינון לפי סוג עבודה:</label>
-              <select id="jobTitle" name="jobTitle" value={filterTypes.jobTitle} onChange={handleFilterChange}>
-                <option value="">כל העבודות</option>
-                {uniqueJobTitles.map((title, index) => (
-                  <option key={index} value={title}>
-                    {title}
-                  </option>
-                ))}
-              </select>
-            </div>
+          <div className="filter-group">
+            <label htmlFor="city">סינון לפי עיר:</label>
+            <select id="city" name="city" value={filterTypes.city} onChange={handleFilterChange}>
+              <option value="">כל הערים</option>
+              {/*
+                Dynamically populate city options based on unique cities in jobs data
+              */}
+              {jobs.map((job, index) => (
+                <option key={index} value={job.city}>
+                  {job.city}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="filter-group">
+            <label htmlFor="jobType">סינון לפי סוג עבודה:</label>
+            <select id="jobType" name="jobType" value={filterTypes.jobType} onChange={handleFilterChange}>
+              <option value="">כל העבודות</option>
+              {uniqueJobTypes.map((type, index) => (
+                <option key={index} value={type}>
+                  {type}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
-        {/* Display filtered jobs */}
-        <div>
-          {filteredJobs().map((job) => (
-            <div className="job-listing" key={job.id}>
-              <h3>{job.title}</h3>
-              <p>{job.location}</p>
-              {/* Add more job details as needed */}
+      </div>
+      {/* Display filtered jobs */}
+      <div className="container">
+        {filteredJobs.length > 0 ? (
+          filteredJobs.map((job, index) => (
+            <div key={index} className="job-item">
+              <div className="text-content">
+                <div className="img-container">
+                  <img src={job.mainImg} alt="" className="main-img" />
+                </div>
+                <div className="text-wrapper">
+                  <div className="text-content">
+                    <img src={job.countryFlag} alt="" width={19} />
+                    <a href="" className="button-link">→</a>
+                    <p>{job.country}, {job.city}</p>
+                    <p>{job.jobType}</p>
+                    <p>{job.salary}</p>
+                  </div>
+                </div>
+              </div>
             </div>
-          ))}
-        </div>
+          ))
+        ) : (
+          <p>No jobs found matching your filters.</p>
+        )}
       </div>
     </div>
   );

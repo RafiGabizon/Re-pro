@@ -1,4 +1,3 @@
-/* Base styles */
 body {
   font-family: Arial, sans-serif; /* Fallback font for Hebrew */
   margin: 0;
@@ -7,6 +6,7 @@ body {
 }
 
 .JobsAbroad {
+  direction: rtl;
   max-width: 800px;
   margin: 40px auto;
   padding: 20px;
@@ -43,11 +43,12 @@ h2 {
 }
 
 .filter-group {
-  align-items: center;
+  align-items: right;
   gap: 5px; /* Space between label and select */
 }
 
 .filter-group label {
+  display: flex;
   font-size: 14px;
   color: #666;
 }
@@ -70,11 +71,13 @@ h2 {
   margin-bottom: 5px;
   color: #1779ba; /* Teal for job titles */
   font-size: 18px;
+  text-align: start; /* Right-align job titles */
 }
 
 .job-listing p {
   margin-bottom: 0;
   color: #666;
+  text-align: start; /* Right-align job descriptions */
 }
 
 /* Search result placement (assuming results are placed within .JobsAbroad) */

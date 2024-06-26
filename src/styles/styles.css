@@ -74,8 +74,8 @@
 }
 /*wrapping the text to controle him. */
 .text-wrapper {
-    padding: 5px;
-    overflow: auto;
+    padding-left: 65px;
+    padding-top: 30px;
 }
 .text-content {
     line-height: 0.4;
