@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import '../styles/jobs_abroad.css';
 import '../styles/styles.css';
 import { jobs_ar as jobs } from '../data/jobs';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';  
+import ContactAdvisor from '../Components/ContactAdvisor';
 
-export default function JobsAbroad({ toggleContactModal }) {
+export default function JobsAbroad() {
   const [filterTypes, setFilterTypes] = useState({ Continents: '', State: '', Domains: '', JobType: '' });
   const [searchText, setSearchText] = useState('');
   const [filteredJobs, setFilteredJobs] = useState([]);
@@ -70,7 +71,70 @@ export default function JobsAbroad({ toggleContactModal }) {
           />
         </div>
         <div className="filter-buttons">
-          {/* Filter Elements */}
+          <div className="filter-group">
+            <label htmlFor="Continents">סינון לפי יבשת:</label>
+            <select
+              id="Continents"
+              name="Continents"
+              value={filterTypes.Continents}
+              onChange={handleFilterChange}
+            >
+              <option value="">כל היבשות</option>
+              {uniqueContinents.map((continent, index) => (
+                <option key={index} value={continent}>
+                  {continent}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="filter-group">
+            <label htmlFor="State">סינון לפי מדינה:</label>
+            <select
+              id="State"
+              name="State"
+              value={filterTypes.State}
+              onChange={handleFilterChange}
+            >
+              <option value="">כל המדינות</option>
+              {uniqueStates.map((state, index) => (
+                <option key={index} value={state}>
+                  {state}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="filter-group">
+            <label htmlFor="Domains">סינון לפי תחום עבודה:</label>
+            <select
+              id="Domains"
+              name="Domains"
+              value={filterTypes.Domains}
+              onChange={handleFilterChange}
+            >
+              <option value="">כל התחומים</option>
+              {uniqueDomains.map((domain, index) => (
+                <option key={index} value={domain}>
+                  {domain}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="filter-group">
+            <label htmlFor="JobType">סינון לפי סוג משרה:</label>
+            <select
+              id="JobType"
+              name="JobType"
+              value={filterTypes.JobType}
+              onChange={handleFilterChange}
+            >
+              <option value="">כל סוגי המשרות</option>
+              {uniqueJobTypes.map((type, index) => (
+                <option key={index} value={type}>
+                  {type}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
       </div>
       <div className="container">
@@ -97,14 +161,9 @@ export default function JobsAbroad({ toggleContactModal }) {
         ) : (
           <p>!מצטערים אך לא מצאנו את העבודה שחיפשת</p>
         )}
-        <button 
-          className="consultant-button" 
-          onClick={toggleContactModal}
-          aria-label="Contact career advisor"
-        >
-          פנייה ליועץ תעסוקתי
-        </button>
+        
       </div>
+      
     </div>
   );
 }

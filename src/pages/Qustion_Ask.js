@@ -29,7 +29,7 @@ export default function QuestionAsk() {
   };
 
   const questionsAndAnswers = [
-    { question: "שאלה 1", answer: "תשובה 1" },
+    { question: "איך עובד התהליך?", answer: "תשובה 1" },
     { question: "שאלה 2", answer: "תשובה 2" },
     { question: "שאלה 3", answer: "תשובה 3" },
     // Continue adding questions and answers as needed...
