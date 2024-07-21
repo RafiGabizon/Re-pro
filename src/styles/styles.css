@@ -44,7 +44,7 @@
     align-items: center;
     flex-direction: column;
     max-width: 430px;
-    max-height: 230px;
+    max-height: 250px;
     justify-content: center;
     display: flex;
     grid-template-rows: auto 1fr;

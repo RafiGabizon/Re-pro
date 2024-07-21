@@ -1,28 +1,27 @@
 import React from "react";
-import { jobs_ar } from "../data/jobs";
 import '../styles/styles.css';
 import JobsComp from "../Components/JobsComp";
 import OpenComp from "../Components/OpenComp";
 import Recommands from "../Components/RecoComp";
 import Stages from "../Components/StagesComp";
-import '../styles/styles.css';
 
-export default function Home() {
+export default function Home({ toggleContactModal }) {
   return (
     <div className="App">
-      
       <OpenComp/>
-      <br></br>
+      <br />
       <JobsComp/>
-      <br></br><br></br>
+      <br /><br />
       <Stages/>
-      <br></br><br></br><br></br>
+      <br /><br /><br />
       <Recommands/>
-
-
-      
+      <button 
+        className="consultant-button" 
+        onClick={toggleContactModal}
+        aria-label="Contact career advisor"
+      >
+        פנייה ליועץ תעסוקתי
+      </button>
     </div>
   )
 }
-
-

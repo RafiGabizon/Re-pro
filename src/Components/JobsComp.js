@@ -15,9 +15,10 @@ export default function JobsComp() {
                     <div className="text-content">
                     <img src={item.countryFlag} alt="" width={19} />
                     <a href="" className="button-link">→</a>
-                    <p>{item.country}, {item.city}</p>
-                    <p>{item.jobType}</p>
-                    <p>{item.salary}</p>
+                    <p>{item.Continents}, {item.State}</p>
+                    <p>{item.Domains}</p>
+                    <p>{item.JobType}</p>
+                    <p>{item.Salary}</p>
                     </div>
                 </div>
                 </div>

@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/jobs_abroad.css';
-import '../styles/styles.css'; // Ensure this stylesheet is included
-import { jobs_ar as jobs } from '../data/jobs'; // Assuming jobs data is imported from a separate file
+import '../styles/styles.css';
+import { jobs_ar as jobs } from '../data/jobs';
+import { Link } from 'react-router-dom';
 
-export default function JobsAbroad() {
-  const [filterTypes, setFilterTypes] = useState({ country: '', city: '', jobType: '' }); // Object for filters
-  const [searchText, setSearchText] = useState(''); // Search keyword
-  const [filteredJobs, setFilteredJobs] = useState([]); // State for filtered jobs
+export default function JobsAbroad({ toggleContactModal }) {
+  const [filterTypes, setFilterTypes] = useState({ Continents: '', State: '', Domains: '', JobType: '' });
+  const [searchText, setSearchText] = useState('');
+  const [filteredJobs, setFilteredJobs] = useState([]);
 
   useEffect(() => {
-    setFilteredJobs(jobs); // Set initial filtered jobs to all jobs
-  }, []); // Empty dependency array ensures the effect runs only once on component mount
+    setFilteredJobs(jobs);
+  }, []);
 
-  // Function to handle filter changes (updates filterTypes state)
   const handleFilterChange = (event) => {
     setFilterTypes({
       ...filterTypes,
@@ -20,75 +20,59 @@ export default function JobsAbroad() {
     });
   };
 
-  // Function to handle search text change
   const handleSearchChange = (event) => {
-    setSearchText(event.target.value.toLowerCase()); // Convert search text to lowercase for case-insensitive search
+    setSearchText(event.target.value.toLowerCase());
   };
 
-  // Function to filter jobs based on selected filters and search text
   useEffect(() => {
     const filtered = jobs.filter((job) => {
-      const { country, city, jobType } = filterTypes;
-      const jobTypeLower = job.jobType ? job.jobType.toLowerCase() : ''; // Ensure job.jobType is defined
+      const { Continents, State, Domains, JobType } = filterTypes;
+      const searchLower = searchText.toLowerCase();
+      const jobTitle = job.jobTitle ? job.jobTitle.toLowerCase() : '';
+      const jobDescription = job.jobDescription ? job.jobDescription.toLowerCase() : '';
+      const continents = job.Continents ? job.Continents.toLowerCase() : '';
+      const state = job.State ? job.State.toLowerCase() : '';
+      const domain = job.Domains ? job.Domains.toLowerCase() : '';
+      const jobType = job.JobType ? job.JobType.toLowerCase() : '';
+
       return (
-        (!country || country === job.country) &&
-        (!city || city === job.city) &&
-        (!jobType || jobType === job.jobType) &&
-        jobTypeLower.includes(searchText) // Case-insensitive search
+        (!Continents || Continents === job.Continents) &&
+        (!State || State === job.State) &&
+        (!Domains || Domains === job.Domains) &&
+        (!JobType || JobType === job.JobType) &&
+        (searchLower === '' ||
+          jobTitle.includes(searchLower) ||
+          jobDescription.includes(searchLower) ||
+          continents.includes(searchLower) ||
+          state.includes(searchLower) ||
+          domain.includes(searchLower) ||
+          jobType.includes(searchLower))
       );
     });
     setFilteredJobs(filtered);
-  }, [filterTypes, searchText]); // Dependency array for filter changes and search text
+  }, [filterTypes, searchText]);
 
-  // Get unique job types for the job type filter
-  const uniqueJobTypes = [...new Set(jobs.map(job => job.jobType))];
+  const uniqueContinents = ['אסיה', 'אמריקה', 'אפריקה', 'אירופה', 'אוקיאניה'];
+  const uniqueStates = ['ישראל', 'ארצות הברית', 'קנדה', 'בריטניה', 'גרמניה', 'צרפת', 'הודו', 'יפן', 'אוסטרליה'];
+  const uniqueDomains = ['הנדסה', 'ניהול', 'טכנולוגיות מידע', 'שיווק', 'פיננסים', 'משאבי אנוש', 'עיצוב', 'הנדסה', 'מכירות', 'ייעוץ'];
+  const uniqueJobTypes = ['חצי משרה', 'משרה מלאה', 'משרת אם'];
 
   return (
     <div className="JobsAbroad">
-      <h2>משרות בחו"ל</h2> {/* Title: Jobs Abroad */}
-      {/* Search box and filter buttons together */}
+      <h2>משרות בחו"ל</h2>
       <div className="search-and-filters">
         <div className="search-box">
-          <input type="text" placeholder="חיפוש משרות" value={searchText} onChange={handleSearchChange} />
+          <input
+            type="text"
+            placeholder="חיפוש משרות"
+            value={searchText}
+            onChange={handleSearchChange}
+          />
         </div>
         <div className="filter-buttons">
-          <div className="filter-group">
-            <label htmlFor="country">סינון לפי מדינה:</label>
-            <select id="country" name="country" value={filterTypes.country} onChange={handleFilterChange}>
-              <option value="">כל המדינות</option>
-              <option value="Israel">ישראל</option>
-              <option value="USA">ארצות הברית</option>
-              {/* ... other countries ... */}
-            </select>
-          </div>
-          <div className="filter-group">
-            <label htmlFor="city">סינון לפי עיר:</label>
-            <select id="city" name="city" value={filterTypes.city} onChange={handleFilterChange}>
-              <option value="">כל הערים</option>
-              {/*
-                Dynamically populate city options based on unique cities in jobs data
-              */}
-              {jobs.map((job, index) => (
-                <option key={index} value={job.city}>
-                  {job.city}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="filter-group">
-            <label htmlFor="jobType">סינון לפי סוג עבודה:</label>
-            <select id="jobType" name="jobType" value={filterTypes.jobType} onChange={handleFilterChange}>
-              <option value="">כל העבודות</option>
-              {uniqueJobTypes.map((type, index) => (
-                <option key={index} value={type}>
-                  {type}
-                </option>
-              ))}
-            </select>
-          </div>
+          {/* Filter Elements */}
         </div>
       </div>
-      {/* Display filtered jobs */}
       <div className="container">
         {filteredJobs.length > 0 ? (
           filteredJobs.map((job, index) => (
@@ -100,18 +84,26 @@ export default function JobsAbroad() {
                 <div className="text-wrapper">
                   <div className="text-content">
                     <img src={job.countryFlag} alt="" width={19} />
-                    <a href="" className="button-link">→</a>
-                    <p>{job.country}, {job.city}</p>
-                    <p>{job.jobType}</p>
-                    <p>{job.salary}</p>
+                    <Link to={`/job/${job.id}`} className="button-link">→</Link>
+                    <p>{job.Continents}, {job.State}</p>
+                    <p>{job.Domains}</p>
+                    <p>{job.JobType}</p>
+                    <p>{job.Salary}</p>
                   </div>
                 </div>
               </div>
             </div>
           ))
         ) : (
-          <p>No jobs found matching your filters.</p>
+          <p>!מצטערים אך לא מצאנו את העבודה שחיפשת</p>
         )}
+        <button 
+          className="consultant-button" 
+          onClick={toggleContactModal}
+          aria-label="Contact career advisor"
+        >
+          פנייה ליועץ תעסוקתי
+        </button>
       </div>
     </div>
   );

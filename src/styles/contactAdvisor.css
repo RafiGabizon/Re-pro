@@ -1,0 +1,280 @@
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75); /* Darker overlay for better focus */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050; /* Ensure it's above other content */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #ffffff;
+  padding: 25px; /* Increased padding for better spacing */
+  border-radius: 12px; /* Smoother edges */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Slightly larger shadow for depth */
+  width: 90%;
+  max-width: 500px; /* Max width for better control on large screens */
+  direction: rtl; /* RTL direction */
+  text-align: right; /* Align text to the right for RTL */
+  position: relative; /* For positioning close button */
+  animation: modalIn 0.3s ease-out;
+}
+
+/* Modal Animation */
+@keyframes modalIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Slightly darker for better focus */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050; /* Ensure it's above other content */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #ffffff;
+  padding: 30px; /* Increased padding for a more spacious feel */
+  border-radius: 12px; /* Smoother edges */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25); /* Deeper shadow for more depth */
+  width: 90%;
+  max-width: 500px; /* Max width for better control on large screens */
+  direction: rtl; /* RTL direction */
+  text-align: right; /* Align text to the right for RTL */
+  position: relative; /* For positioning close button */
+  animation: modalIn 0.4s ease-out; /* Slightly longer animation */
+}
+
+/* Modal Animation */
+@keyframes modalIn {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: 15px; /* Space from top */
+  right: 15px; /* Space from right */
+  font-size: 30px; /* Larger for better visibility */
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #707070;
+  transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+.close-button:hover {
+  color: #ff4d4d; /* Softer red for hover effect */
+}
+
+/* Form Elements */
+form {
+  display: flex;
+  flex-direction: column; /* Arrange form elements vertically */
+  gap: 15px; /* Added gap between elements */
+}
+
+label {
+  display: block;
+  margin-bottom: 6px; /* Space above input fields */
+  font-weight: 600; /* Slightly bolder for emphasis */
+  color: #333; /* Darker color for better contrast */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  width: 100%;
+  padding: 14px; /* Increased padding for better input area */
+  margin-bottom: 10px; /* Space between fields */
+  border: 1px solid #ddd;
+  border-radius: 8px; /* Slightly larger radius for modern look */
+  font-size: 1em; /* Increased font size for readability */
+  direction: rtl; /* RTL text direction */
+  text-align: right; /* Align text to the right for RTL */
+}
+
+textarea {
+  resize: vertical; /* Allow vertical resizing */
+}
+
+/* Submit Button */
+.submit-button {
+  background-color: #1779ba;
+  color: white;
+  border: none;
+  padding: 14px 24px; /* Increased padding for better touch target */
+  border-radius: 8px; /* Consistent with input elements */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+  font-size: 1em; /* Consistent font size */
+}
+
+.submit-button:hover {
+  background-color: #1779ba;
+  transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: 15px; /* Adjusted for better alignment */
+  right: 15px; /* Correct position for RTL */
+  font-size: 28px; /* Larger for better visibility */
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #707070;
+}
+
+.close-button:hover {
+  color: #ff4d4d; /* Changed to a softer red */
+}
+
+/* Form Elements */
+form {
+  display: flex;
+  flex-direction: column; /* Arrange form elements vertically */
+}
+
+label {
+  display: block;
+  margin-bottom: 8px; /* Space above input fields */
+  font-weight: bold; /* Make labels stand out */
+  color: #333; /* Darker label color for better contrast */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  width: 100%;
+  padding: 12px; /* Increased padding for better input area */
+  margin-bottom: 15px; /* Space between fields */
+  border: 1px solid #ddd;
+  border-radius: 6px; /* Smoother edges */
+  font-size: 1em; /* Increased font size for readability */
+  direction: rtl; /* RTL text direction */
+  text-align: right; /* Align text to the right for RTL */
+}
+
+textarea {
+  resize: vertical; /* Allow vertical resizing */
+}
+
+/* Submit Button */
+.submit-button {
+  background-color: #1779ba;
+  color: white;
+  border: none;
+  padding: 12px 20px; /* Increased padding for better touch target */
+  border-radius: 8px; /* Slightly larger radius for a more modern look */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Added transform for a subtle scale effect */
+}
+
+.submit-button:hover {
+  background-color: #1779ba;
+  transform: scale(1.05); /* Slightly scale up on hover */
+}
+/* Consultant Button */
+.consultant-button {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 100px; /* Slightly larger for better visibility */
+  height: 100px;
+  background-color: #1779ba;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2em; /* Larger text size for better readability */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-align: center;
+  padding: 0;
+}
+
+.consultant-button:hover {
+  background-color: #1779ba;
+  transform: scale(1.1);
+}
+
+/* Popup */
+.popup {
+  position: fixed;
+  bottom: 100px;
+  left: 20px;
+  width: 360px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.popup-content {
+  padding: 25px;
+  text-align: right;
+}
+
+.popup-content h3 {
+  margin-top: 0;
+  color: #1779ba;
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+.popup-content p {
+  margin: 10px 0;
+  color: #555;
+  font-size: 1.2em;
+}
+
+.popup-content button {
+  background-color: #1779ba;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.popup-content button:hover {
+  background-color: #1779ba;
+}
