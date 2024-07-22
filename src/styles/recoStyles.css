@@ -2,13 +2,14 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    border: #007BFF;
 }
 
 .main-vid {
+    margin-left: 60px;
     margin-top: -40px;
-    width: 150px;
+    width: 220px;
     height: 150px;
-    max-height: 30%;
     object-fit: cover;
 
 }
@@ -19,6 +20,18 @@
     font-size: 15px;
     font-weight: 400;
     color: rgb(0, 0, 0);
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Arial Hebrew',
+        Arial,
+        sans-serif;
     margin-left: 19px;
+}
+
+.reco-link {
+    padding: 2px 14px;
+    background-color: #007BFF;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    position: left;
+    margin-right: 170px;
 }

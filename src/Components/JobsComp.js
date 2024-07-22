@@ -12,12 +12,13 @@ export default function JobsComp() {
                     <img src={item.mainImg} alt="" className="main-img" />
                 </div>
                 <div className="text-wrapper">
-                    <img src={item.countryFlag} alt="" width={19} />
+                    <img src={item.countryFlag} alt="" width={20} marginBottom={10} />
                     <div className="text-content">
                     <a href="" className="button-link">→</a>
-                    <p>{item.country}, {item.city}</p>
-                    <p>{item.jobType}</p>
-                    <p>{item.salary}</p>
+                    <p>{item.Continents}, {item.State}</p>
+                    <p>{item.Domains}</p>
+                    <p>{item.JobType}</p>
+                    <p>{item.Salary}</p>
                     </div>
                 </div>
                 </div>
