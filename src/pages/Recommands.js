@@ -1,6 +1,6 @@
 import React from 'react'
 import '../styles/styles.css';
-import Reco_comp from "../Components/RecoComp";
+import RecoComp from "../Components/RecoComp";
 
 
 
@@ -12,7 +12,7 @@ export default function Recommands() {
       </div>
       <br></br>
       
-      <Reco_comp/>
+      <RecoComp/>
       
     </div>
   );

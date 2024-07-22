@@ -2,7 +2,7 @@ import React from "react";
 import { reco_ar } from "../data/recommands";
 import '../styles/recoStyles.css';
 
-export default function Reco_comp() {
+export default function RecoComp() {
     return(
         <div className="recoContainer">
             {reco_ar.map((item, index) => (
