@@ -13,6 +13,7 @@ import Policy from './pages/Policy';
 import Footer from './Components/Footer';
 import Navbar from './Components/Navbar';
 import ContactAdvisor from './Components/ContactAdvisor';
+import Recommands from './pages/Recommands';
 
 function App() {
     const [isContactAdvisorOpen, setIsContactAdvisorOpen] = useState(false);
@@ -35,6 +36,7 @@ function App() {
                 <Route path="/LogIn" element={<LogIn/>} />
                 <Route path="/TermsOfUse" element={<TermsOfUse/>} />
                 <Route path="/Policy" element={<Policy/>} />
+                <Route path="/Recommands" element={<Recommands/>} />
             </Routes>
             <ContactAdvisor isOpen={isContactAdvisorOpen} onClose={toggleContactAdvisor} />
             <button

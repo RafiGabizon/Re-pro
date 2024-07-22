@@ -3,10 +3,11 @@ import '../styles/styles.css';
 import Reco_comp from "../Components/RecoComp";
 
 
+
 export default function Recommands() {
   return (
      <div>
-      <div className="Recommands">
+      <div>
         <h2>ממליצים</h2>
       </div>
       <br></br>
