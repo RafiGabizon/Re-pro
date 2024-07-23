@@ -14,6 +14,7 @@ import Footer from './Components/Footer';
 import Navbar from './Components/Navbar';
 import ContactAdvisor from './Components/ContactAdvisor';
 import Recommands from './pages/Recommands';
+import JobDetail from './pages/JobDetail';
 
 function App() {
     const [isContactAdvisorOpen, setIsContactAdvisorOpen] = useState(false);
@@ -37,6 +38,7 @@ function App() {
                 <Route path="/TermsOfUse" element={<TermsOfUse/>} />
                 <Route path="/Policy" element={<Policy/>} />
                 <Route path="/Recommands" element={<Recommands/>} />
+                <Route path="/job/:id" element={<JobDetail/>} />
             </Routes>
             <ContactAdvisor isOpen={isContactAdvisorOpen} onClose={toggleContactAdvisor} />
             <button
