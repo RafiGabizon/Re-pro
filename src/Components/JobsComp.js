@@ -19,7 +19,6 @@ export default function JobsComp() {
                     <p>{item.Continents}, {item.State}</p>
                     <p>{item.Domains}</p>
                     <p>{item.JobType}</p>
-                    <p>{item.Salary}</p>
                     </div>
                 </div>
                 </div>

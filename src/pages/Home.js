@@ -4,7 +4,8 @@ import JobsComp from "../Components/JobsComp";
 import OpenComp from "../Components/OpenComp";
 import RecoComp from "../Components/RecoComp";
 import Stages from "../Components/StagesComp";
-import '../styles/styles.css';
+import QuestionFrame from '../Components/QuestionFrame';
+import { questionsAndAnswers } from '../data/q&a';
 
 export default function Home() {
   return (
@@ -16,6 +17,11 @@ export default function Home() {
       <br></br><br></br>
       <Stages/>
       <br></br><br></br><br></br>
+      <div className="questions-section">
+        {questionsAndAnswers.map((qa, index) => (
+          <QuestionFrame key={index} question={qa.question} answer={qa.answer} />
+        ))}
+      </div>
       <RecoComp/>
 
     </div>
