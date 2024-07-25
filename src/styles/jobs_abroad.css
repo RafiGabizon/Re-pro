@@ -7,7 +7,7 @@ body {
 }
 
 .JobsAbroad {
-  max-width: 800px;
+  max-width: 1080px;
   margin: 40px auto;
   padding: 20px;
   border-radius: 10px; /* Rounded corners for a softer look */
@@ -24,10 +24,12 @@ h2 {
 
 /* Search and filters (improved layout for RTL) */
 .search-and-filters {
-  display: flex;
   flex-direction: column;
   gap: 15px; /* Space between elements */
   margin-bottom: 20px;
+  width: 55%;
+  margin: auto;
+
 }
 
 .search-box,

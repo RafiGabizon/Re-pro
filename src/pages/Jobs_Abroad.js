@@ -52,7 +52,7 @@ export default function JobsAbroad() {
     setFilteredJobs(filtered);
   }, [filterTypes, searchText]);
 
-  const uniqueContinents = ['אסיה', 'אמריקה', 'אפריקה', 'אירופה', 'אוקיאניה'];
+  const uniqueContinents = ['אסיה', 'אמריקה', 'אפריקה', 'אירופה', 'אוסטרליה'];
   const uniqueStates = ['ישראל', 'ארצות הברית', 'קנדה', 'בריטניה', 'גרמניה', 'צרפת', 'הודו', 'יפן', 'אוסטרליה'];
   const uniqueDomains = ['הנדסה', 'ניהול', 'טכנולוגיות מידע', 'שיווק', 'פיננסים', 'משאבי אנוש', 'עיצוב', 'הנדסה', 'מכירות', 'ייעוץ'];
   const uniqueJobTypes = ['חצי משרה', 'משרה מלאה', 'משרת אם'];
