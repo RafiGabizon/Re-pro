@@ -1,0 +1,182 @@
+.reco-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.reco-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.reco-carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 70%;
+    height: 550px;
+    right: 12.5%;
+}
+
+.carousel-button {
+    background: rgba(77, 131, 240, 0.5);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.5px;
+    border-radius: 55%;
+    transition: background 0.3s ease;
+    z-index: 10;
+    height: 10%;
+    width: 6%;
+}
+
+.carousel-button:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-button.prev {
+    left: 10px;
+}
+
+.carousel-button.next {
+    right: 10px;
+}
+
+.reco-card {
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+    transition: transform 0.3s ease;
+}
+
+.reco-image {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.reco-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.reco-content {
+    text-align: center;
+}
+
+.reco-name {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.reco-job {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.reco-speech {
+    position: relative;
+    padding: 20px 0;
+}
+
+.quote-icon {
+    font-size: 1.5rem;
+    color: #ccc;
+    position: absolute;
+}
+
+.quote-icon.right {
+    top: 0;
+    right: 0;
+}
+
+.quote-icon.left {
+    bottom: 0;
+    left: 0;
+}
+
+.speech-text {
+    font-style: italic;
+    line-height: 1.6;
+}
+
+.reco-link {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.reco-link:hover {
+    background: #0056b3;
+}
+
+.arrow-icon {
+    margin-right: 10px;
+}
+
+/* מובייל התאמות */
+@media (max-width: 768px) {
+    .reco-card {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .carousel-button {
+        font-size: 1.5rem;
+        padding: 8px;
+    }
+
+    .reco-name {
+        font-size: 1.2rem;
+    }
+
+    .reco-avatar {
+        width: 100px;
+        height: 100px;
+    }
+        .reco-carousel {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            width: 70%;
+            right: 12.5%;
+        }
+    
+        .carousel-button {
+            background: rgba(77, 131, 240, 0.5);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 0;
+            border-radius: 55%;
+            transition: background 0.3s ease;
+            z-index: 10;
+            height: 8%;
+            width: 15%;
+        }
+}
