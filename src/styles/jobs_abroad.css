@@ -81,3 +81,26 @@ h2 {
 .search-results {
   margin-top: 20px; /* Add space after search and filters */
 }
+
+.Jobs_Abroad {
+  direction: rtl;
+  text-align: right;
+  padding: 20px;
+}
+
+.Jobs_Abroad select {
+  direction: rtl;
+  text-align: right;
+  padding: 10px;
+  margin: 10px 0;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .Jobs_Abroad {
+    padding: 10px;
+  }
+}

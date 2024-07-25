@@ -1,5 +1,5 @@
 import React from "react";
-import '../styles/styles.css';
+import '../styles/home.css';
 import JobsComp from "../Components/JobsComp";
 import OpenComp from "../Components/OpenComp";
 import RecoComp from "../Components/RecoComp";
