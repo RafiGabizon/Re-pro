@@ -54,7 +54,7 @@
 
 .carousel-button {
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(48, 124, 224, 0.5);
     color: white;
     border: none;
     padding: 10px;
@@ -67,9 +67,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.3s ease;
-    top: 62%;
-    
+    transition: background-color 0.5s ease ;
+    top: 65%;
+    transform: translateY(-50%);
 }
 
 .carousel-button.prev {
@@ -104,7 +104,7 @@
 /* התאמות למובייל */
 @media (max-width: 768px) {
     .carousel-container {
-        max-width: 500px;
+        max-width: 90%;
     }
 
     .carousel-items-wrapper {
@@ -113,14 +113,16 @@
     }
 
     .carousel-item {
-        flex: 0 0 90%;
+        flex: 0 0 100%;
         margin-bottom: 1rem;
+        right: 63%;
     }
 
     .carousel-button {
         font-size: 16px;
         padding: 0.2px;
         width: 25px;
+        
     }
 
     .carousel-header h2 {

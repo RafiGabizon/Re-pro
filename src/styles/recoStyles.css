@@ -153,30 +153,31 @@
         width: 100px;
         height: 100px;
     }
-        .reco-carousel {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            width: 70%;
-            right: 12.5%;
-        }
-    
-        .carousel-button {
-            background: rgba(77, 131, 240, 0.5);
-            border: none;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            padding: 0;
-            border-radius: 55%;
-            transition: background 0.3s ease;
-            z-index: 10;
-            height: 8%;
-            width: 15%;
-        }
+
+    .reco-carousel {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        width: 70%;
+        right: 12.5%;
+    }
+
+    .carousel-button {
+        background: rgba(77, 131, 240, 0.5);
+        border: none;
+        color: white;
+        font-size: 2rem;
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 0;
+        border-radius: 55%;
+        transition: background 0.3s ease;
+        z-index: 10;
+        height: 8%;
+        width: 15%;
+    }
 }

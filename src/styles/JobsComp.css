@@ -67,6 +67,7 @@
     background-color: #0056b3;
 }
 
+
 /* התאמות למובייל */
 @media (max-width: 768px) {
     .container {
@@ -93,13 +94,13 @@
 
     .text-content {
         font-size: 13px;
-        line-height: 1.2;
+        line-height: 0.3;
     }
 
     .button-link {
-        margin-right: auto;
+        margin-right: 220px;
         margin-left: 10px;
-        font-size: 12px;
+        font-size: 14px;
         padding: 2px 10px;
     }
 }

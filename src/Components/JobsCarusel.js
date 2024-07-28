@@ -6,61 +6,79 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 export default function JobsCarousel() {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [itemsPerPage, setItemsPerPage] = useState(2);
 
     useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth <= 768) {
+                setItemsPerPage(1);
+            } else {
+                setItemsPerPage(2);
+            }
+        };
+
+        window.addEventListener("resize", handleResize);
+        handleResize();
+
         const interval = setInterval(() => {
             nextSlide();
         }, 8500);
 
-        return () => clearInterval(interval);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+            clearInterval(interval);
+        };
     }, []);
 
     const nextSlide = () => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % Math.max(jobs_ar.length - 1, 1));
+        setCurrentIndex((prevIndex) => (prevIndex + itemsPerPage) % jobs_ar.length);
     };
 
     const prevSlide = () => {
-        setCurrentIndex((prevIndex) => (prevIndex - 1 + jobs_ar.length) % Math.max(jobs_ar.length - 1, 1));
+        setCurrentIndex((prevIndex) => (prevIndex - itemsPerPage + jobs_ar.length) % jobs_ar.length);
     };
 
     if (jobs_ar.length === 0) {
         return <div className="no-jobs">אין משרות זמינות כרגע.</div>;
     }
-    
+
+    const getIndicatorText = () => {
+        if (itemsPerPage === 1) {
+            return `משרה ${currentIndex + 1} מתוך ${jobs_ar.length}`;
+        } else {
+            return `משרות ${currentIndex + 1}-${Math.min(currentIndex + itemsPerPage, jobs_ar.length)} מתוך ${jobs_ar.length}`;
+        }
+    };
+
     return (
         <div className="carousel-container">
             <div className="carousel-header">
                 <h2>משרות חמות</h2>
                 <div className="carousel-indicator">
-                    משרות {currentIndex + 1}-{Math.min(currentIndex + 2, jobs_ar.length)} מתוך {jobs_ar.length}
+                    {getIndicatorText()}
                 </div>
             </div>
             <div className="carousel-content">
                 <div className="carousel-items-wrapper">
-                    {jobs_ar.slice(currentIndex, currentIndex + 2).map((item, index) => (
-                            <div key={currentIndex + index} className="carousel-item active">
-                                <JobsComp item={item} />
-                            </div>
-                    ))}
-                    {currentIndex + 1 >= jobs_ar.length && (
-                        <div key="first" className="carousel-item">
-                            <JobsComp item={jobs_ar[0]} />
+                    {jobs_ar.slice(currentIndex, currentIndex + itemsPerPage).map((item, index) => (
+                        <div key={currentIndex + index} className="carousel-item active">
+                            <JobsComp item={item} />
                         </div>
-                    )}
+                    ))}
                 </div>
             </div>
-            <button className="carousel-button next" onClick={prevSlide}>
-                <FaChevronRight />
-            </button>
             <button className="carousel-button prev" onClick={nextSlide}>
                 <FaChevronLeft />
             </button>
+            <button className="carousel-button next" onClick={prevSlide}>
+                <FaChevronRight />
+            </button>
             <div className="carousel-dots">
-                {jobs_ar.map((_, index) => (
-                    <span 
-                        key={index} 
-                        className={`dot ${index * 2 === currentIndex ? 'active' : ''}`}
-                        onClick={() => setCurrentIndex(index * 2)}
+                {Array.from({ length: Math.ceil(jobs_ar.length / itemsPerPage) }).map((_, index) => (
+                    <span
+                        key={index}
+                        className={`dot ${index * itemsPerPage === currentIndex ? 'active' : ''}`}
+                        onClick={() => setCurrentIndex(index * itemsPerPage)}
                     ></span>
                 ))}
             </div>
