@@ -1,33 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../styles/questionAsk.css';
-
-const QuestionItem = ({ question, answer, isVisible, toggleVisibility }) => (
-  <div className="question-answer-pair">
-    <h3>{question}</h3>
-    <button 
-      className="toggle-answer-button" 
-      onClick={toggleVisibility}
-      aria-label={isVisible ? "Hide answer" : "Show answer"}
-    >
-      {isVisible ? 'הסתר תשובה' : 'הראה תשובה'}
-    </button>
-    {isVisible && <p>{answer}</p>}
-  </div>
-);
+import QuestionFrame from '../Components/QuestionFrame'; // ייבוא הקומפוננטה
 
 export default function QuestionAsk() {
-  const [visibleAnswer, setVisibleAnswer] = useState(null);
-
-  const toggleAnswerVisibility = (index) => {
-    setVisibleAnswer(prevIndex => (prevIndex === index ? null : index));
-  };
-
-
   const questionsAndAnswers = [
     { question: "איך עובד התהליך?", answer: "תשובה 1" },
     { question: "שאלה 2", answer: "תשובה 2" },
     { question: "שאלה 3", answer: "תשובה 3" },
-    // Continue adding questions and answers as needed...
+    // המשך הוספת שאלות ותשובות לפי הצורך...
   ];
 
   return (
@@ -36,12 +16,10 @@ export default function QuestionAsk() {
         <div className="question-ask-section">
           <h2>שאלות ותשובות</h2>
           {questionsAndAnswers.map((qa, index) => (
-            <QuestionItem 
+            <QuestionFrame 
               key={index}
               question={qa.question}
               answer={qa.answer}
-              isVisible={visibleAnswer === index}
-              toggleVisibility={() => toggleAnswerVisibility(index)}
             />
           ))}
         </div>
