@@ -18,9 +18,9 @@ export default function Footer() {
           <div className="link-group">
             <h4 className="link-group-title">קישורים נוספים</h4>
             <Link to="/Employers" className="link-item">מעסיקים</Link>
-            <Link to="/Jobs_Abroad" className="link-item">עבודות בחו"ל</Link>
+            <Link to="/JobsAbroad" className="link-item">עבודות בחו"ל</Link>
             <Link to="/Articles" className="link-item">כתבות</Link>
-            <Link to="/Qustion_Ask" className="link-item">שאלות ותשובות</Link>
+            <Link to="/QustionAsk" className="link-item">שאלות ותשובות</Link>
             <Link to="/LogIn" className="link-item">איזור אישי</Link>
           </div>
         </div>

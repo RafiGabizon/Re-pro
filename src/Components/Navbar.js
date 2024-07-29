@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/navbar.css';
 import Repro from '../images/Repro_Logo.jpg';
-// import Whatsapp from '../images/whatsapp_logo.png';
 import { FaWhatsapp } from "react-icons/fa";
 
 export default function NavbarTop() {
@@ -26,10 +25,10 @@ export default function NavbarTop() {
         </div>
 
         <nav className={`links ${isMenuOpen ? 'open' : ''}`}>
-          <Link to="/Jobs_Abroad" className="nav-link">עבודות בחו"ל</Link>
+          <Link to="/JobsAbroad" className="nav-link">עבודות בחו"ל</Link>
           <Link to="/Employers" className="nav-link">מעסיקים</Link>
           <Link to="/Articles" className="nav-link">כתבות</Link>
-          <Link to="/Qustion_Ask" className="nav-link">שאלות ותשובות</Link>
+          <Link to="/QustionAsk" className="nav-link">שאלות ותשובות</Link>
           <Link to="/About" className="nav-link">אודות</Link>
           <Link to="/LogIn" className="nav-link login-button">איזור אישי</Link>
         </nav>

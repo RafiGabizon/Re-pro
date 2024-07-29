@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation} from 'react-router-dom';
 import '../styles/register.css';
 
 export default function ConfirmRegistration() {
   const location = useLocation();
-  const navigate = useNavigate();
+//   const navigate = useNavigate();
   const [formData, setFormData] = useState({});
 
   useEffect(() => {
