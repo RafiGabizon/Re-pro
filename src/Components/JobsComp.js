@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import '../styles/JobsComp.css';
+import { PiAirplaneTakeoff } from "react-icons/pi";
+
 
 export default function JobsComp({ item }) {
     if (!item) {
@@ -17,7 +19,7 @@ export default function JobsComp({ item }) {
                 <div className="text-wrapper">
                     <img src={item.countryFlag} alt="" width={20} style={{marginBottom: 10}} />
                     <div className="text-content">
-                        <Link to={`/job/${item.id}`} className="button-link">→</Link>
+                        <Link to={`/job/${item.id}`} className="button-link"><PiAirplaneTakeoff /></Link>
                         <p>{item.Continents}, {item.State}</p>
                         <p>{item.Domains}</p>
                         <p>{item.JobType}</p>
