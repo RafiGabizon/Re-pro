@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import '../styles/jobs_abroad.css';
 import '../styles/styles.css';
 import { jobs_ar as jobs } from '../data/jobs';
-import { Link } from 'react-router-dom';  
+import { Link } from 'react-router-dom';
+import JobsComp from '../Components/JobsComp'; // ייבוא הקומפוננטה
 
 export default function JobsAbroad() {
   const [filterTypes, setFilterTypes] = useState({ Continents: '', State: '', Domains: '', JobType: '' });
@@ -139,30 +140,12 @@ export default function JobsAbroad() {
       <div className="container">
         {filteredJobs.length > 0 ? (
           filteredJobs.map((job, index) => (
-            <div key={index} className="job-item">
-              <div className="text-content">
-                <div className="img-container">
-                  <img src={job.mainImg} alt="" className="main-img" />
-                </div>
-                <div className="text-wrapper">
-                    <img src={job.countryFlag} alt="" width={19} />
-                  <div className="text-content">
-                    <Link to={`/job/${job.id}`} className="button-link">→</Link>
-                    <p>{job.Continents}, {job.State}</p>
-                    <p>{job.Domains}</p>
-                    <p>{job.JobType}</p>
-                    <p>{job.Salary}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <JobsComp key={index} item={job} /> // שימוש בקומפוננטה JobsComp
           ))
         ) : (
           <p>!מצטערים אך לא מצאנו את העבודה שחיפשת</p>
         )}
-        
       </div>
-      
     </div>
   );
 }
