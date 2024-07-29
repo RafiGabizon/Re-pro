@@ -1,108 +1,172 @@
 /* Base styles */
 body {
-  font-family: Arial, sans-serif; /* Fallback font for Hebrew */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
-  direction: rtl; /* Set overall direction to right-to-left for Hebrew */
+  direction: rtl;
+  background-color: #f7f7f7;
 }
 
 .JobsAbroad {
-  max-width: 1080px;
+  max-width: 1200px;
   margin: 40px auto;
   padding: 20px;
-  border-radius: 10px; /* Rounded corners for a softer look */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  background-color: #f5f5f5; /* Light grey background */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
 }
 
 h2 {
   text-align: center;
-  margin-bottom: 15px;
-  color: #1779ba; /* Deep teal for title */
-  font-size: 24px; /* Larger title font */
+  margin-bottom: 25px;
+  color: #1779ba;
+  font-size: 28px;
 }
 
-/* Search and filters (improved layout for RTL) */
+/* Search and filters */
 .search-and-filters {
+  display: flex;
   flex-direction: column;
-  gap: 15px; /* Space between elements */
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.search-box {
+  width: 100%;
   margin-bottom: 20px;
-  width: 55%;
-  margin: auto;
-
 }
 
-.search-box,
+.search-box input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+.search-box input:focus {
+  border-color: #1779ba;
+  outline: none;
+}
+
 .filter-buttons {
-  display: flex; /* Arrange elements side-by-side in Hebrew */
+  display: flex;
   justify-content: space-between;
-  gap: 10px; /* Space between elements */
-}
-
-.search-box input,
-.filter-group select {
-  width: 100%; /* Full width input and select */
+  gap: 15px;
 }
 
 .filter-group {
-  align-items: center;
-  gap: 5px; /* Space between label and select */
+  flex: 1;
 }
 
 .filter-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #555;
+}
+
+.filter-group select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background-color: white;
+  transition: border-color 0.3s;
+}
+
+.filter-group select:focus {
+  border-color: #1779ba;
+  outline: none;
+}
+
+/* Job listings */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.job-item {
+  flex: 0 0 calc();
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, background-color 0.2s;
+}
+
+.job-item:hover {
+  transform: translateY(-5px);
+  background-color: #f8f8f8;
+}
+
+.img-container {
+  height: 150px;
+  overflow: hidden;
+}
+
+.main-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.text-wrapper {
+  padding: 15px;
+}
+
+.text-content {
   font-size: 14px;
   color: #666;
 }
 
-/* Job listings */
-.job-listing {
-  margin-bottom: 15px;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 5px; /* Rounded corners for listings */
-  background-color: #fff; /* White background for better contrast */
-  transition: background-color 0.2s ease-in-out; /* Subtle hover effect */
-}
-
-.job-listing:hover {
-  background-color: #f8f8f8; /* Slightly lighter background on hover */
-}
-
-.job-listing h3 {
-  margin-bottom: 5px;
-  color: #1779ba; /* Teal for job titles */
-  font-size: 18px;
-}
-
-.job-listing p {
-  margin-bottom: 0;
-  color: #666;
-}
-
-/* Search result placement (assuming results are placed within .JobsAbroad) */
-.search-results {
-  margin-top: 20px; /* Add space after search and filters */
-}
-
-.Jobs_Abroad {
-  direction: rtl;
-  text-align: right;
-  padding: 20px;
-}
-
-.Jobs_Abroad select {
-  direction: rtl;
-  text-align: right;
-  padding: 10px;
-  margin: 10px 0;
-  width: 100%;
-  border: 1px solid #ccc;
+.button-link {
+  display: inline-block;
+  padding: 8px 15px;
+  background-color: #1779ba;
+  color: white;
+  text-decoration: none;
   border-radius: 5px;
-  font-size: 16px;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
+.button-link:hover {
+  background-color: #145a8d;
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .Jobs_Abroad {
-    padding: 10px;
+  .JobsAbroad {
+    margin: 20px auto;
+    padding: 15px;
   }
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .search-and-filters {
+    width: 100%;
+  }
+
+  .filter-buttons {
+    flex-direction: column;
+  }
+
+  .filter-group {
+    margin-bottom: 15px;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+  }
+  .job-item {
+    height: 450px;
+  }
+  
 }
