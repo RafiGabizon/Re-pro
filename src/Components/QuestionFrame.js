@@ -1,4 +1,3 @@
-// QuestionFrame.js
 import React, { useState } from 'react';
 import '../styles/questionFrame.css';
 
@@ -7,23 +6,24 @@ const QuestionFrame = ({ question, answer }) => {
 
   const toggleAnswerVisibility = () => {
     setIsAnswerVisible(!isAnswerVisible);
-    if (!isAnswerVisible) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
   };
 
   return (
     <div className="question-frame">
-      <h3 onClick={toggleAnswerVisibility} className="question-text">{question}</h3>
+      <h3 className="question-text">{question}</h3>
+      <button 
+        className="toggle-answer-button" 
+        onClick={toggleAnswerVisibility}
+        aria-label={isAnswerVisible ? "Hide answer" : "Show answer"}
+      >
+        {isAnswerVisible ? 'הסתר תשובה' : 'הראה תשובה'}
+      </button>
       {isAnswerVisible && (
         <div className="answer-overlay">
           <div className="answer-frame">
             <div className="answer-content">
               <p>{answer}</p>
             </div>
-            <button onClick={toggleAnswerVisibility} className="close-button">סגור</button>
           </div>
         </div>
       )}

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import '../styles/questionAsk.css';
-import ContactAdvisor from '../Components/ContactAdvisor';
 
 const QuestionItem = ({ question, answer, isVisible, toggleVisibility }) => (
   <div className="question-answer-pair">
@@ -18,15 +17,11 @@ const QuestionItem = ({ question, answer, isVisible, toggleVisibility }) => (
 
 export default function QuestionAsk() {
   const [visibleAnswer, setVisibleAnswer] = useState(null);
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   const toggleAnswerVisibility = (index) => {
     setVisibleAnswer(prevIndex => (prevIndex === index ? null : index));
   };
 
-  const toggleContactModal = () => {
-    setIsContactModalOpen(!isContactModalOpen);
-  };
 
   const questionsAndAnswers = [
     { question: "איך עובד התהליך?", answer: "תשובה 1" },
@@ -54,17 +49,8 @@ export default function QuestionAsk() {
           <p>השארת פרטים וקישורים</p>
           <div className="newsletter-social">
             <p>הרשמה לניוזלטר</p>
-            <p>קישור לרשתות חברתיות</p>
           </div>
         </div>
-        <button 
-          className="consultant-button" 
-          onClick={toggleContactModal}
-          aria-label="Contact career advisor"
-        >
-          פנייה ליועץ תעסוקתי
-        </button>
-        <ContactAdvisor isOpen={isContactModalOpen} onClose={toggleContactModal} />
       </main>
     </div>
   );
