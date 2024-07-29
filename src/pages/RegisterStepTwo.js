@@ -39,7 +39,7 @@ export default function RegisterStepTwo() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('נתונים מלאים:', formData);
-    navigate('/confirm-registration', { state: { formData } });
+    navigate('/RegisterConfirm', { state: { formData } });
   };
 
   return (

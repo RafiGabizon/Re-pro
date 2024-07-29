@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/register.css';
+import { Link } from 'react-router-dom';
 
 export default function InitialRegister() {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ export default function InitialRegister() {
     e.preventDefault();
     // כאן תוכל להוסיף את הלוגיקה של שמירת הנתונים
     console.log('נתונים ראשוניים:', formData);
-    navigate('/register-step2', { state: { formData } });
+    navigate('/register2', { state: { formData } });
   };
 
   return (
@@ -88,7 +89,9 @@ export default function InitialRegister() {
             />
 
           </div>
-          <button type="submit" className="register-button">המשך להשלמת הרישום</button>
+          <button type="submit" className="register-button">
+             המשך להשלמת הרישום
+             </button>
         </form>
       </div>
     </div>
