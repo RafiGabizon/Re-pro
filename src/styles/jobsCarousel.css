@@ -104,7 +104,7 @@
 /* התאמות למובייל */
 @media (max-width: 768px) {
     .carousel-container {
-        max-width: 90%;
+        width: 100%;
     }
 
     .carousel-items-wrapper {
@@ -122,6 +122,7 @@
         font-size: 16px;
         padding: 0.2px;
         width: 25px;
+        height: 25px;
         
     }
 
