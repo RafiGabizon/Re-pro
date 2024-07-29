@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import '../styles/jobs_abroad.css';
 import '../styles/styles.css';
 import { jobs_ar as jobs } from '../data/jobs';
-import { Link } from 'react-router-dom';
 import JobsComp from '../Components/JobsComp'; // ייבוא הקומפוננטה
 
 export default function JobsAbroad() {
