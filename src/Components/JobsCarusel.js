@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { jobs_ar } from "../data/jobs";
 import JobsComp from "./JobsComp";
 import '../styles/jobsCarousel.css';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 export default function JobsCarousel() {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -21,7 +21,7 @@ export default function JobsCarousel() {
         handleResize();
 
         const interval = setInterval(() => {
-            nextSlide();
+            // nextSlide();
         }, 8500);
 
         return () => {
@@ -68,10 +68,10 @@ export default function JobsCarousel() {
                 </div>
             </div>
             <button className="carousel-button prev" onClick={nextSlide}>
-                <FaChevronLeft />
+                <FaArrowLeft />
             </button>
             <button className="carousel-button next" onClick={prevSlide}>
-                <FaChevronRight />
+                <FaArrowRight />
             </button>
             <div className="carousel-dots">
                 {Array.from({ length: Math.ceil(jobs_ar.length / itemsPerPage) }).map((_, index) => (
