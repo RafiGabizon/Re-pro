@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/navbar.css';
 import Repro from '../images/Repro_Logo.jpg';
-import Whatsapp from '../images/whatsapp_logo.png';
+// import Whatsapp from '../images/whatsapp_logo.png';
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function NavbarTop() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,7 +35,7 @@ export default function NavbarTop() {
         </nav>
 
         <Link to="https://wa.link/oc0fb6" className="whatsapp-link">
-          <img src={Whatsapp} className="whatsapp-icon" alt="WhatsApp" title="WhatsApp" />
+         <FaWhatsapp className='fa-whatsapp' />
         </Link>
       </div>
     </div>

@@ -46,34 +46,27 @@
   color: #ffffff;
   padding: 10px 20px;
   border-radius: 5px;
-  text-decoration: none;
   font-weight: bold;
   transition: all 0.3s ease;
   margin-right: 15px;
   box-shadow: 0 2px 5px rgba(0, 123, 255, 0.3);
-  border: 2px solid #007bff;
+  text-align: center;
+  width: 110px;
 }
 
 .login-button:hover {
-  background-color: #ffffff;
-  color: #007bff;
-  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.5);
+  background-color: #ec7d0a;
+  color: #ffffff;  
 }
 
 .whatsapp-link {
   display: flex;
   align-items: center;
 }
-
-.whatsapp-icon {
-  width: 24px;
-  height: 24px;
-  transition: opacity 0.3s ease;
+.fa-whatsapp {
+  font-size: 30px;
 }
 
-.whatsapp-icon:hover {
-  opacity: 0.8;
-}
 
 .menu-icon {
   display: none;
@@ -84,7 +77,7 @@
 .menu-icon span {
   width: 25px;
   height: 3px;
-  background-color: #495057;
+  background-color: #ec7d0a;
   margin: 2px 0;
   transition: 0.4s;
 }

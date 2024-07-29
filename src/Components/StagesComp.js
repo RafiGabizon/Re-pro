@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "../styles/stagesStyles.css";
 import Modal from "react-modal";
+import { IoMdCloseCircleOutline } from "react-icons/io";
+
 
 const customStyles = {
   content: {
@@ -62,7 +64,7 @@ export default function Stages() {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
           allowFullScreen
         ></iframe>
-        <button className="close-button" onClick={handleCloseModal}>סגור</button>
+        <button className="close-button" onClick={handleCloseModal}> <IoMdCloseCircleOutline /> </button>
       </Modal>
     </div>
   );

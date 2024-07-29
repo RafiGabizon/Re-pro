@@ -1,7 +1,14 @@
 import React from "react";
 import '../styles/openingStyle.css';
+import { FaWhatsapp } from "react-icons/fa";
+
 
 export default function OpenComp() {
+
+    const handleWhatsAppClick = () => {
+        window.open('https://wa.link/oc0fb6', '_blank');
+    };
+
     return (
         <section className="opening-section">
             <div className="content-wrapper">
@@ -16,7 +23,7 @@ export default function OpenComp() {
                     <p className="description">
                         אנו מציעים לכם הזדמנות ייחודית לקחת את הקריירה שלכם צעד קדימה ולהתחיל לעבוד בחו"ל. עם מגוון רחב של משרות בתחומים שונים, נעזור לכם למצוא את ההזדמנות המושלמת עבורכם.
                     </p>
-                    <button className="cta-button">צור קשר עכשיו</button>
+                     <button className="cta-button" onClick={handleWhatsAppClick}> <FaWhatsapp />  צור קשר עכשיו</button>
                 </div>
                 <div className="video-container">
                     <iframe 

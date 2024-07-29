@@ -71,24 +71,16 @@
 }
 
 .info-button:hover {
-    background-color: #0056b3;
+    background-color: #ec7d0a;
 }
 
 .close-button {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 16px;
+    color: #dc3545;
+    font-size: 12px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 20px;
+    transition: color 0.3s ease;
 }
 
-.close-button:hover {
-    background-color: #c82333;
-}
 
 @media (max-width: 768px) {
     .stages {

@@ -15,6 +15,10 @@ import Navbar from './Components/Navbar';
 import ContactAdvisor from './Components/ContactAdvisor';
 import Recommands from './pages/Recommands';
 import JobDetail from './pages/JobDetail';
+import Register from './pages/Register';
+import RegisterStepTwo from './pages/RegisterStepTwo';
+import ConfirmRegistration from './pages/ConfirmRegistration';
+
 
 function App() {
     const [isContactAdvisorOpen, setIsContactAdvisorOpen] = useState(false);
@@ -39,6 +43,11 @@ function App() {
                 <Route path="/Policy" element={<Policy/>} />
                 <Route path="/Recommands" element={<Recommands/>} />
                 <Route path="/job/:id" element={<JobDetail/>} />
+                <Route path="/Register" element={<Register/>} />
+                <Route path="/Register2" element={<RegisterStepTwo/>} />
+                <Route path="/RegisterConfirm" element={<ConfirmRegistration/>} />
+
+
             </Routes>
             <ContactAdvisor isOpen={isContactAdvisorOpen} onClose={toggleContactAdvisor} />
             <button
