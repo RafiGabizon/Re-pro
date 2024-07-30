@@ -4,6 +4,7 @@ import '../styles/JobsComp.css';
 import { PiAirplaneTakeoff } from "react-icons/pi";
 import ReactCountryFlag from "react-country-flag";
 
+
 // מיפוי שמות המדינות לקודי מדינות
 const countryCodeMap = {
     "הודו": "IN",
@@ -36,9 +37,14 @@ export default function JobsComp({ item }) {
                         countryCode={getCountryCode(item.State)}
                         svg
                         style={{
-                            width: '30px',
-                            height: '23px',
-                            marginBottom: 0.2
+                        width: '30px',
+                        height: '23px',
+                        marginBottom: 0.2,
+                        borderRadius: '50%',
+                        objectFit: 'cover',
+                        display: 'inline-block',
+                        overflow: 'hidden',
+                        boxShadow: 'inset 0 0 8px rgba(255,255,255,0.6), 0 0 2px rgba(0,0,0,0.3)'
                         }}
                         title={item.State}
                     />
