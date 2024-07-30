@@ -53,9 +53,9 @@ function App() {
             <button
                 className="consultant-button"
                 onClick={toggleContactAdvisor}
-                aria-label="Contact a career advisor"
-            >
-                פנייה ליועץ תעסוקתי
+                aria-label="Contact us"
+                >
+                {window.innerWidth <= 768 ? "דברו איתנו" : "פנייה ליועץ תעסוקתי"}
                 </button>
             <Footer />
         </BrowserRouter>
