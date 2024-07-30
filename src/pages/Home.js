@@ -8,6 +8,7 @@ import QuestionFrame from '../Components/QuestionFrame';
 import JobsCarousel from "../Components/JobsCarusel";
 import { questionsAndAnswers } from '../data/q&a';
 
+
 export default function Home() {
   return (
     <div className="App">
@@ -25,6 +26,8 @@ export default function Home() {
         ))}
       </div>
       <RecoComp/>
+
+      
 
     </div>
   )
