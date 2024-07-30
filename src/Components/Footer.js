@@ -22,6 +22,7 @@ export default function Footer() {
             <Link to="/Articles" className="link-item">כתבות</Link>
             <Link to="/QustionAsk" className="link-item">שאלות ותשובות</Link>
             <Link to="/LogIn" className="link-item">איזור אישי</Link>
+            <Link to="/admin" className="link-item">איזור ניהול</Link>
           </div>
         </div>
         <div className="social-and-credits">
