@@ -1,0 +1,51 @@
+.manage-hot-jobs {
+    padding: 20px;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+}
+
+.hot-jobs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.hot-jobs-table th,
+.hot-jobs-table td {
+    padding: 12px;
+    text-align: right;
+    border-bottom: 1px solid #ddd;
+}
+
+.hot-jobs-table th {
+    background-color: #ec7d0a;
+    color: white;
+}
+
+.add-btn,
+.remove-btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.add-btn {
+    background-color: #3498db;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.remove-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.add-btn:hover,
+.remove-btn:hover {
+    opacity: 0.8;
+}

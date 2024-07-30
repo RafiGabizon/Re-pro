@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
@@ -19,6 +19,20 @@ import Register from './pages/Register';
 import RegisterStepTwo from './pages/RegisterStepTwo';
 import ConfirmRegistration from './pages/ConfirmRegistration';
 import { TfiEmail } from "react-icons/tfi";
+import AdminHome from './pages/admin/AdminHome';
+import ManageJobs from './pages/admin/ManageJobs';
+import ManageHotJobs from './pages/admin/ManageHotJobs';
+import AdminNavbar from './Components/admin/AdminNavbar';
+
+
+function NavbarSelector() {
+  const location = useLocation();
+  
+  if (location.pathname.startsWith('/admin')) {
+    return <AdminNavbar />;
+  }
+  return <Navbar />;
+}
 
 
 function App() {
@@ -30,7 +44,7 @@ function App() {
 
     return (
         <BrowserRouter>
-            <Navbar />
+            <NavbarSelector />
             <Routes>
                 <Route path="/" element={<Home/>} />
                 <Route path="/About" element={<About/>} />
@@ -47,6 +61,10 @@ function App() {
                 <Route path="/Register" element={<Register/>} />
                 <Route path="/Register2" element={<RegisterStepTwo/>} />
                 <Route path="/RegisterConfirm" element={<ConfirmRegistration/>} />
+                <Route path="/admin" element={<AdminHome/>} />
+                <Route path="/admin/jobs" element = {<ManageJobs/>}/>
+                <Route path="/admin/hot-jobs" element = {<ManageHotJobs/>}/>
+                
 
 
             </Routes>
