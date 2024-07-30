@@ -18,6 +18,7 @@ import JobDetail from './pages/JobDetail';
 import Register from './pages/Register';
 import RegisterStepTwo from './pages/RegisterStepTwo';
 import ConfirmRegistration from './pages/ConfirmRegistration';
+import { TfiEmail } from "react-icons/tfi";
 
 
 function App() {
@@ -55,7 +56,7 @@ function App() {
                 onClick={toggleContactAdvisor}
                 aria-label="Contact us"
                 >
-                {window.innerWidth <= 768 ? "דברו איתנו" : "פנייה ליועץ תעסוקתי"}
+                {window.innerWidth <= 768 ? <TfiEmail /> : "פנייה ליועץ תעסוקתי"}
                 </button>
             <Footer />
         </BrowserRouter>
