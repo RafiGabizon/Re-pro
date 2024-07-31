@@ -10,6 +10,10 @@ export default function AdminNavbar() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <div className="admin-navbar">
       <div className="admin-nav-content">
@@ -24,12 +28,12 @@ export default function AdminNavbar() {
         </div>
 
         <nav className={`admin-links ${isMenuOpen ? 'open' : ''}`}>
-          <Link to="/admin/jobs" className="admin-nav-link">ניהול ואישור משרות</Link>
-          <Link to="/admin/hot-jobs" className="admin-nav-link">ניהול משרות חמות</Link>
-          <Link to="/admin/users" className="admin-nav-link">ניהול משתמשים</Link>
-          <Link to="/admin/articles" className="admin-nav-link">ניהול כתבות</Link>
-          <Link to="/admin/content" className="admin-nav-link">ניהול תוכן האתר</Link>
-          <Link to="/" className="admin-nav-link admin-login-button">חזרה לאתר</Link>
+          <Link to="/admin/jobs" className="admin-nav-link" onClick={closeMenu}>ניהול ואישור משרות</Link>
+          <Link to="/admin/hot-jobs" className="admin-nav-link" onClick={closeMenu}>ניהול משרות חמות</Link>
+          <Link to="/admin/users" className="admin-nav-link" onClick={closeMenu}>ניהול משתמשים</Link>
+          <Link to="/admin/articles" className="admin-nav-link" onClick={closeMenu}>ניהול כתבות</Link>
+          <Link to="/admin/content" className="admin-nav-link" onClick={closeMenu}>ניהול תוכן האתר</Link>
+          <Link to="/" className="admin-nav-link admin-login-button" onClick={closeMenu}>חזרה לאתר</Link>
         </nav>
       </div>
     </div>
