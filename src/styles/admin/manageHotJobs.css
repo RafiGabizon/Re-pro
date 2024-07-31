@@ -81,12 +81,7 @@ h3 {
     .hot-jobs-table th,
     .hot-jobs-table td {
         padding: 2.5px;
-        width: 100%;
-    }
-
-    .hot-jobs-table{
-        width: 100%;
-        
+        width: 50px;
     }
 
     .job-card {
