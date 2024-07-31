@@ -1,4 +1,4 @@
-.hot-jobs-manager {
+.mhj-container {
     padding: 20px;
     background-color: #f8f9fa;
     min-height: 100vh;
@@ -6,14 +6,18 @@
     overflow-x: hidden;
 }
 
-h3 {
+.mhj-title {
     color: #333;
     font-size: 28px;
     margin-bottom: 20px;
     text-align: center;
 }
 
-.hot-jobs-table {
+.mhj-table-container {
+    overflow-x: auto;
+}
+
+.mhj-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
@@ -21,30 +25,21 @@ h3 {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.hot-jobs-table th,
-.hot-jobs-table td {
+.mhj-table th,
+.mhj-table td {
     padding: 15px;
     text-align: right;
     border-bottom: 1px solid #ddd;
 }
 
-.hot-jobs-table th {
+.mhj-table th {
     background-color: #ec7d0a;
     color: white;
     font-size: 18px;
 }
 
-.hot-jobs-table input,
-.hot-jobs-table select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-.edit-job-btn,
-.add-hot-job-btn,
-.remove-hot-job-btn {
+.mhj-add-btn,
+.mhj-remove-btn {
     padding: 5px 20px;
     border: none;
     border-radius: 7px;
@@ -54,48 +49,45 @@ h3 {
     margin-right: 5px;
 }
 
-.edit-job-btn {
-    background-color: #2b97bb;
-    color: white;
-}
-
-.add-hot-job-btn {
+.mhj-add-btn {
     background-color: #2cff56d1;
     color: white;
 }
 
-.remove-hot-job-btn {
+.mhj-remove-btn {
     background-color: #dc3545;
     color: white;
 }
 
-.edit-job-btn:hover,
-.add-hot-job-btn:hover,
-.remove-hot-job-btn:hover {
+.mhj-add-btn:hover,
+.mhj-remove-btn:hover {
     opacity: 0.8;
     transform: translateY(-2px);
 }
 
-/* עיצוב למסכים קטנים יותר */
+.mhj-mobile-view {
+    display: none;
+}
+
 @media (max-width: 768px) {
-    .hot-jobs-table th,
-    .hot-jobs-table td {
-        padding: 2.5px;
-        width: 50px;
+    .mhj-table-container {
+        display: none;
     }
 
-    .job-card {
+    .mhj-mobile-view {
         display: block;
+    }
+
+    .mhj-job-card {
         background-color: #ffffff;
         border-radius: 15px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         overflow: hidden;
         margin-bottom: 25px;
         transition: all 0.3s ease;
-        width: 100%;
     }
 
-    .job-header {
+    .mhj-job-header {
         background-color: #ec7d0a;
         padding: 15px 20px;
         display: flex;
@@ -104,49 +96,37 @@ h3 {
         cursor: pointer;
     }
 
-    .job-header h2 {
+    .mhj-job-header h2 {
         color: white;
         font-size: 18px;
         margin: 0;
     }
 
-    .job-header p {
-        color: rgba(255, 255, 255, 0.8);
-        font-size: 15px;
-        margin: 5px 0 0;
-    }
-
-    .expand-icon {
-        color: #2b97bb;
+    .mhj-expand-icon {
+        color: white;
         font-size: 20px;
-        transition: transform 0.8s ease;
+        transition: transform 0.3s ease;
     }
 
-    .job-card.open .expand-icon {
-        transform: rotate(360deg);
+    .mhj-job-card.open .mhj-expand-icon {
+        transform: rotate(180deg);
     }
 
-    .job-details {
+    .mhj-job-details {
         display: none;
         padding: 20px;
     }
 
-    .job-card.open .job-details {
+    .mhj-job-card.open .mhj-job-details {
         display: block;
     }
 
-    .job-details input,
-    .job-details select,
-    .job-details textarea {
-        width: 100%;
-        padding: 12px;
-        margin-bottom: 15px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        font-size: 16px;
+    .mhj-job-details p {
+        margin: 10px 0;
     }
 
-    .job-details button {
+    .mhj-job-details button {
+        width: 100%;
         padding: 12px 20px;
         border: none;
         border-radius: 25px;
@@ -154,27 +134,6 @@ h3 {
         font-weight: bold;
         cursor: pointer;
         transition: background-color 0.3s, transform 0.2s;
-        margin-bottom: 10px;
-        margin-right: 10px;
-    }
-
-    .job-details .save-job-btn {
-        background-color: #2cff56d1;
-        color: white;
-    }
-
-    .job-details .add-hot-job-btn {
-        background-color: #2b97bb;
-        color: white;
-    }
-
-    .job-details .remove-hot-job-btn {
-        background-color: #dc3545;
-        color: white;
-    }
-
-    .job-details button:hover {
-        transform: translateY(-2px);
-        opacity: 0.8;
+        margin-top: 15px;
     }
 }

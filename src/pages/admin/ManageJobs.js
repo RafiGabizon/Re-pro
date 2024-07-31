@@ -4,7 +4,7 @@ import { JobsContext } from '../../context/JobsContext';
 
 const uniqueContinents = ['אסיה', 'אמריקה', 'אפריקה', 'אירופה', 'אוסטרליה'];
 const uniqueStates = ['ישראל', 'ארצות הברית', 'קנדה', 'בריטניה', 'גרמניה', 'צרפת', 'הודו', 'יפן', 'אוסטרליה'];
-const uniqueDomains = [ 'ניהול', 'טכנולוגיות מידע', 'שיווק', 'פיננסים', 'משאבי אנוש', 'עיצוב', 'הנדסה', 'מכירות', 'ייעוץ'];
+const uniqueDomains = ['ניהול', 'טכנולוגיות מידע', 'שיווק', 'פיננסים', 'משאבי אנוש', 'עיצוב', 'הנדסה', 'מכירות', 'ייעוץ'];
 const uniqueJobTypes = ['חצי משרה', 'משרה מלאה', 'משרת אם'];
 
 function ManageJobs() {
@@ -107,11 +107,11 @@ function ManageJobs() {
   };
 
   return (
-    <div className="jobs-manager">
-      <h1>ניהול ואישור משרות</h1>
+    <div className="mj-container">
+      <h1 className="mj-title">ניהול ואישור משרות</h1>
       
-      <h2>הוסף משרה חדשה</h2>
-      <div className="new-job-form">
+      <h2 className="mj-subtitle">הוסף משרה חדשה</h2>
+      <div className="mj-new-job-form">
         <input 
           value={newJob.jobTitle} 
           onChange={(e) => handleNewJobChange('jobTitle', e.target.value)}
@@ -164,12 +164,12 @@ function ManageJobs() {
           onChange={(e) => handleNewJobChange('jobDescription', e.target.value)}
           placeholder="תיאור המשרה"
         />
-        <button onClick={addNewJob} className="add-job-btn">הוסף משרה</button>
+        <button onClick={addNewJob} className="mj-add-btn">הוסף משרה</button>
       </div>
 
-      <h2>משרות קיימות</h2>
-      <div className="jobs-table-wrapper">
-        <table className="existe-jobs-table">
+      <h2 className="mj-subtitle">משרות קיימות</h2>
+      <div className="mj-table-wrapper">
+        <table className="mj-jobs-table">
           <thead>
             <tr>
               <th>כותרת משרה</th>
@@ -204,8 +204,8 @@ function ManageJobs() {
           </tbody>
         </table>
       </div>
-      {jobs.map(job => (
-        <div key={job.id} className={`job-details ${openJobId === job.id ? 'open' : ''}`}>
+       {jobs.map(job => (
+        <div key={job.id} className={`mj-job-details ${openJobId === job.id ? 'open' : ''}`}>
           <h2>{job.jobTitle}</h2>
           <p>סטטוס: {job.status || 'ממתין לאישור'}</p>
           <p>יבשת: {job.Continents}</p>
@@ -221,6 +221,92 @@ function ManageJobs() {
           <button onClick={() => saveJobChanges(job.id)} className="save-job-btn">שמור שינויים</button>
         </div>
       ))}
+
+
+      <div className="mj-mobile-jobs-list">
+        {jobs.map(job => (
+          <div key={job.id} className={`mj-mobile-job-card ${openJobId === job.id ? 'open' : ''}`}>
+            <div className="mj-mobile-job-header" onClick={() => toggleJobDetails(job.id)}>
+              <div>
+                <h2>{job.jobTitle}</h2>
+                <p>{job.State}</p>
+              </div>
+              <span className="mj-expand-icon">{openJobId === job.id ? '▲' : '▼'}</span>
+            </div>
+            {openJobId === job.id && (
+              <div className="mj-mobile-job-details">
+                <input 
+                  value={editedJobs[job.id]?.jobTitle || job.jobTitle} 
+                  onChange={(e) => handleFieldChange(job.id, 'jobTitle', e.target.value)}
+                  placeholder="תפקיד"
+                  className="mj-input"
+                />
+                <select 
+                  value={editedJobs[job.id]?.Continents || job.Continents} 
+                  onChange={(e) => handleFieldChange(job.id, 'Continents', e.target.value)}
+                >
+                  <option value="">בחר יבשת</option>
+                  {uniqueContinents.map(continent => (
+                    <option key={continent} value={continent}>{continent}</option>
+                  ))}
+                </select>
+                <select 
+                  value={editedJobs[job.id]?.State || job.State} 
+                  onChange={(e) => handleFieldChange(job.id, 'State', e.target.value)}
+                >
+                  <option value="">בחר מדינה</option>
+                  {uniqueStates.map(state => (
+                    <option key={state} value={state}>{state}</option>
+                  ))}
+                </select>
+                <select 
+                  value={editedJobs[job.id]?.Domains || job.Domains} 
+                  onChange={(e) => handleFieldChange(job.id, 'Domains', e.target.value)}
+                >
+                  <option value="">בחר תחום</option>
+                  {uniqueDomains.map(domain => (
+                    <option key={domain} value={domain}>{domain}</option>
+                  ))}
+                </select>
+                <select 
+                  value={editedJobs[job.id]?.JobType || job.JobType} 
+                  onChange={(e) => handleFieldChange(job.id, 'JobType', e.target.value)}
+                >
+                  <option value="">בחר סוג משרה</option>
+                  {uniqueJobTypes.map(type => (
+                    <option key={type} value={type}>{type}</option>
+                  ))}
+                </select>
+                <input 
+                  value={editedJobs[job.id]?.Salary || job.Salary} 
+                  onChange={(e) => handleFieldChange(job.id, 'Salary', e.target.value)}
+                  placeholder="שכר"
+                />
+                <input 
+                  value={editedJobs[job.id]?.mainImg || job.mainImg} 
+                  onChange={(e) => handleFieldChange(job.id, 'mainImg', e.target.value)}
+                  placeholder="URL לתמונה הראשית"
+                />
+                <textarea 
+                  value={editedJobs[job.id]?.jobDescription || job.jobDescription} 
+                  onChange={(e) => handleFieldChange(job.id, 'jobDescription', e.target.value)}
+                  placeholder="תיאור המשרה"
+                />
+                <div className="mj-mobile-job-actions">
+                  <button onClick={() => saveJobChanges(job.id)} className="mj-save-btn">שמור</button>
+                  {(!job.status || job.status === 'ממתין לאישור') && (
+                    <>
+                      <button onClick={() => approveJob(job.id)} className="mj-approve-btn">אשר</button>
+                      <button onClick={() => rejectJob(job.id)} className="mj-reject-btn">דחה</button>
+                    </>
+                  )}
+                  <button onClick={() => deleteJob(job.id)} className="mj-delete-btn">מחק</button>
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
