@@ -23,6 +23,7 @@ import AdminHome from './pages/admin/AdminHomePage';
 import ManageJobs from './pages/admin/ManageJobs';
 import ManageHotJobs from './pages/admin/ManageHotJobs';
 import AdminNavbar from './Components/admin/AdminNavbar';
+import AdminFooter from './Components/admin/AdminFooter';
 import { JobsProvider } from './context/JobsContext';
 
 
@@ -33,6 +34,15 @@ function NavbarSelector() {
     return <AdminNavbar />;
   }
   return <Navbar />;
+}
+
+function FooterSelector() {
+  const location = useLocation();
+  
+  if (location.pathname.startsWith('/admin')) {
+    return <AdminFooter />;
+  }
+  return <Footer />;
 }
 
 
@@ -78,7 +88,7 @@ function App() {
                 >
                 {window.innerWidth <= 768 ? <TfiEmail /> : "פנייה ליועץ תעסוקתי"}
                 </button>
-            <Footer />
+            <FooterSelector />
         </BrowserRouter>
         </JobsProvider>
     );
