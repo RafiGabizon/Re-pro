@@ -68,8 +68,8 @@
 
 .credits {
   color: #999;
-  font-size: 12px;
-  text-align: left;
+  font-size: 13px;
+  text-align: right;
 }
 
 @media (max-width: 768px) {

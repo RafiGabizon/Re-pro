@@ -1,17 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import '../styles/jobs_abroad.css';
 import '../styles/styles.css';
-import { jobs_ar as jobs } from '../data/jobs';
-import JobsComp from '../Components/JobsComp'; // ייבוא הקומפוננטה
+import JobsComp from '../Components/JobsComp';
+import { JobsContext } from '../context/JobsContext';
 
 export default function JobsAbroad() {
+  const { jobs } = useContext(JobsContext);
   const [filterTypes, setFilterTypes] = useState({ Continents: '', State: '', Domains: '', JobType: '' });
   const [searchText, setSearchText] = useState('');
   const [filteredJobs, setFilteredJobs] = useState([]);
-
-  useEffect(() => {
-    setFilteredJobs(jobs);
-  }, []);
 
   const handleFilterChange = (event) => {
     setFilterTypes({
@@ -26,6 +23,8 @@ export default function JobsAbroad() {
 
   useEffect(() => {
     const filtered = jobs.filter((job) => {
+      if (job.status !== 'מאושר') return false;
+
       const { Continents, State, Domains, JobType } = filterTypes;
       const searchLower = searchText.toLowerCase();
       const jobTitle = job.jobTitle ? job.jobTitle.toLowerCase() : '';
@@ -50,13 +49,14 @@ export default function JobsAbroad() {
       );
     });
     setFilteredJobs(filtered);
-  }, [filterTypes, searchText]);
+  }, [filterTypes, searchText, jobs]);
 
   const uniqueContinents = ['אסיה', 'אמריקה', 'אפריקה', 'אירופה', 'אוסטרליה'];
   const uniqueStates = ['ישראל', 'ארצות הברית', 'קנדה', 'בריטניה', 'גרמניה', 'צרפת', 'הודו', 'יפן', 'אוסטרליה'];
   const uniqueDomains = ['הנדסה', 'ניהול', 'טכנולוגיות מידע', 'שיווק', 'פיננסים', 'משאבי אנוש', 'עיצוב', 'הנדסה', 'מכירות', 'ייעוץ'];
   const uniqueJobTypes = ['חצי משרה', 'משרה מלאה', 'משרת אם'];
 
+  
   return (
     <div className="JobsAbroad">
       <h2>משרות בחו"ל</h2>
@@ -136,10 +136,10 @@ export default function JobsAbroad() {
           </div>
         </div>
       </div>
-      <div className="container">
+       <div className="container">
         {filteredJobs.length > 0 ? (
           filteredJobs.map((job, index) => (
-            <JobsComp key={index} item={job} /> // שימוש בקומפוננטה JobsComp
+            <JobsComp key={job.id} item={job} />
           ))
         ) : (
           <p>!מצטערים אך לא מצאנו את העבודה שחיפשת</p>

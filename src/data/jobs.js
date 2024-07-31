@@ -37,7 +37,7 @@ export const jobs_ar = [
     },
     {
       "id": 4,
-      "mainImg": "https://media.timeout.com/images/105434111/1024/576/image.webp",
+      "mainImg": "https://www.shutterstock.com/image-photo/german-village-alsfeld-above-260nw-1474612880.jpg",
       "Continents": "אירופה",
       "State": "גרמניה",
       "countryFlag": "https://media.istockphoto.com/id/1347113664/vector/israel-3d-rounded-country-flag-button-icon.jpg?s=612x612&w=0&k=20&c=xK4fvanHZhyYHUU1_8qMI8bT0N0RxhBRBoSp-jEHxAM=",

@@ -40,12 +40,12 @@ export default function Footer() {
               <FaFacebook />
             </a>
           </div>
+        </div>
+      </div>
           <div className="credits">
             <p>© 2024 כל הזכויות שמורות | פותח על ידי אלמוג ורפי</p>
 
           </div>
-        </div>
-      </div>
     </footer>
   );
 }

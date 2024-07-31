@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { JobsContext } from '../context/JobsContext';
 import JobsComp from "./JobsComp";
 import '../styles/jobsCarousel.css';
@@ -8,42 +8,37 @@ export default function JobsCarousel() {
     const { jobs } = useContext(JobsContext);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [itemsPerPage, setItemsPerPage] = useState(2);
+    const [hotJobs, setHotJobs] = useState([]);
+
+    useEffect(() => {
+        setHotJobs(jobs.filter(job => job.isHot === true));
+    }, [jobs]);
 
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth <= 768) {
-                setItemsPerPage(1);
-            } else {
-                setItemsPerPage(2);
-            }
+            setItemsPerPage(window.innerWidth <= 768 ? 1 : 2);
         };
 
         window.addEventListener("resize", handleResize);
         handleResize();
 
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        };
+        return () => window.removeEventListener("resize", handleResize);
     }, []);
 
     const nextSlide = () => {
-        setCurrentIndex((prevIndex) => (prevIndex + itemsPerPage) % jobs.length);
+        setCurrentIndex((prevIndex) => (prevIndex + itemsPerPage) % Math.max(hotJobs.length, 1));
     };
 
     const prevSlide = () => {
-        setCurrentIndex((prevIndex) => (prevIndex - itemsPerPage + jobs.length) % jobs.length);
+        setCurrentIndex((prevIndex) => (prevIndex - itemsPerPage + Math.max(hotJobs.length, 1)) % Math.max(hotJobs.length, 1));
     };
 
-    if (jobs.length === 0) {
-        return <div className="no-jobs">אין משרות זמינות כרגע.</div>;
-    }
-
     const getIndicatorText = () => {
+        if (hotJobs.length === 0) return "אין משרות חמות זמינות";
         if (itemsPerPage === 1) {
-            return `משרה ${currentIndex + 1} מתוך ${jobs.length}`;
-        } else {
-            return `משרות ${currentIndex + 1}-${Math.min(currentIndex + itemsPerPage, jobs.length)} מתוך ${jobs.length}`;
+            return `משרה ${currentIndex + 1} מתוך ${hotJobs.length}`;
         }
+        return `משרות ${currentIndex + 1}-${Math.min(currentIndex + itemsPerPage, hotJobs.length)} מתוך ${hotJobs.length}`;
     };
 
     return (
@@ -56,21 +51,28 @@ export default function JobsCarousel() {
             </div>
             <div className="carousel-content">
                 <div className="carousel-items-wrapper">
-                    {jobs.slice(currentIndex, currentIndex + itemsPerPage).map((item, index) => (
-                        <div key={currentIndex + index} className="carousel-item active">
-                            <JobsComp item={item} />
+                    {hotJobs.length > 0 ? (
+                        hotJobs.slice(currentIndex, currentIndex + itemsPerPage).map((item, index) => (
+                            <div key={currentIndex + index} className="carousel-item active">
+                                <JobsComp item={item} />
+                            </div>
+                        ))
+                    ) : (
+                        <div className="carousel-item active no-jobs-message">
+                            <p>אין כרגע משרות חמות זמינות.</p>
+                            <p>אנא בדוק שוב מאוחר יותר.</p>
                         </div>
-                    ))}
+                    )}
                 </div>
             </div>
-            <button className="carousel-button prev" onClick={nextSlide}>
+            <button className="carousel-button prev" onClick={prevSlide} disabled={hotJobs.length === 0}>
                 <FaArrowLeft />
             </button>
-            <button className="carousel-button next" onClick={prevSlide}>
+            <button className="carousel-button next" onClick={nextSlide} disabled={hotJobs.length === 0}>
                 <FaArrowRight />
             </button>
             <div className="carousel-dots">
-                {Array.from({ length: Math.ceil(jobs.length / itemsPerPage) }).map((_, index) => (
+                {Array.from({ length: Math.max(Math.ceil(hotJobs.length / itemsPerPage), 1) }).map((_, index) => (
                     <span
                         key={index}
                         className={`dot ${index * itemsPerPage === currentIndex ? 'active' : ''}`}

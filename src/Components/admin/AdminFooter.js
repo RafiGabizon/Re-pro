@@ -10,10 +10,10 @@ export default function AdminFooter() {
         <div className="footer-content">
           <div className="link-group">
             <Link to="/admin/jobs" className="link-item">ניהול ואישור משרות</Link>
-          <Link to="/admin/hot-jobs" className="link-item">ניהול משרות חמות</Link>
-          <Link to="/admin/users" className="link-item">ניהול משתמשים</Link>
-          <Link to="/admin/articles" className="link-item">ניהול כתבות</Link>
-          <Link to="/admin/content" className="link-item">ניהול תוכן האתר</Link>
+            <Link to="/admin/hot-jobs" className="link-item">ניהול משרות חמות</Link>
+            <Link to="/admin/users" className="link-item">ניהול משתמשים</Link>
+            <Link to="/admin/articles" className="link-item">ניהול כתבות</Link>
+            <Link to="/admin/content" className="link-item">ניהול תוכן האתר</Link>
             <Link to="/admin" className="link-item">איזור ניהול</Link>
           </div>
         </div>
@@ -32,11 +32,10 @@ export default function AdminFooter() {
               <FaFacebook />
             </a>
           </div>
-          <div className="credits">
-            <p>© 2024 כל הזכויות שמורות | פותח על ידי אלמוג ורפי</p>
-
-          </div>
         </div>
+      </div>
+      <div className="admin-credits">
+        <p>© 2024 כל הזכויות שמורות | פותח על ידי אלמוג ורפי</p>
       </div>
     </footer>
   );

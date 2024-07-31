@@ -101,6 +101,29 @@
     background-color: #007bff;
 }
 
+.no-jobs-message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    text-align: center;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.no-jobs-message p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #6c757d;
+}
+
+.carousel-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 /* התאמות למובייל */
 @media (max-width: 768px) {
     .carousel-container {

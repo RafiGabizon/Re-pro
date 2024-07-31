@@ -1,7 +1,8 @@
 .admin-footer {
-    background: linear-gradient(to left, #ec7d0a, #dba66d);
-    padding: 40px 20px;
+    background: linear-gradient(to left, #ec7d0a, #dba265);
+    padding: 25px 15px 30px;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
 .footer-container {
@@ -66,10 +67,13 @@
     color: #007bff;
 }
 
-.credits {
-    color: #999;
-    font-size: 12px;
+.admin-credits {
+    color: #636363;
+    font-size: 13px;
     text-align: left;
+    position: absolute;
+    bottom: 20px;
+    width: calc(100% - 40px);
 }
 
 @media (max-width: 768px) {
@@ -96,8 +100,8 @@
     .social-icons {
         justify-content: flex-start;
     }
-
-    .credits {
-        text-align: right;
+    .admin-credits {
+        position: static;
+        margin-top: 20px;
     }
 }
