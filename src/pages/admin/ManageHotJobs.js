@@ -1,13 +1,11 @@
-import React, {useContext, useState} from 'react';
+import React, { useContext, useState } from 'react';
 import '../../styles/admin/manageHotJobs.css';
 import { JobsContext } from '../../context/JobsContext';
-
 
 const uniqueContinents = ['אסיה', 'אמריקה', 'אפריקה', 'אירופה', 'אוסטרליה'];
 const uniqueStates = ['ישראל', 'ארצות הברית', 'קנדה', 'בריטניה', 'גרמניה', 'צרפת', 'הודו', 'יפן', 'אוסטרליה'];
 const uniqueDomains = [ 'ניהול', 'טכנולוגיות מידע', 'שיווק', 'פיננסים', 'משאבי אנוש', 'עיצוב', 'הנדסה', 'מכירות', 'ייעוץ'];
 const uniqueJobTypes = ['חצי משרה', 'משרה מלאה', 'משרת אם'];
-
 
 function ManageHotJobs() {
   const { jobs, updateJobs } = useContext(JobsContext);
@@ -18,12 +16,12 @@ function ManageHotJobs() {
     const newJob = {
       id: Date.now(),
       mainImg: "https://via.placeholder.com/150",
-      Continents: "יבשת חדשה",
-      State: "מדינה חדשה",
+      continent: "יבשת חדשה",
+      state: "מדינה חדשה",
       countryFlag: "https://via.placeholder.com/30",
-      Domains: "תחום חדש",
-      JobType: "סוג משרה חדש",
-      Salary: "שכר חדש",
+      domain: "תחום חדש",
+      jobType: "סוג משרה חדש",
+      salary: "שכר חדש",
       jobTitle: "תפקיד חדש",
       jobDescription: "תיאור משרה חדש",
     };
@@ -34,7 +32,6 @@ function ManageHotJobs() {
     updateJobs(jobs.filter(job => job.id !== id));
   };
 
-    // פונקציה לעדכון המצב הזמני בשדה מסויים
   const handleFieldChange = (id, field, value) => {
     setEditedJobs(prevState => ({
       ...prevState,
@@ -45,14 +42,12 @@ function ManageHotJobs() {
     }));
   };
 
-    // פונקציה לשמירת השינויים במצב הקבוע
   const saveJobChanges = (id) => {
     const updatedJob = editedJobs[id];
     if (updatedJob) {
       updateJobs(jobs.map(job => 
         job.id === id ? { ...job, ...updatedJob } : job
       ));
-      // מחיקת השינויים הזמניים לאחר שמירה
       setEditedJobs(prevState => {
         const newState = { ...prevState };
         delete newState[id];
@@ -66,10 +61,10 @@ function ManageHotJobs() {
   };
 
   return (
-    <div className="manage-hot-jobs">
+    <div className="hot-jobs-manager">
       <h1>ניהול משרות</h1>
-      <button onClick={addHotJob} className="add-btn">הוסף משרה חדשה</button>
-      <table className="hot-jobs-table">
+      <button onClick={addHotJob} className="add-job-btn">הוסף משרה חדשה</button>
+      <table className="jobs-table">
         <thead>
           <tr>
             <th>תפקיד</th>
@@ -91,10 +86,10 @@ function ManageHotJobs() {
                   onChange={(e) => handleFieldChange(job.id, 'jobTitle', e.target.value)}
                 />
               </td>
-               <td>
+              <td>
                 <select 
-                  value={editedJobs[job.id]?.Continents || job.Continents} 
-                  onChange={(e) => handleFieldChange(job.id, 'Continents', e.target.value)}
+                  value={editedJobs[job.id]?.continent || job.continent} 
+                  onChange={(e) => handleFieldChange(job.id, 'continent', e.target.value)}
                 >
                   {uniqueContinents.map(continent => (
                     <option key={continent} value={continent}>{continent}</option>
@@ -103,8 +98,8 @@ function ManageHotJobs() {
               </td>
               <td>
                 <select 
-                  value={editedJobs[job.id]?.State || job.State} 
-                  onChange={(e) => handleFieldChange(job.id, 'State', e.target.value)}
+                  value={editedJobs[job.id]?.state || job.state} 
+                  onChange={(e) => handleFieldChange(job.id, 'state', e.target.value)}
                 >
                   {uniqueStates.map(state => (
                     <option key={state} value={state}>{state}</option>
@@ -113,8 +108,8 @@ function ManageHotJobs() {
               </td>
               <td>
                 <select 
-                  value={editedJobs[job.id]?.Domains || job.Domains} 
-                  onChange={(e) => handleFieldChange(job.id, 'Domains', e.target.value)}
+                  value={editedJobs[job.id]?.domain || job.domain} 
+                  onChange={(e) => handleFieldChange(job.id, 'domain', e.target.value)}
                 >
                   {uniqueDomains.map(domain => (
                     <option key={domain} value={domain}>{domain}</option>
@@ -123,8 +118,8 @@ function ManageHotJobs() {
               </td>
               <td>
                 <select 
-                  value={editedJobs[job.id]?.JobType || job.JobType} 
-                  onChange={(e) => handleFieldChange(job.id, 'JobType', e.target.value)}
+                  value={editedJobs[job.id]?.jobType || job.jobType} 
+                  onChange={(e) => handleFieldChange(job.id, 'jobType', e.target.value)}
                 >
                   {uniqueJobTypes.map(type => (
                     <option key={type} value={type}>{type}</option>
@@ -133,104 +128,82 @@ function ManageHotJobs() {
               </td>
               <td>
                 <input 
-                  value={editedJobs[job.id]?.Salary || job.Salary} 
-                  onChange={(e) => handleFieldChange(job.id, 'Salary', e.target.value)}
+                  value={editedJobs[job.id]?.salary || job.salary} 
+                  onChange={(e) => handleFieldChange(job.id, 'salary', e.target.value)}
                 />
               </td>
               <td>
-                    <input 
-                        value={editedJobs[job.id]?.mainImg || job.mainImg} 
-                        onChange={(e) => handleFieldChange(job.id, 'mainImg', e.target.value)}
-                        placeholder="כתובת תמונה"
-                    />
+                <input 
+                  value={editedJobs[job.id]?.mainImg || job.mainImg} 
+                  onChange={(e) => handleFieldChange(job.id, 'mainImg', e.target.value)}
+                  placeholder="כתובת תמונה"
+                />
               </td>
               <td>
-                {/* כפתור לשמירת השינויים */}
-                <button onClick={() => saveJobChanges(job.id)} className="save-btn">שמור</button>
-                <button onClick={() => removeHotJob(job.id)} className="remove-btn">הסר</button>
+                <button onClick={() => saveJobChanges(job.id)} className="save-job-btn">שמור</button>
+                <button onClick={() => removeHotJob(job.id)} className="remove-job-btn">הסר</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-  {/* תצוגת המשרות עבור מסכים קטנים */}
       {jobs.map(job => (
-        <div key={job.id} className={`job-item ${openJobId === job.id ? 'open' : ''}`}>
+        <div key={job.id} className={`job-card ${openJobId === job.id ? 'open' : ''}`}>
           <div className="job-header" onClick={() => toggleJobDetails(job.id)}>
             <h2>{job.jobTitle}</h2>
-            <p>{job.State}</p>
+            <p>{job.state}</p>
           </div>
           <div className="job-details">
-            <tr key={job.id}>
-              <td>
-                <input 
-                  value={editedJobs[job.id]?.jobTitle || job.jobTitle} 
-                  onChange={(e) => handleFieldChange(job.id, 'jobTitle', e.target.value)}
-                />
-              </td>
-               <td>
-                <select 
-                  value={editedJobs[job.id]?.Continents || job.Continents} 
-                  onChange={(e) => handleFieldChange(job.id, 'Continents', e.target.value)}
-                >
-                  {uniqueContinents.map(continent => (
-                    <option key={continent} value={continent}>{continent}</option>
-                  ))}
-                </select>
-              </td>
-              <td>
-                <select 
-                  value={editedJobs[job.id]?.State || job.State} 
-                  onChange={(e) => handleFieldChange(job.id, 'State', e.target.value)}
-                >
-                  {uniqueStates.map(state => (
-                    <option key={state} value={state}>{state}</option>
-                  ))}
-                </select>
-              </td>
-              <td>
-                <select 
-                  value={editedJobs[job.id]?.Domains || job.Domains} 
-                  onChange={(e) => handleFieldChange(job.id, 'Domains', e.target.value)}
-                >
-                  {uniqueDomains.map(domain => (
-                    <option key={domain} value={domain}>{domain}</option>
-                  ))}
-                </select>
-              </td>
-              <td>
-                <select 
-                  value={editedJobs[job.id]?.JobType || job.JobType} 
-                  onChange={(e) => handleFieldChange(job.id, 'JobType', e.target.value)}
-                >
-                  {uniqueJobTypes.map(type => (
-                    <option key={type} value={type}>{type}</option>
-                  ))}
-                </select>
-              </td>
-              <td>
-                <input 
-                  value={editedJobs[job.id]?.Salary || job.Salary} 
-                  onChange={(e) => handleFieldChange(job.id, 'Salary', e.target.value)}
-                />
-              </td>
-              <td>
-                    <input 
-                        value={editedJobs[job.id]?.mainImg || job.mainImg} 
-                        onChange={(e) => handleFieldChange(job.id, 'mainImg', e.target.value)}
-                        placeholder="כתובת תמונה"
-                    />
-              </td>
-              <td>
-                {/* כפתור לשמירת השינויים */}
-                <button onClick={() => saveJobChanges(job.id)} className="save-btn">שמור</button>
-                <button onClick={() => removeHotJob(job.id)} className="remove-btn">הסר</button>
-              </td>
-            </tr>
+            <input 
+              value={editedJobs[job.id]?.jobTitle || job.jobTitle} 
+              onChange={(e) => handleFieldChange(job.id, 'jobTitle', e.target.value)}
+            />
+            <select 
+              value={editedJobs[job.id]?.continent || job.continent} 
+              onChange={(e) => handleFieldChange(job.id, 'continent', e.target.value)}
+            >
+              {uniqueContinents.map(continent => (
+                <option key={continent} value={continent}>{continent}</option>
+              ))}
+            </select>
+            <select 
+              value={editedJobs[job.id]?.state || job.state} 
+              onChange={(e) => handleFieldChange(job.id, 'state', e.target.value)}
+            >
+              {uniqueStates.map(state => (
+                <option key={state} value={state}>{state}</option>
+              ))}
+            </select>
+            <select 
+              value={editedJobs[job.id]?.domain || job.domain} 
+              onChange={(e) => handleFieldChange(job.id, 'domain', e.target.value)}
+            >
+              {uniqueDomains.map(domain => (
+                <option key={domain} value={domain}>{domain}</option>
+              ))}
+            </select>
+            <select 
+              value={editedJobs[job.id]?.jobType || job.jobType} 
+              onChange={(e) => handleFieldChange(job.id, 'jobType', e.target.value)}
+            >
+              {uniqueJobTypes.map(type => (
+                <option key={type} value={type}>{type}</option>
+              ))}
+            </select>
+            <input 
+              value={editedJobs[job.id]?.salary || job.salary} 
+              onChange={(e) => handleFieldChange(job.id, 'salary', e.target.value)}
+            />
+            <input 
+              value={editedJobs[job.id]?.mainImg || job.mainImg} 
+              onChange={(e) => handleFieldChange(job.id, 'mainImg', e.target.value)}
+              placeholder="כתובת תמונה"
+            />
+            <button onClick={() => saveJobChanges(job.id)} className="save-job-btn">שמור</button>
+            <button onClick={() => removeHotJob(job.id)} className="remove-job-btn">הסר</button>
           </div>
         </div>
       ))}
-
     </div>
   );
 }

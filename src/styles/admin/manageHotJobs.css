@@ -4,7 +4,7 @@
     min-height: 100vh;
 }
 
-.hot-jobs-table {
+.jobs-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
@@ -12,162 +12,149 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.hot-jobs-table th,
-.hot-jobs-table td {
-    padding: 3px;
-    text-align: right;
-    border-bottom: 0.5px solid #ddd;
+.jobs-table th,
+.jobs-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
 }
 
-.hot-jobs-table th {
+.jobs-table th {
     background-color: #ec7d0a;
     color: white;
-    padding-right: 38px;
-    padding-top: 15px;
-    padding-bottom: 15px;
     font-size: 18px;
-    
 }
 
-.add-btn,
-.remove-btn {
-    padding: 8px 12px;
+.add-job-btn,
+.remove-job-btn,
+.save-job-btn {
+    padding: 10px 20px;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
     transition: background-color 0.3s;
-    margin-top: 18px;
 }
 
-.save-btn{
-    padding: 8px 12px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s;
-    background-color: #34db74;
-    color: white;
-    margin-bottom: 18px;
-    margin-left: 12px;
-    
-}
-
-.add-btn {
-    background-color: #3498db;
+.add-job-btn {
+    background-color: #28a745;
     color: white;
     margin-bottom: 20px;
 }
 
-.remove-btn {
-    background-color: #e74c3c;
+.save-job-btn {
+    background-color: #007bff;
+    color: white;
+    margin-bottom: 18px;
+    margin-left: 12px;
+}
+
+.remove-job-btn {
+    background-color: #dc3545;
     color: white;
 }
 
-.add-btn:hover,
-.remove-btn:hover,
-.save-btn:hover {
+.add-job-btn:hover,
+.remove-job-btn:hover,
+.save-job-btn:hover {
     opacity: 0.8;
+}
+
+.job-card {
+    border: 1px solid #ddd;
+    margin-top: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.job-card.open .job-details {
+    display: block;
+}
+
+.job-card .job-header {
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.job-details {
+    display: none;
+    padding: 15px;
+}
+
+.job-header {
+    padding: 15px;
+    background-color: #ec7d0a;
+    color: white;
+    font-size: 18px;
+    border-radius: 8px 8px 0 0;
+}
+
+.job-details input,
+.job-details select {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.job-details button {
+    display: inline-block;
+    margin-right: 10px;
 }
 
 /* עיצוב למסכים גדולים יותר */
 @media (min-width: 769px) {
-    .hot-jobs-table {
+    .jobs-table {
         display: table;
-        /* מציג את הטבלה */
     }
 
-    .job-item {
+    .job-card {
         display: none;
-        /* מסתיר את כרטיסי המשרות */
     }
 }
 
 /* עיצוב למסכים קטנים יותר */
 @media (max-width: 768px) {
-    .hot-jobs-table {
+    .jobs-table {
         display: none;
-        /* מסתיר את הטבלה */
     }
 
-    .job-item {
+    .job-card {
         width: 100%;
-        /* רוחב מלא של הדף */
         display: block;
-        /* מציג את כרטיסי המשרות */
         margin-bottom: 20px;
-        /* רווח בין כרטיסים */
         border: 1px solid #ddd;
-        /* גבול */
         border-radius: 15px;
-        /* קצוות מעוגלים */
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        /* צל */
         padding: 15px;
-        /* פדינג פנימי */
         box-sizing: border-box;
-        /* כולל גבולות ופדינג ברוחב הכולל */
     }
 
     .job-header {
         padding: 15px;
-        /* פדינג מוגדל */
         background-color: #ec7d0a;
-        /* צבע רקע */
         color: white;
-        /* צבע טקסט */
         font-size: 18px;
-        /* גודל גופן מוגדל */
         cursor: pointer;
-        /* מצביע */
         border-radius: 8px 8px 0 0;
-        /* קצוות מעוגלים רק בחלק העליון */
     }
 
     .job-details {
-        padding: 15px;
-        /* פדינג מוגדל */
         display: none;
-        /* מוסתר בעת סגירה */
     }
 
-    .job-item.open .job-details {
+    .job-card.open .job-details {
         display: block;
-        /* מוצג כאשר הכרטיס פתוח */
     }
 
-    .job-item.open {
-        /* לא צריך שינוי כאן, אם תרצה לשנות גובה, תוכל להוסיף */
+    .job-card.open {
         margin-top: 20px;
-        /* רווח עליון */
         margin-bottom: 20px;
-        /* רווח תחתון */
-    }
-
-    /* עיצוב עבור שדות פרטי המשרה */
-    .job-details input,
-    .job-details select {
-        display: block;
-        /* תצוגה של שדות בצורה נפרדת */
-        width: 100%;
-        /* רוחב מלא */
-        margin-bottom: 10px;
-        /* רווח בין השדות */
-        padding: 10px;
-        /* פדינג פנימי */
-        border: 1px solid #ddd;
-        /* גבול */
-        border-radius: 4px;
-        /* קצוות מעוגלים */
-        box-sizing: border-box;
-        /* כולל גבולות ופדינג ברוחב הכולל */
-    }
-
-    .job-details button {
-        display: inline-block;
-        /* תצוגה של כפתורים בצמוד */
-        margin-right: 10px;
-        /* רווח בין הכפתורים */
     }
 }
