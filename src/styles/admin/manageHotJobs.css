@@ -80,7 +80,7 @@ h3 {
 @media (max-width: 768px) {
     .hot-jobs-table th,
     .hot-jobs-table td {
-        padding: 5px;
+        padding: 2px;
         width: 100%;
     }
 
