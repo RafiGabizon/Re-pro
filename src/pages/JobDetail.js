@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { jobs_ar } from '../data/jobs';
+import { JobsContext } from '../context/JobsContext';
 import '../styles/jobDetail.css';
 
 export default function JobDetail() {
   const { id } = useParams();
-  const job = jobs_ar.find(item => item.id === parseInt(id));
+  const { jobs } = useContext(JobsContext);
+  const job = jobs.find(item => item.id === parseInt(id));
 
   if (!job) {
     return <div>המשרה לא נמצאה</div>;

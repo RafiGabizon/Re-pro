@@ -19,10 +19,11 @@ import Register from './pages/Register';
 import RegisterStepTwo from './pages/RegisterStepTwo';
 import ConfirmRegistration from './pages/ConfirmRegistration';
 import { TfiEmail } from "react-icons/tfi";
-import AdminHome from './pages/admin/AdminHome';
+import AdminHome from './pages/admin/AdminHomePage';
 import ManageJobs from './pages/admin/ManageJobs';
 import ManageHotJobs from './pages/admin/ManageHotJobs';
 import AdminNavbar from './Components/admin/AdminNavbar';
+import { JobsProvider } from './context/JobsContext';
 
 
 function NavbarSelector() {
@@ -43,6 +44,7 @@ function App() {
     };
 
     return (
+        <JobsProvider>
         <BrowserRouter>
             <NavbarSelector />
             <Routes>
@@ -78,6 +80,7 @@ function App() {
                 </button>
             <Footer />
         </BrowserRouter>
+        </JobsProvider>
     );
 }
 
