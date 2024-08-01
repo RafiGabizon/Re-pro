@@ -1,3 +1,4 @@
+/* manageJobs.css */
 .mj-container {
     padding: 20px;
     background-color: #f4f4f4;
@@ -74,6 +75,23 @@
     color: white;
 }
 
+.mj-save-job-btn {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+.mj-save-job-btn:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
 .mj-delete-btn {
     background-color: #e74c3c;
     color: white;
@@ -133,15 +151,27 @@
 .mj-job-details.open {
     display: block;
 }
+.mj-job-details p{
+    font-size: 19px;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: right;
+    margin-right: 7px;
+}
 
+.mj-job-details input,
+.mj-job-details select,
 .mj-job-details textarea {
     width: 100%;
-    min-height: 120px;
-    margin-bottom: 15px;
     padding: 12px;
+    margin-bottom: 15px;
     border: 1px solid #ddd;
     border-radius: 6px;
     font-size: 16px;
+}
+
+.mj-job-details textarea {
+    min-height: 120px;
 }
 
 .mj-mobile-jobs-list {
@@ -176,14 +206,26 @@
         padding: 15px;
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
         cursor: pointer;
+    }
+
+    .mj-mobile-job-header>div {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        max-width: calc(100% - 30px);  /* מרווח לאייקון */
     }
 
     .mj-mobile-job-header h2 {
         color: white;
         margin: 0;
         font-size: 18px;
+        text-align: right;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .mj-mobile-job-header p {

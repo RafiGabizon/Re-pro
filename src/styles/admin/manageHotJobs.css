@@ -100,6 +100,13 @@
         color: white;
         font-size: 18px;
         margin: 0;
+        
+    }
+    .mhj-job-p {
+        color: rgb(255, 255, 255);
+        margin: 0;
+        font-size: 14px;
+
     }
 
     .mhj-expand-icon {

@@ -63,7 +63,8 @@ function ManageHotJobs() {
           <div key={job.id} className={`mhj-job-card ${expandedJobId === job.id ? 'open' : ''}`}>
             <div className="mhj-job-header" onClick={() => toggleJobExpansion(job.id)}>
               <h2>{job.jobTitle}</h2>
-              <span className="mhj-expand-icon">▼</span>
+              <p className='mhj-job-p'>{job.State}</p>
+              <span className="mhj-expand-icon">{expandedJobId === job.id ? '▲' : '▼'}</span>
             </div>
             <div className="mhj-job-details">
               <p>יבשת: {job.Continents}</p>

@@ -181,21 +181,18 @@ function ManageJobs() {
             {jobs.map(job => (
               <tr key={job.id}>
                 <td>
-                  <input 
-                    value={editedJobs[job.id]?.jobTitle || job.jobTitle} 
-                    onChange={(e) => handleFieldChange(job.id, 'jobTitle', e.target.value)}
-                  />
+                  <p>{editedJobs[job.id]?.jobTitle || job.jobTitle}</p>
                 </td>
                 <td>{job.status || 'ממתין לאישור'}</td>
                 <td>
                   {(!job.status || job.status === 'ממתין לאישור') && (
                     <>
-                      <button onClick={() => approveJob(job.id)} className="approve-btn">אשר</button>
-                      <button onClick={() => rejectJob(job.id)} className="reject-btn">דחה</button>
+                      <button onClick={() => approveJob(job.id)} className="mj-approve-btn">אשר</button>
+                      <button onClick={() => rejectJob(job.id)} className="mj-reject-btn">דחה</button>
                     </>
                   )}
-                  <button onClick={() => deleteJob(job.id)} className="delete-btn">מחק</button>
-                  <button onClick={() => toggleJobDetails(job.id)} className="details-btn">
+                  <button onClick={() => deleteJob(job.id)} className="mj-delete-btn">מחק</button>
+                  <button onClick={() => toggleJobDetails(job.id)} className="mj-details-btn">
                     {openJobId === job.id ? 'הסתר' : 'הצג'}
                   </button>
                 </td>
@@ -207,18 +204,65 @@ function ManageJobs() {
        {jobs.map(job => (
         <div key={job.id} className={`mj-job-details ${openJobId === job.id ? 'open' : ''}`}>
           <h2>{job.jobTitle}</h2>
-          <p>סטטוס: {job.status || 'ממתין לאישור'}</p>
-          <p>יבשת: {job.Continents}</p>
-          <p>מדינה: {job.State}</p>
-          <p>תחום: {job.Domains}</p>
-          <p>סוג משרה: {job.JobType}</p>
-          <p>שכר: {job.Salary}</p>
+
+          <p>כותרת משרה :</p>
+          <input 
+                  value={editedJobs[job.id]?.jobTitle || job.jobTitle} 
+                  onChange={(e) => handleFieldChange(job.id, 'jobTitle', e.target.value)}
+                  placeholder="תפקיד"
+                  className="mj-input"
+                />
+          <p>יבשת :</p>
+            <select 
+              value={editedJobs[job.id]?.Continents || job.Continents} 
+              onChange={(e) => handleFieldChange(job.id, 'Continents', e.target.value)}>
+              <option value="">בחר יבשת</option>
+                {uniqueContinents.map(continent => (
+              <option key={continent} value={continent}>{continent}</option>
+              ))}
+            </select>
+          <p>מדינה :</p>
+            <select 
+              value={editedJobs[job.id]?.State || job.State} 
+              onChange={(e) => handleFieldChange(job.id, 'State', e.target.value)}>
+              <option value="">בחר מדינה</option>
+                {uniqueStates.map(state => (
+              <option key={state} value={state}>{state}</option>
+                ))}
+            </select>
+          <p>תחום :</p>
+           <select 
+                  value={editedJobs[job.id]?.Domains || job.Domains} 
+                  onChange={(e) => handleFieldChange(job.id, 'Domains', e.target.value)}
+                >
+                  <option value="">בחר תחום</option>
+                  {uniqueDomains.map(domain => (
+                    <option key={domain} value={domain}>{domain}</option>
+                  ))}
+                </select>
+          <p>סוג משרה :</p>
+          <select 
+                  value={editedJobs[job.id]?.JobType || job.JobType} 
+                  onChange={(e) => handleFieldChange(job.id, 'JobType', e.target.value)}
+                >
+                  <option value="">בחר סוג משרה</option>
+                  {uniqueJobTypes.map(type => (
+                    <option key={type} value={type}>{type}</option>
+                  ))}
+                </select>
+          <p>שכר :</p>
+                <input 
+                  value={editedJobs[job.id]?.Salary || job.Salary} 
+                  onChange={(e) => handleFieldChange(job.id, 'Salary', e.target.value)}
+                  placeholder="שכר"
+                />
+          <p>תיאור המשרה :</p>
           <textarea 
             value={editedJobs[job.id]?.jobDescription || job.jobDescription} 
             onChange={(e) => handleFieldChange(job.id, 'jobDescription', e.target.value)}
             placeholder="תיאור המשרה"
           />
-          <button onClick={() => saveJobChanges(job.id)} className="save-job-btn">שמור שינויים</button>
+          <button onClick={() => saveJobChanges(job.id)} className="mj-save-job-btn">שמור שינויים</button>
         </div>
       ))}
 
@@ -227,12 +271,12 @@ function ManageJobs() {
         {jobs.map(job => (
           <div key={job.id} className={`mj-mobile-job-card ${openJobId === job.id ? 'open' : ''}`}>
             <div className="mj-mobile-job-header" onClick={() => toggleJobDetails(job.id)}>
-              <div>
-                <h2>{job.jobTitle}</h2>
-                <p>{job.State}</p>
-              </div>
-              <span className="mj-expand-icon">{openJobId === job.id ? '▲' : '▼'}</span>
+            <div>
+              <h2 title={job.jobTitle}>{job.jobTitle}</h2>
+              <p>{job.State}, {job.status}</p>
             </div>
+            <span className="mj-expand-icon">{openJobId === job.id ? '▲' : '▼'}</span>
+          </div>
             {openJobId === job.id && (
               <div className="mj-mobile-job-details">
                 <input 
@@ -281,11 +325,6 @@ function ManageJobs() {
                   value={editedJobs[job.id]?.Salary || job.Salary} 
                   onChange={(e) => handleFieldChange(job.id, 'Salary', e.target.value)}
                   placeholder="שכר"
-                />
-                <input 
-                  value={editedJobs[job.id]?.mainImg || job.mainImg} 
-                  onChange={(e) => handleFieldChange(job.id, 'mainImg', e.target.value)}
-                  placeholder="URL לתמונה הראשית"
                 />
                 <textarea 
                   value={editedJobs[job.id]?.jobDescription || job.jobDescription} 
