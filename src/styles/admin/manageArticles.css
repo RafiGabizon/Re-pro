@@ -1,0 +1,123 @@
+.ma-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    direction: rtl;
+}
+
+.ma-title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 40px;
+    font-size: 2.5em;
+}
+
+.ma-subtitle {
+    color: #444;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.ma-new-article-form {
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ma-new-article-form input,
+.ma-new-article-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.ma-new-article-form textarea {
+    min-height: 150px;
+}
+
+.ma-add-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.ma-add-btn:hover {
+    background-color: #45a049;
+}
+
+.ma-articles-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.ma-article-item {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.ma-article-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.ma-article-item input,
+.ma-article-item textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.ma-article-item textarea {
+    min-height: 100px;
+}
+
+.ma-article-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ma-save-btn,
+.ma-delete-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.ma-save-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.ma-delete-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.ma-save-btn:hover {
+    background-color: #45a049;
+}
+
+.ma-delete-btn:hover {
+    background-color: #da190b;
+}

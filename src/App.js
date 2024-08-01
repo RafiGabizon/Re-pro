@@ -24,6 +24,8 @@ import ManageJobs from './pages/admin/ManageJobs';
 import ManageHotJobs from './pages/admin/ManageHotJobs';
 import AdminNavbar from './Components/admin/AdminNavbar';
 import AdminFooter from './Components/admin/AdminFooter';
+import ManageArticles from './pages/admin/ManageArticles';
+import { ArticlesProvider } from './context/ArticlesContext';
 import { JobsProvider } from './context/JobsContext';
 
 
@@ -55,6 +57,7 @@ function App() {
 
     return (
         <JobsProvider>
+        <ArticlesProvider>
         <BrowserRouter>
             <NavbarSelector />
             <Routes>
@@ -76,6 +79,7 @@ function App() {
                 <Route path="/admin" element={<AdminHome/>} />
                 <Route path="/admin/jobs" element = {<ManageJobs/>}/>
                 <Route path="/admin/hot-jobs" element = {<ManageHotJobs/>}/>
+                <Route path="/admin/articles" element = {< ManageArticles/>}/>
                 
 
 
@@ -90,6 +94,7 @@ function App() {
                 </button>
             <FooterSelector />
         </BrowserRouter>
+        </ArticlesProvider>
         </JobsProvider>
     );
 }

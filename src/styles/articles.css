@@ -1,0 +1,133 @@
+.articles-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    direction: rtl;
+}
+
+.articles-title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+}
+
+.articles-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.article-item {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.article-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.article-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f8f8f8;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.article-header:hover {
+    background-color: #f0f0f0;
+}
+
+.article-header h2 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.article-content {
+    padding: 20px;
+    line-height: 1.6;
+    color: #444;
+}
+
+.article-header svg {
+    font-size: 1.2em;
+    color: #666;
+}
+
+/* Styles for ManageArticles */
+.ma-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    direction: rtl;
+}
+
+.ma-title,
+.ma-subtitle {
+    color: #333;
+    text-align: center;
+}
+
+.ma-new-article-form,
+.ma-article-item {
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ma-new-article-form input,
+.ma-new-article-form textarea,
+.ma-article-item input,
+.ma-article-item textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.ma-add-btn,
+.ma-save-btn,
+.ma-delete-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.ma-add-btn,
+.ma-save-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.ma-delete-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.ma-add-btn:hover,
+.ma-save-btn:hover {
+    background-color: #45a049;
+}
+
+.ma-delete-btn:hover {
+    background-color: #da190b;
+}
+
+.ma-article-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
