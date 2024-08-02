@@ -1,17 +1,28 @@
 {
-  "root": "build/",
-  "clean_urls": true,
-  "routes": {
-    "/**": "index.html"
-  },
-  "https_only": true,
   "headers": {
     "/**": {
-      "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+      "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
       "X-Frame-Options": "DENY",
-      "X-XSS-Protection": "1; mode=block",
       "X-Content-Type-Options": "nosniff",
-      "Referrer-Policy": "no-referrer-when-downgrade"
+      "X-XSS-Protection": "1; mode=block"
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/www(.*)",
+      "destination": "http://%1",
+      "statusCode": 301
+    },
+    {
+      "source": "/http(.*)",
+      "destination": "https://%{HTTP_HOST}%{REQUEST_URI}",
+      "statusCode": 301
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/*",
+      "destination": "/index.html"
+    }
+  ]
 }
