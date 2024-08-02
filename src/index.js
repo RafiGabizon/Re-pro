@@ -11,7 +11,7 @@ ReactDOM.render(
     <JobsProvider>
       <HomePageProvider>
         <ArticlesProvider>
-          <BrowserRouter>
+          <BrowserRouter basename={process.env.PUBLIC_URL}>
             <App />
           </BrowserRouter>
         </ArticlesProvider>
