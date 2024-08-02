@@ -1,7 +1,20 @@
 {
   "root": "build/",
   "clean_urls": true,
+  "https_only": true,
+  "headers": {
+    "/**": {
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+    }
+  },
   "routes": {
     "/**": "index.html"
-  }
+  },
+  "redirects": {
+    "/www.*": {
+      "url": "/",
+      "status": 301
+    }
+  },
+  "error_page": "index.html"
 }
