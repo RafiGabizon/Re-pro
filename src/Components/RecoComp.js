@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { reco_ar } from "../data/recommands";
-import '../styles/recoStyles.css';
+import React, { useState, useEffect, useContext, useCallback } from "react";import '../styles/recoStyles.css';
 import { FaQuoteLeft, FaQuoteRight, FaArrowLeft, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import Modal from 'react-modal';
+import { HomePageContext } from '../context/HomePageContext';
 
 Modal.setAppElement('#root');
 
@@ -10,6 +9,8 @@ export default function RecoComp() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [currentVideo, setCurrentVideo] = useState("");
     const [currentIndex, setCurrentIndex] = useState(0);
+    const { homePageData } = useContext(HomePageContext);
+    const { recommendations } = homePageData;
 
     const openModal = (videoUrl) => {
         setCurrentVideo(videoUrl);
@@ -21,25 +22,22 @@ export default function RecoComp() {
         setCurrentVideo("");
     };
 
-    const nextSlide = () => {
-        setCurrentIndex((prevIndex) => 
-            prevIndex === reco_ar.length - 1 ? 0 : prevIndex + 1
-        );
-    };
+    const nextSlide = useCallback(() => {
+    setCurrentIndex((prevIndex) => 
+        prevIndex === recommendations.length - 1 ? 0 : prevIndex + 1
+    );
+}, [recommendations.length]);
 
     const prevSlide = () => {
         setCurrentIndex((prevIndex) => 
-            prevIndex === 0 ? reco_ar.length - 1 : prevIndex - 1
+            prevIndex === 0 ? recommendations.length - 1 : prevIndex - 1
         );
     };
 
-    useEffect(() => {
-        const timer = setInterval(() => {
-            nextSlide();
-        }, 5000);
-
-        return () => clearInterval(timer);
-    }, []);
+   useEffect(() => {
+    const timer = setInterval(nextSlide, 5000);
+    return () => clearInterval(timer);
+}, [nextSlide]);
 
     return (
         <div className="reco-container">
@@ -50,17 +48,17 @@ export default function RecoComp() {
                 </button>
                 <div className="reco-card">
                     <div className="reco-image">
-                        <img src={reco_ar[currentIndex].mainVid} alt={reco_ar[currentIndex].recoName} className="reco-avatar" />
+                        <img src={recommendations[currentIndex].mainVid} alt={recommendations[currentIndex].recoName} className="reco-avatar" />
                     </div>
                     <div className="reco-content">
-                        <h3 className="reco-name">{reco_ar[currentIndex].recoName}</h3>
-                        <p className="reco-job">{reco_ar[currentIndex].jobType}</p>
+                        <h3 className="reco-name">{recommendations[currentIndex].recoName}</h3>
+                        <p className="reco-job">{recommendations[currentIndex].jobType}</p>
                         <div className="reco-speech">
                             <FaQuoteRight className="quote-icon right" />
-                            <p className="speech-text">{reco_ar[currentIndex].spich}</p>
+                            <p className="speech-text">{recommendations[currentIndex].spich}</p>
                             <FaQuoteLeft className="quote-icon left" />
                         </div>
-                        <button onClick={() => openModal(reco_ar[currentIndex].mainVid)} className="reco-link">
+                        <button onClick={() => openModal(recommendations[currentIndex].mainVid)} className="reco-link">
                             קרא עוד <FaArrowLeft className="arrow-icon" />
                         </button>
                     </div>

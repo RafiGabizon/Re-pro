@@ -13,7 +13,7 @@ export default function AdminFooter() {
             <Link to="/admin/hot-jobs" className="link-item">ניהול משרות חמות</Link>
             <Link to="/admin/users" className="link-item">ניהול משתמשים</Link>
             <Link to="/admin/articles" className="link-item">ניהול כתבות</Link>
-            <Link to="/admin/content" className="link-item">ניהול תוכן האתר</Link>
+            <Link to="/admin/manageHome" className="link-item">ניהול תוכן האתר</Link>
             <Link to="/admin" className="link-item">איזור ניהול</Link>
           </div>
         </div>

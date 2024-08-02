@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import '../styles/openingStyle.css';
 import { FaWhatsapp } from "react-icons/fa";
-
+import { HomePageContext } from '../context/HomePageContext';
 
 export default function OpenComp() {
+    const { homePageData } = useContext(HomePageContext);
+    const { mainTitle, description, videoUrl, features } = homePageData.openComp;
 
     const handleWhatsAppClick = () => {
         window.open('https://wa.link/oc0fb6', '_blank');
@@ -13,21 +15,18 @@ export default function OpenComp() {
         <section className="opening-section">
             <div className="content-wrapper">
                 <div className="text-content">
-                    <h2 className="main-title">הזדמנות שלך לקריירה גלובלית</h2>
+                    <h2 className="main-title">{mainTitle}</h2>
                     <ul className="feature-list">
-                        <li>מגוון משרות ברחבי העולם</li>
-                        <li>התאמה אישית לכישורים וניסיון</li>
-                        <li>חוויה תרבותית ייחודית</li>
-                        <li>תמיכה מקצועית לאורך כל הדרך</li>
+                        {features.map((feature, index) => (
+                            <li key={index}>{feature}</li>
+                        ))}
                     </ul>
-                    <p className="description">
-                        אנו מציעים לכם הזדמנות ייחודית לקחת את הקריירה שלכם צעד קדימה ולהתחיל לעבוד בחו"ל. עם מגוון רחב של משרות בתחומים שונים, נעזור לכם למצוא את ההזדמנות המושלמת עבורכם.
-                    </p>
-                     <button className="cta-button" onClick={handleWhatsAppClick}> <FaWhatsapp />  צור קשר עכשיו</button>
+                    <p className="description">{description}</p>
+                    <button className="cta-button" onClick={handleWhatsAppClick}> <FaWhatsapp />  צור קשר עכשיו</button>
                 </div>
                 <div className="video-container">
                     <iframe 
-                        src="https://www.youtube.com/embed/N1QtAXj9y48?si=7F_4SPD5-_aw1uyg" 
+                        src={videoUrl}
                         title="YouTube video player" 
                         frameBorder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 

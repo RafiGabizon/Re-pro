@@ -25,8 +25,11 @@ import ManageHotJobs from './pages/admin/ManageHotJobs';
 import AdminNavbar from './Components/admin/AdminNavbar';
 import AdminFooter from './Components/admin/AdminFooter';
 import ManageArticles from './pages/admin/ManageArticles';
+import ManageHomePage from './pages/admin/ManageHomePage';
 import { ArticlesProvider } from './context/ArticlesContext';
 import { JobsProvider } from './context/JobsContext';
+import { HomePageProvider } from './context/HomePageContext';
+
 
 function NavbarSelector() {
   const location = useLocation();
@@ -72,13 +75,14 @@ function AppContent() {
         <Route path="/Policy" element={<Policy />} />
         <Route path="/Recommands" element={<Recommands />} />
         <Route path="/job/:id" element={<JobDetail />} />
-        <Route path="/Register" element={<Register />} />
-        <Route path="/Register2" element={<RegisterStepTwo />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/register2" element={<RegisterStepTwo />} />
         <Route path="/RegisterConfirm" element={<ConfirmRegistration />} />
         <Route path="/admin" element={<AdminHome />} />
         <Route path="/admin/jobs" element={<ManageJobs />} />
         <Route path="/admin/hot-jobs" element={<ManageHotJobs />} />
         <Route path="/admin/articles" element={<ManageArticles />} />
+        <Route path="/admin/manageHome" element={<ManageHomePage />} />
       </Routes>
       {!isAdminRoute && (
         <>
@@ -100,11 +104,13 @@ function AppContent() {
 function App() {
   return (
     <JobsProvider>
-      <ArticlesProvider>
-        <BrowserRouter>
-          <AppContent />
-        </BrowserRouter>
-      </ArticlesProvider>
+      <HomePageProvider>
+        <ArticlesProvider>
+          <BrowserRouter>
+            <AppContent />
+          </BrowserRouter>
+        </ArticlesProvider>
+      </HomePageProvider>
     </JobsProvider>
   );
 }

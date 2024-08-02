@@ -65,10 +65,10 @@ export default function JobsCarousel() {
                     )}
                 </div>
             </div>
-            <button className="carousel-button prev" onClick={prevSlide} disabled={hotJobs.length === 0}>
+            <button className="carousel-button prev" onClick={nextSlide} disabled={hotJobs.length === 0}>
                 <FaArrowLeft />
             </button>
-            <button className="carousel-button next" onClick={nextSlide} disabled={hotJobs.length === 0}>
+            <button className="carousel-button next" onClick={prevSlide} disabled={hotJobs.length === 0}>
                 <FaArrowRight />
             </button>
             <div className="carousel-dots">

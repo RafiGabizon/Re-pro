@@ -1,5 +1,6 @@
+//users.js
 const express = require("express");
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcryptjs');
 const {auth, authAdmin} = require("../middlewares/auth")
 const {UserModel,validateUser,validateLogin,createToken} = require("../models/userModel");
 
@@ -15,8 +16,6 @@ router.get("/",(req,res) => {
 router.get("/checkToken", auth, async(req,res) => {
   res.json(req.tokenData)
 })
-
-
 
 // ,auth - פונקציית אמצע של ראוטר לאימות משתמש
 router.get("/userInfo", auth ,async(req,res) => {
@@ -47,7 +46,6 @@ router.get("/list", authAdmin,async(req,res) => {
   }
 })
 
-
 router.post("/",async(req,res) => {
   const validBody = validateUser(req.body);
   if(validBody.error){
@@ -71,7 +69,6 @@ router.post("/",async(req,res) => {
     res.status(502).json({err})
   }
 })
-
 
 router.post("/login",async(req,res) => {
   const validBody = validateLogin(req.body);

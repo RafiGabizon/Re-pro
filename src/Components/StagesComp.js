@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "../styles/stagesStyles.css";
 import Modal from "react-modal";
 import { IoMdCloseCircleOutline } from "react-icons/io";
-
+import { HomePageContext } from '../context/HomePageContext';
 
 const customStyles = {
   content: {
@@ -19,16 +19,11 @@ const customStyles = {
   },
 };
 
-const stages = [
-  { title: "הרשמה", description: "מילוי טופס הרשמה מקוון" },
-  { title: "ראיון", description: "ראיון אישי עם נציג החברה" },
-  { title: "התאמה", description: "התאמת משרה מתאימה לכישורים שלך" },
-  { title: "הכנה", description: "הכנה לקראת היציאה לחו\"ל" },
-  { title: "יציאה", description: "יציאה לעבודה בחו\"ל" },
-];
 
 export default function Stages() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const { homePageData } = useContext(HomePageContext);
+  const { stages } = homePageData;
 
   const handleOpenModal = () => setModalIsOpen(true);
   const handleCloseModal = () => setModalIsOpen(false);
@@ -58,7 +53,7 @@ export default function Stages() {
         <iframe 
           width="100%" 
           height="315" 
-          src="https://www.youtube.com/embed/pqMCdKH9oBQ?si=7hzvW1RJrvauRwOk" 
+          src={homePageData.stages.modalVideoUrl} 
           title="How it's done?" 
           frameBorder="0" 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 

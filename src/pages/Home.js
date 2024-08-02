@@ -1,6 +1,5 @@
 import React from "react";
 import '../styles/home.css';
-// import JobsComp from "../Components/JobsComp";
 import OpenComp from "../Components/OpenComp";
 import RecoComp from "../Components/RecoComp";
 import Stages from "../Components/StagesComp";
@@ -15,7 +14,6 @@ export default function Home() {
       
       <OpenComp/>
       <br></br>
-      {/* <JobsComp/> */}
       <JobsCarousel maxJobs={5} />
       <br></br><br></br>
       <Stages/>
@@ -26,8 +24,6 @@ export default function Home() {
         ))}
       </div>
       <RecoComp/>
-
-      
 
     </div>
   )
