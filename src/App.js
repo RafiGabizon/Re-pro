@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
@@ -26,10 +26,6 @@ import AdminNavbar from './Components/admin/AdminNavbar';
 import AdminFooter from './Components/admin/AdminFooter';
 import ManageArticles from './pages/admin/ManageArticles';
 import ManageHomePage from './pages/admin/ManageHomePage';
-import { ArticlesProvider } from './context/ArticlesContext';
-import { JobsProvider } from './context/JobsContext';
-import { HomePageProvider } from './context/HomePageContext';
-
 
 function NavbarSelector() {
   const location = useLocation();
@@ -49,7 +45,7 @@ function FooterSelector() {
   return <Footer />;
 }
 
-function AppContent() {
+function App() {
   const [isContactAdvisorOpen, setIsContactAdvisorOpen] = useState(false);
   const location = useLocation();
 
@@ -98,20 +94,6 @@ function AppContent() {
       )}
       <FooterSelector />
     </>
-  );
-}
-
-function App() {
-  return (
-    <JobsProvider>
-      <HomePageProvider>
-        <ArticlesProvider>
-          <BrowserRouter>
-            <AppContent />
-          </BrowserRouter>
-        </ArticlesProvider>
-      </HomePageProvider>
-    </JobsProvider>
   );
 }
 
