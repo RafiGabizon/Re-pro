@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.bbf1946f.css",
+    "main.js": "/static/js/main.c3ac53ea.js",
+    "static/js/787.4b7c8658.chunk.js": "/static/js/787.4b7c8658.chunk.js",
+    "static/media/Repro_Logo.jpg": "/static/media/Repro_Logo.a6a65d6cc91dae68034d.jpg",
+    "index.html": "/index.html",
+    "main.bbf1946f.css.map": "/static/css/main.bbf1946f.css.map",
+    "main.c3ac53ea.js.map": "/static/js/main.c3ac53ea.js.map",
+    "787.4b7c8658.chunk.js.map": "/static/js/787.4b7c8658.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bbf1946f.css",
+    "static/js/main.c3ac53ea.js"
+  ]
+}
