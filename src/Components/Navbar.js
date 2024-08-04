@@ -1,37 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/navbar.css';
 import Repro from '../images/Repro_Logo.jpg';
-import Whatsapp from '../images/whatsapp_logo.png';
-
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function NavbarTop() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <div className="navbar">
-      <nav className="links">
-        <div className="left-links">
-          <Link to="/Jobs_Abroad" className="Link-5">עבודות בחו"ל</Link>
-          <Link to="/Employers" className="Link-4">מעסיקים</Link>
-          <Link to="/Articles" className="Link-3">כתבות</Link>
-          <Link to="/Qustion_Ask" className="Link-2">שאלות ותשובות</Link>
-          <Link to="/About" className="Link-6">אודות</Link>
+      <div className="nav-content">
+        <Link to="/" className="logo-link">
+          <img src={Repro} className="logo" alt="דף בית" title="Re_Pro" />
+        </Link>
+
+        <div className={`menu-icon ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu}>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
-      </nav>
 
-      <Link to="/">
-        <img src={Repro} className="logo" alt="דף בית" title="Re_Pro" />
-      </Link>
+        <nav className={`links ${isMenuOpen ? 'open' : ''}`}>
+          <Link to="/JobsAbroad" className="nav-link" onClick={closeMenu}>עבודות בחו"ל</Link>
+          <Link to="/Employers" className="nav-link" onClick={closeMenu}>מעסיקים</Link>
+          <Link to="/Articles" className="nav-link" onClick={closeMenu}>כתבות</Link>
+          <Link to="/QustionAsk" className="nav-link" onClick={closeMenu}>שאלות ותשובות</Link>
+          <Link to="/About" className="nav-link" onClick={closeMenu}>אודות</Link>
+          <Link to="/LogIn" className="nav-link login-button" onClick={closeMenu}>איזור אישי</Link>
+        </nav>
 
-      <div>
-        <Link to="https://wa.link/oc0fb6">
-          <img src={Whatsapp} className="Whatsapp" alt="דף בית" title="Re_Pro" />
+        <Link to="https://wa.link/oc0fb6" className="whatsapp-link">
+         <FaWhatsapp className='fa-whatsapp' />
         </Link>
       </div>
-
-      <div className="log_in_Link">
-        <Link to="/LogIn" className="log_in_Link">איזור אישי</Link>
-      </div>
-
     </div>
   );
 }

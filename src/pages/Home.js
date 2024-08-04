@@ -1,27 +1,32 @@
 import React from "react";
-import '../styles/styles.css';
-import JobsComp from "../Components/JobsComp";
+import '../styles/home.css';
 import OpenComp from "../Components/OpenComp";
-import Recommands from "../Components/RecoComp";
+import RecoComp from "../Components/RecoComp";
 import Stages from "../Components/StagesComp";
+import QuestionFrame from '../Components/QuestionFrame';
+import JobsCarousel from "../Components/JobsCarrousel";
+import { questionsAndAnswers } from '../data/q&a';
 
-export default function Home({ toggleContactModal }) {
+
+export default function Home() {
   return (
     <div className="App">
+      
       <OpenComp/>
-      <br />
-      <JobsComp/>
-      <br /><br />
+      <br></br>
+      <JobsCarousel maxJobs={5} />
+      <br></br><br></br>
       <Stages/>
-      <br /><br /><br />
-      <Recommands/>
-      <button 
-        className="consultant-button" 
-        onClick={toggleContactModal}
-        aria-label="Contact career advisor"
-      >
-        פנייה ליועץ תעסוקתי
-      </button>
+      <br></br><br></br><br></br>
+      <div className="questions-section">
+        {questionsAndAnswers.map((qa, index) => (
+          <QuestionFrame key={index} question={qa.question} answer={qa.answer} />
+        ))}
+      </div>
+      <RecoComp/>
+
     </div>
   )
 }
+
+

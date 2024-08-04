@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/contactAdvisor.css';  // Ensure this path is correct
+import '../styles/contactAdvisor.css';  
 
 const ContactAdvisor = ({ isOpen, onClose }) => {
   if (!isOpen) {

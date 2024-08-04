@@ -1,109 +1,171 @@
 .navbar {
-    background:linear-gradient(to right, #f2f2f2, #e3e3e3); /* Light gray background for a clean, professional feel */
-    padding: 15px 20px; /* Consistent padding */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for definition */
+  background: linear-gradient(to right, #f8f9fa, #e9ecef);
+  padding: 15px 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 120px;
+  height: auto;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  color: #495057;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 0 15px;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #007bff;
+}
+
+.login-button {
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  margin-right: 15px;
+  box-shadow: 0 2px 5px rgba(0, 123, 255, 0.3);
+  text-align: center;
+  width: 110px;
+}
+
+.login-button:hover {
+  background-color: #ec7d0a;
+  color: #ffffff;  
+}
+
+.whatsapp-link {
+  display: flex;
+  align-items: center;
+}
+.fa-whatsapp {
+  font-size: 30px;
+}
+
+
+.menu-icon {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-icon span {
+  width: 25px;
+  height: 3px;
+  background-color: #ec7d0a;
+  margin: 2px 0;
+  transition: 0.4s;
+}
+
+/* ... שאר הקוד נשאר ללא שינוי ... */
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 15px;
+  }
+
+  .nav-content {
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .logo-link {
+    order: 2;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .menu-icon {
     display: flex;
-    flex-direction: row; /* Default order for RTL */
-    justify-content: space-between; /* Maintain right-alignment for consistency */
-    align-items: center;
+    order: 1;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
   }
-  
-  .title {
-    /* Remove existing styles for title as it's not part of the new design */
-    display: none;
-  }
-  
-  .Whatsapp {
-    width: 24px; /* Consistent icon size */
-    height: 24px;
-    margin-left: 15px; /* Consistent spacing with other elements */
-    fill: #888787; /* Lighter gray for a subtle icon */
-    transition: fill 0.2s ease-in-out; /* Smooth hover effect */
-  }
-  
-  .Whatsapp:hover {
-    fill: #333; /* Dark gray on hover for a clear accent */
-  }
-  
-  .logo {
-    width: 120px; /* Adjust logo size for appropriate scale */
-    height: auto;
-    margin-right: auto; /* Align logo to the left for consistency */
-  }
-  
+
   .links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    background: #f8f9fa;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 60%;
+  }
+
+  .links.open {
     display: flex;
-    align-items: center;
   }
-  
-  .links a {
-    color: #333; /* Dark gray for links */
-    text-decoration: none;
-    font-size: 16px; /* Clear, readable font size */
-    margin: 0 18px; /* Comfortable spacing between links */
-    font-weight: normal; /* Standard weight for a clean look */
-    text-transform: none; /* Links in normal case */
-    transition: color 0.2s ease-in-out; /* Smooth hover effect */
+
+  .nav-link {
+    margin: 10px 0;
+    padding: 10px 20px;
+    width: 100%;
+    text-align: right;
+    background-color: #f8f9fa;
   }
-  
-  .links a:hover {
-    color: #007bff; /* Blue on hover for a subtle accent */
+
+  .login-button {
+    font-size: 14px;
+    padding: 8px 15px;
+    margin: 10px 20px;
+    width: calc(60% - 40px);
+    text-align: center;
+    background-color: #1e5be9;
   }
-  
-  .log_in_Link {
-    color: #333; /* Dark gray for text */
-    text-decoration: none;
-    font-size: 16px; /* Clear, readable font size */
-    margin-right: 0; /* Align to the right for consistency */
-    display: flex;
-    align-items: center;
+
+  .whatsapp-link {
+    order: 3;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
   }
-  
-  .log_in_Link:hover {
-    color: #007bff; /* Blue on hover for a clear accent */
+
+  .whatsapp-icon {
+    width: 20px;
+    height: 20px;
   }
-  
-  /* Optional: Additional styling for a search bar (consider a dropdown menu) */
-  .search-bar {
-    margin-right: 15px; /* Spacing from other elements */
-    /* Consider a dropdown menu for a cleaner look, 
-       comment out if not needed */
+
+  .menu-icon.open span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
   }
-  
-  /* Optional: Additional styling for a dropdown menu (consider functionality) */
-  .dropdown {
-    display: inline-block; /* Allow inline placement */
-    position: relative; /* Enable positioning of dropdown content */
+
+  .menu-icon.open span:nth-child(2) {
+    opacity: 0;
   }
-  
-  .dropdown-content {
-    display: none; /* Hide dropdown content by default */
-    position: absolute; /* Position dropdown content */
-    background-color: #f1f1f1; /* Light gray background */
-    min-width: 160px; /* Minimum width for the dropdown */
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Subtle shadow */
-    z-index: 1; /* Ensure dropdown content appears above other elements */
+
+  .menu-icon.open span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
   }
-  
-  .dropdown-content a {
-    color: black; /* Black for dropdown link text */
-    padding: 12px 16px; /* Padding for comfortable selection */
-    text-decoration: none; /* Remove underline */
-    display: block; /* Display each link as a block */
-  }
-  
-  .dropdown-content a:hover {
-    background-color: #ddd; /* Light gray on hover */
-  }
-  
-  .dropdown:hover .dropdown-content {
-    display: block; /* Show dropdown content on hover */
-  }
-  
-  .dropdown:hover .dropbtn {
-    background-color: #ddd; /* Light gray on hover for the button */
-  }
-  
-  .dropbtn {
-    font-size: 16px; /* Clear, readable font size */
-  }
+}
