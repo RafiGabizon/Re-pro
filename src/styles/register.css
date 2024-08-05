@@ -1,3 +1,4 @@
+/* Register.css */
 .register-container {
     background: linear-gradient(135deg, #f8f9fa, #e9ecef);
     min-height: 100vh;
@@ -57,6 +58,23 @@
     border-color: #007bff;
     outline: none;
     box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.form-group.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-group.checkbox input {
+    width: auto;
+}
+
+.error {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 5px;
+    display: block;
 }
 
 .register-button {

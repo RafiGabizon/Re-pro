@@ -30,7 +30,7 @@ export default function AdminNavbar() {
         <nav className={`admin-links ${isMenuOpen ? 'open' : ''}`}>
           <Link to="/admin/jobs" className="admin-nav-link" onClick={closeMenu}>ניהול ואישור משרות</Link>
           <Link to="/admin/hot-jobs" className="admin-nav-link" onClick={closeMenu}>ניהול משרות חמות</Link>
-          <Link to="/admin/users" className="admin-nav-link" onClick={closeMenu}>ניהול משתמשים</Link>
+          <Link to="/admin/manageUsers" className="admin-nav-link" onClick={closeMenu}>ניהול משתמשים</Link>
           <Link to="/admin/articles" className="admin-nav-link" onClick={closeMenu}>ניהול כתבות</Link>
           <Link to="/admin/manageHome" className="admin-nav-link" onClick={closeMenu}>ניהול תוכן האתר</Link>
           <Link to="/" className="admin-nav-link admin-login-button" onClick={closeMenu}>חזרה לאתר</Link>
