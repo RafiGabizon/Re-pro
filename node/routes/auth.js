@@ -1,20 +1,30 @@
 const express = require('express');
-const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const UserDetails = require('../models/UserDetails');
 
 const router = express.Router();
 
 router.post('/register', async (req, res) => {
   try {
-    const { username, email, password, role } = req.body;
+    const { username, email, phone, password, role } = req.body;
     const userExists = await User.findOne({ email });
     
     if (userExists) {
       return res.status(400).json({ message: 'User already exists' });
     }
 
-    const user = await User.create({ username, email, password, role });
+    const user = await User.create({ username, email, phone, password, role });
     res.status(201).json({ message: 'User registered successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+});
+
+router.post('/registerStepTwo', async (req, res) => {
+  try {
+    const userDetails = new UserDetails(req.body);
+    await userDetails.save();
+    res.status(201).json({ message: 'User details saved successfully', userDetails });
   } catch (error) {
     res.status(500).json({ message: 'Server error', error: error.message });
   }
