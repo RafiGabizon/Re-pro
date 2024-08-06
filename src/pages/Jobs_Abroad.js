@@ -3,6 +3,7 @@ import '../styles/jobs_abroad.css';
 import '../styles/styles.css';
 import { jobs_ar as jobs } from '../data/jobs';
 import { Link } from 'react-router-dom';  
+import ContactAdvisor from '../Components/ContactAdvisor';
 
 export default function JobsAbroad() {
   const [filterTypes, setFilterTypes] = useState({ Continents: '', State: '', Domains: '', JobType: '' });
@@ -52,7 +53,7 @@ export default function JobsAbroad() {
     setFilteredJobs(filtered);
   }, [filterTypes, searchText]);
 
-  const uniqueContinents = ['אסיה', 'אמריקה', 'אפריקה', 'אירופה', 'אוסטרליה'];
+  const uniqueContinents = ['אסיה', 'אמריקה', 'אפריקה', 'אירופה', 'אוקיאניה'];
   const uniqueStates = ['ישראל', 'ארצות הברית', 'קנדה', 'בריטניה', 'גרמניה', 'צרפת', 'הודו', 'יפן', 'אוסטרליה'];
   const uniqueDomains = ['הנדסה', 'ניהול', 'טכנולוגיות מידע', 'שיווק', 'פיננסים', 'משאבי אנוש', 'עיצוב', 'הנדסה', 'מכירות', 'ייעוץ'];
   const uniqueJobTypes = ['חצי משרה', 'משרה מלאה', 'משרת אם'];
@@ -145,8 +146,8 @@ export default function JobsAbroad() {
                   <img src={job.mainImg} alt="" className="main-img" />
                 </div>
                 <div className="text-wrapper">
-                    <img src={job.countryFlag} alt="" width={19} />
                   <div className="text-content">
+                    <img src={job.countryFlag} alt="" width={19} />
                     <Link to={`/job/${job.id}`} className="button-link">→</Link>
                     <p>{job.Continents}, {job.State}</p>
                     <p>{job.Domains}</p>

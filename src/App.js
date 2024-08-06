@@ -26,7 +26,6 @@ import AdminNavbar from './Components/admin/AdminNavbar';
 import AdminFooter from './Components/admin/AdminFooter';
 import ManageArticles from './pages/admin/ManageArticles';
 import ManageHomePage from './pages/admin/ManageHomePage';
-import ManageUsers from './pages/admin/ManageUsers';
 
 function NavbarSelector() {
   const location = useLocation();
@@ -73,15 +72,13 @@ function App() {
         <Route path="/Recommands" element={<Recommands />} />
         <Route path="/job/:id" element={<JobDetail />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/register2" element={<RegisterStepTwo />} />
+        <Route path="/register2" element={<RegisterStepTwo  />} />
         <Route path="/RegisterConfirm" element={<ConfirmRegistration />} />
         <Route path="/admin" element={<AdminHome />} />
         <Route path="/admin/jobs" element={<ManageJobs />} />
         <Route path="/admin/hot-jobs" element={<ManageHotJobs />} />
         <Route path="/admin/articles" element={<ManageArticles />} />
         <Route path="/admin/manageHome" element={<ManageHomePage />} />
-        <Route path="/admin/manageUsers" element={<ManageUsers/>} />
-        
       </Routes>
       {!isAdminRoute && (
         <>

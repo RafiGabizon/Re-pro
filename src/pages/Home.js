@@ -4,7 +4,7 @@ import OpenComp from "../Components/OpenComp";
 import RecoComp from "../Components/RecoComp";
 import Stages from "../Components/StagesComp";
 import QuestionFrame from '../Components/QuestionFrame';
-import JobsCarousel from "../Components/JobsCarrpusel";
+import JobsCarousel from "../Components/JobsCarrousel";
 import { questionsAndAnswers } from '../data/q&a';
 
 
