@@ -20,6 +20,14 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+h3{
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 20px;
+    margin-left: 780px;
+    font-size: 2.5em;
+}
+
 .mhp-component h2 {
     color: #444;
     margin-top: 0;

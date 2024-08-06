@@ -1,17 +1,46 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import '../styles/navbar.css';
 import Repro from '../images/Repro_Logo.jpg';
 import { FaWhatsapp } from "react-icons/fa";
 
 export default function NavbarTop() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const checkLoginStatus = () => {
+      const token = localStorage.getItem('token');
+      setIsLoggedIn(!!token);
+    };
+
+    checkLoginStatus();
+    // בדיקת סטטוס התחברות בכל שינוי של הנתיב
+    window.addEventListener('storage', checkLoginStatus);
+
+    return () => {
+      window.removeEventListener('storage', checkLoginStatus);
+    };
+  }, [location]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
   const closeMenu = () => {
     setIsMenuOpen(false);
+  };
+
+  const handleProfileClick = (e) => {
+    e.preventDefault();
+    closeMenu();
+    if (isLoggedIn) {
+      navigate('/profile');
+    } else {
+      navigate('/login');
+    }
   };
 
   return (
@@ -33,7 +62,9 @@ export default function NavbarTop() {
           <Link to="/Articles" className="nav-link" onClick={closeMenu}>כתבות</Link>
           <Link to="/QustionAsk" className="nav-link" onClick={closeMenu}>שאלות ותשובות</Link>
           <Link to="/About" className="nav-link" onClick={closeMenu}>אודות</Link>
-          <Link to="/LogIn" className="nav-link login-button" onClick={closeMenu}>איזור אישי</Link>
+          <a href="#" className="nav-link login-button" onClick={handleProfileClick}>
+            {isLoggedIn ? 'אזור אישי' : 'התחברות'}
+          </a>
         </nav>
 
         <Link to="https://wa.link/oc0fb6" className="whatsapp-link">

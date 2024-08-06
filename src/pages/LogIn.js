@@ -7,24 +7,54 @@ export default function LogIn() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
+    setSuccess('');
 
     try {
-      const response = await authService.login({ email, password });
-      console.log('Login successful:', response);
-      // Save the token and role in localStorage or state management
-      navigate('/');  // Redirect to home page or desired page after login
-    } catch (error) {
-      console.error('Login error:', error);
+    const response = await authService.login({ email, password });
+    console.log('Login successful:', response);
+    
+    // בדיקה אם הטוקן נשמר ב-localStorage
+    const storedToken = localStorage.getItem('token');
+    console.log('Stored token:', storedToken);
+    
+    if (!storedToken) {
+      console.error('Token was not saved to localStorage');
+      setError('אירעה שגיאה בשמירת נתוני ההתחברות. אנא נסה שנית.');
+      return;
     }
-  };
+    
+    if (response.role === 'admin') {
+      setSuccess('שלום מנהל\nמיד תועבר לעמוד הניהול.');
+      setTimeout(() => {
+        navigate('/admin');
+        window.scrollTo(0, 0);
+      }, 2000);
+    } else {
+      setSuccess('התחברת בהצלחה למערכת!\nמיד תועבר לדף הבית.');
+      setTimeout(() => {
+        navigate('/');
+        window.scrollTo(0, 0);
+      }, 2000);
+    }
+
+  } catch (error) {
+    console.error('Login error:', error);
+    setError('שם המשתמש או הסיסמה שגויים. אנא נסה שנית.');
+  }
+};
 
   return (
     <div className="login-container">
       <div className="login-content">
         <h2>התחברות ל-Re-Pro</h2>
+        {error && <div className="error-message">{error}</div>}
+        {success && <div className="success-message">{success}</div>}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="email">כתובת אימייל</label>

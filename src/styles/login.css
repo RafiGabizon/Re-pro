@@ -88,6 +88,37 @@
     color: #6c757d;
 }
 
+/* סגנונות חדשים להודעות שגיאה והצלחה */
+.error-message,
+.success-message {
+    padding: 12px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    text-align: center;
+    transition: opacity 0.3s ease;
+}
+
+.error-message {
+    background-color: #fff3f3;
+    border: 1px solid #dc3545;
+    color: #dc3545;
+}
+
+.success-message {
+    background-color: #f0fff0;
+    border: 1px solid #28a745;
+    color: #28a745;
+    padding: 12px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    text-align: center;
+    transition: opacity 0.3s ease;
+    white-space: pre-line;
+    /* מאפשר שבירת שורה ב-\n */
+}
+
 @media (max-width: 480px) {
     .login-content {
         padding: 30px;
@@ -113,5 +144,11 @@
 
     .additional-options {
         font-size: 12px;
+    }
+
+    .error-message,
+    .success-message {
+        padding: 10px;
+        font-size: 14px;
     }
 }

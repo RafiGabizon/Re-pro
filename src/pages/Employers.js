@@ -1,12 +1,13 @@
 import React from 'react';
 import '../styles/employers.css';
 import { reco_ar } from '../data/recommands'; // Adjust the import path as necessary
+import { Link } from 'react-router-dom';
 
 export default function Employers({ toggleContactModal }) {
   return (
     <div className="employers-page">
       <div className="buttons-container">
-        <button aria-label="Post a job">פרסום משרה</button>
+        <Link to="/PostJob" className="post-job-button"><button aria-label="Post a job">פרסום משרה</button></Link>
         <button aria-label="Business recommendations">עסקים ממליצים</button>
         <button aria-label="Businesses">עסקים</button>
         <button aria-label="Recruit partners/franchisees">גיוס שותפים/זכיינים</button>
@@ -42,13 +43,6 @@ export default function Employers({ toggleContactModal }) {
           </div>
         ))}
       </div>
-      <button
-        className="consultant-button"
-        onClick={toggleContactModal}
-        aria-label="Contact a career advisor"
-      >
-        פנייה ליועץ תעסוקתי
-      </button>
     </div>
   );
 }
