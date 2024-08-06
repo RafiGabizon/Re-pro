@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import '../styles/register.css';
-import authService from '../services/authService';
+import authService from '../services/authService';  // Corrected import path
 
 export default function RegisterStepTwo() {
   const location = useLocation();
@@ -39,7 +39,7 @@ export default function RegisterStepTwo() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const completeData = { ...formData };
+    const completeData = { ...location.state.formData, ...formData };
     try {
       const response = await authService.registerStepTwo(completeData);
       console.log('User details saved successfully:', response);

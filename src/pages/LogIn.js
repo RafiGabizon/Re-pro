@@ -1,18 +1,24 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/login.css';
-import { Link } from 'react-router-dom';
+import authService from '../services/authService';
 
 export default function LogIn() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // כאן להוסיף את הלוגיקה של ההתחברות
-
-
-    console.log('התחברות עם:', email, password);
+    try {
+      const response = await authService.login({ email, password });
+      console.log('Login successful:', response);
+      // Save the token and role in localStorage or state management
+      navigate('/');  // Redirect to home page or desired page after login
+    } catch (error) {
+      console.error('Login error:', error);
+    }
   };
 
   return (
@@ -45,7 +51,7 @@ export default function LogIn() {
         <div className="additional-options">
           <a href="#forgot-password">שכחת סיסמה?</a>
           <span className="separator">|</span>
-          <Link to="/Register">הרשמה לחשבון חדש</Link>
+          <a href="/register">הרשמה לחשבון חדש</a>
         </div>
       </div>
     </div>

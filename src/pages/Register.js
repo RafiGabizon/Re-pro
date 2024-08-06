@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/register.css';
-import authService from '../services/authService';  // Corrected import path
+import authService from '../services/authService';
 
 export default function InitialRegister() {
   const navigate = useNavigate();
@@ -23,8 +23,9 @@ export default function InitialRegister() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const { acceptTerms, ...userData } = formData; // remove acceptTerms before sending
     try {
-      const response = await authService.register(formData);
+      const response = await authService.register(userData);
       console.log('Registration successful:', response);
       navigate('/register2', { state: { formData } });  // Navigate to RegisterStepTwo
     } catch (error) {
