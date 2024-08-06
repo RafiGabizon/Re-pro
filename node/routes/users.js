@@ -35,14 +35,16 @@ router.get("/userInfo", auth ,async(req,res) => {
 })
 
 // אזור שמחזיר רשימה של משתמשים שרק משתמש אדמין יכול להיות בו
-router.get("/list", authAdmin,async(req,res) => {
+router.get("/list", authAdmin, async(req,res) => {
   try{
+    console.log('Fetching users list');
     const skip = req.query.skip || 0;
     const data = await UserModel.find({},{password:0}).limit(20).skip(skip);
+    console.log(`Found ${data.length} users`);
     res.json(data);
   }
   catch(err){
-    console.log(err);
+    console.error('Error in /list route:', err);
     res.status(502).json({err})
   }
 })
