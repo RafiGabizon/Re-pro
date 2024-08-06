@@ -6,7 +6,21 @@ const UserSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   phone: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  role: { type: String, enum: ['user', 'admin'], default: 'user' }
+  role: { type: String, enum: ['user', 'admin'], default: 'user' },
+  gender: { type: String },
+  birthDate: { type: Date },
+  country: { type: String },
+  city: { type: String },
+  englishLevel: { type: String },
+  additionalLanguage: { type: String },
+  additionalLanguageLevel: { type: String },
+  usVisa: { type: Boolean },
+  additionalPassport: { type: Boolean },
+  additionalPassportCountry: { type: String },
+  availabilityDate: { type: Date },
+  jobTitle: { type: String },
+  companyName: { type: String },
+  currentlyEmployed: { type: Boolean },
 });
 
 UserSchema.pre('save', async function(next) {
