@@ -86,6 +86,7 @@
     transition: all 0.3s ease;
     font-size: 14px;
 }
+
 .mj-save-job-btn:hover {
     background-color: #2980b9;
     transform: translateY(-2px);
@@ -151,7 +152,8 @@
 .mj-job-details.open {
     display: block;
 }
-.mj-job-details p{
+
+.mj-job-details p {
     font-size: 19px;
     color: #333;
     margin-bottom: 15px;
@@ -185,6 +187,7 @@
     .mj-job-details {
         display: none;
     }
+
     .mj-job-details.open {
         display: none;
     }
@@ -214,7 +217,8 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        max-width: calc(100% - 30px);  /* מרווח לאייקון */
+        max-width: calc(100% - 30px);
+        /* מרווח לאייקון */
     }
 
     .mj-mobile-job-header h2 {

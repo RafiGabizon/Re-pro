@@ -1,76 +1,120 @@
 export const jobs_ar = [
     {
       "id": 1,
-      "mainImg": "https://media.timeout.com/images/105434111/1024/576/image.webp",
       "Continents": "אסיה",
       "State": "ישראל",
-      "countryFlag": "https://media.istockphoto.com/id/1347113664/vector/israel-3d-rounded-country-flag-button-icon.jpg?s=612x612&w=0&k=20&c=xK4fvanHZhyYHUU1_8qMI8bT0N0RxhBRBoSp-jEHxAM=",
       "Domains": "הנדסה",
       "JobType": "חצי משרה",
       "Salary": "₪30,000 בחודש",
       "jobTitle": "מהנדס תוכנה",
       "jobDescription": "משרה עבור מהנדס תוכנה עם ניסיון בתחום ההנדסה.",
+      "housing": "דירת חברה מסובסדת",
+      "visaRequirements": "ויזת עבודה נדרשת",
+      "minCommitment": "שנה אחת",
+      "flightReimbursement": "כן, טיסה הלוך-חזור",
+      "requirements": "תואר בהנדסת תוכנה, 3 שנות ניסיון, ידע ב-Java ו-Python",
+      "companyVideoUrl": "https://example.com/company_video1.mp4",
+      "employeeTestimonials": [
+        { "name": "דן כהן", "videoUrl": "https://example.com/testimonial1.mp4" },
+        { "name": "מיכל לוי", "videoUrl": "https://example.com/testimonial2.mp4" }
+      ]
     },
     {
       "id": 2,
-      "mainImg": "https://www.imagesfromtexas.com/images/xl/Aerial-View-of-Downtown-Austin-in-January-1.jpg",
       "Continents": "אמריקה",
       "State": "ארצות הברית",
-      "countryFlag": "https://www.countryflags.com/wp-content/uploads/3d-round-states-package.jpg",
       "Domains": "ניהול",
       "JobType": "משרה מלאה",
       "Salary": "$24,000 בחודש",
       "jobTitle": "מנהל פרויקטים",
       "jobDescription": "משרה לניהול פרויקטים עם ניסיון בניהול.",
+      "housing": "סיוע במציאת דיור",
+      "visaRequirements": "ויזת H1B נדרשת",
+      "minCommitment": "שנתיים",
+      "flightReimbursement": "כן, עד $1,500",
+      "requirements": "תואר שני במנהל עסקים, 5 שנות ניסיון בניהול פרויקטים, אנגלית ברמת שפת אם",
+      "companyVideoUrl": "https://example.com/company_video2.mp4",
+      "employeeTestimonials": [
+        { "name": "John Smith", "videoUrl": "https://example.com/testimonial3.mp4" },
+        { "name": "Sarah Johnson", "videoUrl": "https://example.com/testimonial4.mp4" }
+      ]
     },
     {
       "id": 3,
-      "mainImg": "https://media.timeout.com/images/105434111/1024/576/image.webp",
       "Continents": "אסיה",
       "State": "ישראל",
-      "countryFlag": "https://media.istockphoto.com/id/1347113664/vector/israel-3d-rounded-country-flag-button-icon.jpg?s=612x612&w=0&k=20&c=xK4fvanHZhyYHUU1_8qMI8bT0N0RxhBRBoSp-jEHxAM=",
       "Domains": "טכנולוגיות מידע",
       "JobType": "משרת אם",
       "Salary": "₪15,000 בחודש",
       "jobTitle": "מפתח תוכנה",
       "jobDescription": "משרה למפתח תוכנה עם ניסיון בתחום טכנולוגיות המידע.",
+      "housing": "לא כלול",
+      "visaRequirements": "לא נדרש",
+      "minCommitment": "6 חודשים",
+      "flightReimbursement": "לא רלוונטי",
+      "requirements": "תואר במדעי המחשב, 2 שנות ניסיון בפיתוח, ידע ב-React ו-Node.js",
+      "companyVideoUrl": "https://example.com/company_video3.mp4",
+      "employeeTestimonials": [
+        { "name": "רונית כהן", "videoUrl": "https://example.com/testimonial5.mp4" }
+      ]
     },
     {
       "id": 4,
-      "mainImg": "https://www.shutterstock.com/image-photo/german-village-alsfeld-above-260nw-1474612880.jpg",
       "Continents": "אירופה",
       "State": "גרמניה",
-      "countryFlag": "https://media.istockphoto.com/id/1347113664/vector/israel-3d-rounded-country-flag-button-icon.jpg?s=612x612&w=0&k=20&c=xK4fvanHZhyYHUU1_8qMI8bT0N0RxhBRBoSp-jEHxAM=",
       "Domains": "טכנולוגיות מידע",
       "JobType": "משרה מלאה",
       "Salary": "₪13,500 בחודש",
       "jobTitle": "חוקר סייבר",
       "jobDescription": "משרה למחוקר סייבר עם ידע ונסיון רב במערכות ופרוטוקולי מידע.",
+      "housing": "סיוע בשכירות עד 1000 יורו לחודש",
+      "visaRequirements": "ויזת עבודה של האיחוד האירופי",
+      "minCommitment": "שנתיים",
+      "flightReimbursement": "כן, טיסה הלוך-חזור פעם בשנה",
+      "requirements": "תואר בהנדסת מחשבים או אבטחת מידע, 4 שנות ניסיון בתחום הסייבר, ידע ב-Python ו-C++",
+      "companyVideoUrl": "https://example.com/company_video4.mp4",
+      "employeeTestimonials": [
+        { "name": "Hans Mueller", "videoUrl": "https://example.com/testimonial6.mp4" },
+        { "name": "Lisa Schmidt", "videoUrl": "https://example.com/testimonial7.mp4" }
+      ]
     },
     {
       "id": 5,
-      "mainImg": "https://i0.wp.com/eos.org/wp-content/uploads/2022/10/mumbai-skyline.jpg?fit=1200%2C675&ssl=1",
       "Continents": "אסיה",
       "State": "הודו",
-      "countryFlag": "https://media.istockphoto.com/id/1165087486/vector/india-flag.jpg?s=612x612&w=0&k=20&c=HT-bdr0kaqa1VG8KK7dB4phWvzHF63mndpjQJ91GWCo=",
       "Domains": "מכירות",
       "JobType": "חצי משרה",
       "Salary": "$9,700 בחודש",
       "jobTitle": "נציג מכירות",
       "jobDescription": "משרה לנציג מכירות בעל ניסיון עשיר במרקטינג פרונטלי .",
+      "housing": "מגורים משותפים מסובסדים",
+      "visaRequirements": "ויזת עבודה הודית",
+      "minCommitment": "שנה אחת",
+      "flightReimbursement": "חלקי, 50% מעלות הטיסה",
+      "requirements": "תואר במנהל עסקים או שיווק, 3 שנות ניסיון במכירות, אנגלית ברמה גבוהה",
+      "companyVideoUrl": "https://example.com/company_video5.mp4",
+      "employeeTestimonials": [
+        { "name": "Rahul Patel", "videoUrl": "https://example.com/testimonial8.mp4" }
+      ]
     },
     {
       "id": 6,
-      "mainImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3iDdyaEyo9cN2tOlL9wwSoUeKzaK1goEb8w&s",
       "Continents": "אוסטרליה",
       "State": "אוסטרליה",
-      "countryFlag": "https://i.pinimg.com/736x/97/74/8f/97748fe555795c75088dfec67f92059f.jpg",
       "Domains": "משאבי אנוש",
       "JobType": "משרת אם",
       "Salary": "₪11,320 בחודש",
       "jobTitle": "מפתח תוכנה",
       "jobDescription": "משרה למפתח תוכנה עם ניסיון בתחום טכנולוגיות המידע.",
-    },
-    // Add more jobs here with unique ids
+      "housing": "עזרה במציאת דיור",
+      "visaRequirements": "ויזת עבודה אוסטרלית",
+      "minCommitment": "18 חודשים",
+      "flightReimbursement": "כן, עד 2000 דולר אוסטרלי",
+      "requirements": "תואר במדעי המחשב, 3 שנות ניסיון בפיתוח, ידע ב-Java ו-Angular",
+      "companyVideoUrl": "https://example.com/company_video6.mp4",
+      "employeeTestimonials": [
+        { "name": "Emma Wilson", "videoUrl": "https://example.com/testimonial9.mp4" },
+        { "name": "Oliver Brown", "videoUrl": "https://example.com/testimonial10.mp4" }
+      ]
+    }
   ];
-  
