@@ -1,3 +1,8 @@
+const express = require('express');
+const User = require('../models/User');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
+
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
