@@ -2,6 +2,7 @@
   "name": "reproproject",
   "version": "1.0.0",
   "scripts": {
+    "install": "npm install && cd server && npm install && cd ../client && npm install",
     "start": "node server/server.js",
     "server": "node server/server.js",
     "client": "npm start --prefix client",
@@ -10,6 +11,7 @@
     "install-all": "npm install && npm install --prefix server && npm install --prefix client"
   },
   "dependencies": {
-    "concurrently": "^6.2.0"
+    "concurrently": "^6.2.0",
+    "dotenv": "^16.0.3"
   }
 }
