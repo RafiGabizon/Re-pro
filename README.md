@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+# ReproProject
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ReproProject הוא פרויקט fullstack המשלב שרת Node.js עם אפליקציית React בצד הלקוח.
 
-## Available Scripts
+## תוכן עניינים
 
-In the project directory, you can run:
+1. [התקנה](#התקנה)
+2. [הרצה בסביבת פיתוח](#הרצה-בסביבת-פיתוח)
+3. [בנייה לייצור](#בנייה-לייצור)
+4. [מבנה הפרויקט](#מבנה-הפרויקט)
+5. [סקריפטים זמינים](#סקריפטים-זמינים)
+6. [הגדרות Render](#הגדרות-render)
+7. [משתני סביבה](#משתני-סביבה)
 
-### `npm start`
+## התקנה
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+כדי להתקין את הפרויקט, בצע את הפעולות הבאות:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. שכפל את המאגר:
+git clone <https://github.com/your-username/ReproProject.git>  ## זכור לעדכן את הקישור לשכפול המאגר (git clone) עם הכתובת הנכונה של המאגר שלך
+cd ReproProject
 
-### `npm test`
+2. התקן את כל התלויות:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+npm run install-all
 
-### `npm run build`
+פעולה זו תתקין את התלויות עבור השרת, הלקוח, והפרויקט הראשי.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## הרצה בסביבת פיתוח
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+כדי להריץ את הפרויקט בסביבת פיתוח:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. הרץ את השרת והלקוח במקביל:
+npm run dev
 
-### `npm run eject`
+פעולה זו תפעיל את השרת ב-<http://localhost:3001> ואת הלקוח ב-<http://localhost:3000>.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## בנייה לייצור
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+כדי לבנות את הפרויקט לסביבת ייצור:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. בנה את הפרויקט:
+npm run build
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. הרץ את השרת בסביבת ייצור:
+npm start
 
-## Learn More
+## מבנה הפרויקט
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+ReproProject/
+├── client/          # אפליקציית React
+├── server/          # שרת Node.js
+├── package.json     # תלויות והגדרות הפרויקט הראשי
+└── README.md        # קובץ זה
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## סקריפטים זמינים
 
-### Code Splitting
+- `npm run install-all`: התקנת כל התלויות (שרת, לקוח, ופרויקט ראשי)
+- `npm run dev`: הרצת השרת והלקוח במקביל (לפיתוח)
+- `npm run server`: הרצת השרת בלבד עם nodemon
+- `npm run client`: הרצת הלקוח בלבד
+- `npm run build`: בניית הלקוח לייצור
+- `npm start`: הרצת השרת בסביבת ייצור
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## הגדרות Render
 
-### Analyzing the Bundle Size
+אם אתה משתמש ב-Render לפריסת הפרויקט, השתמש בהגדרות הבאות:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Build Command: `npm run build`
+- Start Command: `npm start`
 
-### Making a Progressive Web App
+## משתני סביבה
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+וודא שהגדרת את משתני הסביבה הבאים:
 
-### Advanced Configuration
+- `MONGO_URI`: כתובת החיבור ל-MongoDB
+- `JWT_SECRET`: מפתח סודי עבור JSON Web Tokens
+- `PORT`: פורט להרצת השרת (ברירת מחדל: 3001)
+- `NODE_ENV`: סביבת הריצה (development/production)
+- `CLIENT_URL`: כתובת ה-URL של הלקוח בסביבת הייצור
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+בסביבת פיתוח, אתה יכול להגדיר משתנים אלה בקובץ `.env` בתיקיית `server/`.

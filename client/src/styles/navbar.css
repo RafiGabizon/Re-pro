@@ -1,0 +1,171 @@
+.navbar {
+  background: linear-gradient(to right, #f8f9fa, #e9ecef);
+  padding: 15px 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 120px;
+  height: auto;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  color: #495057;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 0 15px;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #007bff;
+}
+
+.login-button {
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  margin-right: 15px;
+  box-shadow: 0 2px 5px rgba(0, 123, 255, 0.3);
+  text-align: center;
+  width: 110px;
+}
+
+.login-button:hover {
+  background-color: #ec7d0a;
+  color: #ffffff;  
+}
+
+.whatsapp-link {
+  display: flex;
+  align-items: center;
+}
+.fa-whatsapp {
+  font-size: 30px;
+}
+
+
+.menu-icon {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-icon span {
+  width: 25px;
+  height: 3px;
+  background-color: #ec7d0a;
+  margin: 2px 0;
+  transition: 0.4s;
+}
+
+/* ... שאר הקוד נשאר ללא שינוי ... */
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 15px;
+  }
+
+  .nav-content {
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .logo-link {
+    order: 2;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .menu-icon {
+    display: flex;
+    order: 1;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    background: #f8f9fa;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 60%;
+  }
+
+  .links.open {
+    display: flex;
+  }
+
+  .nav-link {
+    margin: 10px 0;
+    padding: 10px 20px;
+    width: 100%;
+    text-align: right;
+    background-color: #f8f9fa;
+  }
+
+  .login-button {
+    font-size: 14px;
+    padding: 8px 15px;
+    margin: 10px 20px;
+    width: calc(60% - 40px);
+    text-align: center;
+    background-color: #1e5be9;
+  }
+
+  .whatsapp-link {
+    order: 3;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .whatsapp-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .menu-icon.open span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .menu-icon.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-icon.open span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+}

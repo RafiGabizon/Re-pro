@@ -1,0 +1,187 @@
+import React, { useContext, useState, useEffect } from 'react';
+import '../../styles/admin/manageHomePage.css';
+import { HomePageContext } from '../../context/HomePageContext';
+
+function ManageHomePage() {
+  const context = useContext(HomePageContext);
+  const [editedComponents, setEditedComponents] = useState({});
+
+  useEffect(() => {
+    if (context && context.homePageData) {
+      setEditedComponents({
+        openComp: { ...context.homePageData.openComp },
+        stages: Array.isArray(context.homePageData.stages) ? [...context.homePageData.stages] : [],
+        recommendations: Array.isArray(context.homePageData.recommendations) ? [...context.homePageData.recommendations] : []
+      });
+    }
+  }, [context]);
+
+  if (!context || !context.homePageData) {
+    return <div>טוען...</div>;
+  }
+
+  const { homePageData, updateHomePageData } = context;
+
+  const handleFieldChange = (componentName, field, value) => {
+    setEditedComponents(prevState => ({
+      ...prevState,
+      [componentName]: Array.isArray(prevState[componentName]) 
+        ? prevState[componentName].map((item, index) => 
+            index === parseInt(field.split('.')[0]) 
+              ? { ...item, [field.split('.')[1]]: value }
+              : item
+          )
+        : { ...prevState[componentName], [field]: value }
+    }));
+  };
+
+  const handleFeatureChange = (index, value) => {
+    setEditedComponents(prevState => ({
+      ...prevState,
+      openComp: {
+        ...prevState.openComp,
+        features: prevState.openComp.features.map((feature, i) => 
+          i === index ? value : feature
+        )
+      }
+    }));
+  };
+
+  const addStage = () => {
+    const newStage = { title: '', description: '' };
+    setEditedComponents(prevState => ({
+      ...prevState,
+      stages: [...(prevState.stages || []), newStage]
+    }));
+  };
+
+  const removeStage = (index) => {
+    setEditedComponents(prevState => ({
+      ...prevState,
+      stages: prevState.stages.filter((_, i) => i !== index)
+    }));
+  };
+
+  const addRecommendation = () => {
+    const newReco = { recoName: '', jobType: '', spich: '', mainVid: '' };
+    setEditedComponents(prevState => ({
+      ...prevState,
+      recommendations: [...(prevState.recommendations || []), newReco]
+    }));
+  };
+
+  const removeRecommendation = (index) => {
+    setEditedComponents(prevState => ({
+      ...prevState,
+      recommendations: prevState.recommendations.filter((_, i) => i !== index)
+    }));
+  };
+
+  const saveComponentChanges = (componentName) => {
+    const updatedComponent = editedComponents[componentName];
+    if (updatedComponent) {
+      const newHomePageData = {
+        ...homePageData,
+        [componentName]: updatedComponent
+      };
+      updateHomePageData(newHomePageData);
+      alert('הקומפוננטה עודכנה בהצלחה');
+    }
+  };
+
+  return (
+    <div className="mhp-container">
+      <h1 className="mhp-title">ניהול עמוד הבית</h1>
+
+      <div className="mhp-component">
+        <h2>קומפוננטת פתיחה</h2>
+        <input
+          value={editedComponents.openComp?.mainTitle || ''}
+          onChange={(e) => handleFieldChange('openComp', 'mainTitle', e.target.value)}
+          placeholder="כותרת ראשית"
+        />
+        <h3>תכונות</h3>
+        {(editedComponents.openComp?.features || []).map((feature, index) => (
+          <input
+            key={index}
+            value={feature}
+            onChange={(e) => handleFeatureChange(index, e.target.value)}
+            placeholder={`תכונה ${index + 1}`}
+          />
+        ))}
+        <h3>תיאור</h3>
+        <textarea
+          value={editedComponents.openComp?.description || ''}
+          onChange={(e) => handleFieldChange('openComp', 'description', e.target.value)}
+          placeholder="תיאור"
+        />
+        <h3>קישור לסרטון</h3>
+        <input
+          value={editedComponents.openComp?.videoUrl || ''}
+          onChange={(e) => handleFieldChange('openComp', 'videoUrl', e.target.value)}
+          placeholder="קישור לסרטון"
+        />
+        <button className="save" onClick={() => saveComponentChanges('openComp')}>שמור שינויים</button>
+      </div>
+
+      <div className="mhp-component">
+        <h2>עריכת שלבים</h2>
+        {(editedComponents.stages || []).map((stage, index) => (
+          <div key={index}>
+            <input
+              value={stage.title || ''}
+              onChange={(e) => handleFieldChange('stages', `${index}.title`, e.target.value)}
+              placeholder="כותרת שלב"
+            />
+            <input
+              value={stage.description || ''}
+              onChange={(e) => handleFieldChange('stages', `${index}.description`, e.target.value)}
+              placeholder="תיאור שלב"
+            />
+            <button className="delete" onClick={() => removeStage(index)}>מחק שלב</button>
+          </div>
+        ))}
+        <button className="add" onClick={addStage}>הוסף שלב חדש</button>
+        <input
+          value={editedComponents.stages?.modalVideoUrl || ''}
+          onChange={(e) => handleFieldChange('stages', 'modalVideoUrl', e.target.value)}
+          placeholder="קישור לסרטון בחלון קופץ"
+        />
+        <button className="save" onClick={() => saveComponentChanges('stages')}>שמור שינויים</button>
+      </div>
+
+      <div className="mhp-component">
+        <h2>עריכת ממליצים</h2>
+        {(editedComponents.recommendations || []).map((reco, index) => (
+          <div key={index}>
+            <input
+              value={reco.recoName || ''}
+              onChange={(e) => handleFieldChange('recommendations', `${index}.recoName`, e.target.value)}
+              placeholder="שם הממליץ"
+            />
+            <input
+              value={reco.jobType || ''}
+              onChange={(e) => handleFieldChange('recommendations', `${index}.jobType`, e.target.value)}
+              placeholder="סוג העבודה"
+            />
+            <textarea
+              value={reco.spich || ''}
+              onChange={(e) => handleFieldChange('recommendations', `${index}.spich`, e.target.value)}
+              placeholder="תוכן ההמלצה"
+            />
+            <input
+              value={reco.mainVid || ''}
+              onChange={(e) => handleFieldChange('recommendations', `${index}.mainVid`, e.target.value)}
+              placeholder="קישור לסרטון"
+            />
+            <button className="delete" onClick={() => removeRecommendation(index)}>מחק ממליץ</button>
+          </div>
+        ))}
+        <button className="add" onClick={addRecommendation}>הוסף ממליץ חדש</button>
+        <button className="save" onClick={() => saveComponentChanges('recommendations')}>שמור שינויים</button>
+      </div>
+    </div>
+  );
+}
+
+export default ManageHomePage;

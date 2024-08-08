@@ -1,0 +1,212 @@
+/* General Page Styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  direction: rtl;
+  background-color: #f7f7f7;
+}
+
+.employers-page {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+/* Buttons Container */
+.buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.buttons-container button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #1779ba;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+  margin: 5px;
+}
+
+.buttons-container button:hover {
+  background-color: #145a8d;
+  transform: scale(1.05);
+}
+
+/* Video Placeholder */
+.video-placeholder {
+  width: 100%;
+  height: 300px;
+  background-color: #ddd;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+/* About Us Section */
+.about-us {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.about-us h2 {
+  color: #1779ba;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.about-us p {
+  font-size: 16px;
+  color: #666;
+}
+
+/* Split Section */
+.split-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.split-section .presenter,
+.split-section .how-it-works {
+  flex: 1;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: right;
+}
+
+.split-section .presenter {
+  margin-left: 10px;
+}
+
+.split-section .how-it-works {
+  margin-right: 10px;
+}
+
+.split-section p {
+  font-size: 16px;
+  color: #666;
+}
+
+/* Recommendations Section */
+.recommendations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 10px;
+}
+
+.recommendation-box {
+  flex-basis: calc(33.333% - 20px);
+  max-width: calc(33.333% - 20px);
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease-in-out, transform 0.2s;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+}
+
+.recommendation-video {
+  width: 100%;
+  margin-bottom: 10px;
+  aspect-ratio: 16 / 9;
+  background-color: #f0f0f0;
+  /* Placeholder color */
+}
+
+.recommendation-box h3 {
+  font-size: 18px;
+  margin: 0 0 10px 0;
+  word-wrap: break-word;
+}
+
+.recommendation-box p {
+  font-size: 14px;
+  margin: 0 0 5px 0;
+  word-wrap: break-word;
+}
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 768px) {
+  .employers-page {
+    margin: 10px;
+    padding: 15px;
+  }
+
+  .buttons-container {
+    flex-direction: column;
+  }
+
+  .buttons-container button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .video-placeholder {
+    height: 200px;
+  }
+
+  .split-section {
+    flex-direction: column;
+  }
+
+  .split-section .presenter,
+  .split-section .how-it-works {
+    margin: 0 0 20px 0;
+  }
+
+  .recommendations {
+    gap: 15px;
+  }
+      
+  .recommendation-box {
+    flex-basis: 100%;
+     max-width: 100%;
+  }
+            
+}
+
+@media screen and (max-width: 480px) {
+  .about-us h2 {
+    font-size: 20px;
+  }
+
+  .about-us p,
+  .split-section p {
+    font-size: 14px;
+  }
+
+  .video-placeholder {
+    height: 150px;
+  }
+    .recommendations {
+      gap: 10px;
+      padding: 5px;
+    }
+  
+    .recommendation-box {
+      padding: 10px;
+    }
+  
+    .recommendation-box h3 {
+      font-size: 16px;
+    }
+  
+    .recommendation-box p {
+      font-size: 13px;
+    }
+}
