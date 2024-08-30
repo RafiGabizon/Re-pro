@@ -131,7 +131,7 @@ export default function RegisterStepTwo() {
             <input type="checkbox" id="currentlyEmployed" name="currentlyEmployed" checked={formData.currentlyEmployed} onChange={handleChange} />
             <label htmlFor="currentlyEmployed">אני עדיין עובד/ת בתפקיד זה</label>
           </div>
-          <button type="submit" className="register-button">סיום הרשמה</button>
+          <button type="submit" className="register2-button">סיום הרשמה</button>
         </form>
       </div>
     </div>
