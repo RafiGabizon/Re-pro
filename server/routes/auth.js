@@ -1,7 +1,10 @@
 const express = require('express');
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
+const router = express.Router();
+
 require('dotenv').config();
+
 
 router.post('/login', async (req, res) => {
   try {
@@ -35,3 +38,6 @@ router.post('/login', async (req, res) => {
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 });
+
+
+module.exports = router;
