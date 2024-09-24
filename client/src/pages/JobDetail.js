@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { JobsContext } from '../context/JobsContext';
 import ReactCountryFlag from "react-country-flag";
 import { FaFacebook, FaTwitter, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
@@ -42,6 +42,13 @@ export default function JobDetail() {
   const { jobs } = useContext(JobsContext);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showMoreInfo, setShowMoreInfo] = useState(false);
+  const [showApplicationForm, setShowApplicationForm] = useState(false);
+  const [showRegisterPopup, setShowRegisterPopup] = useState(false);
+  const [applicantName, setApplicantName] = useState('');
+  const [applicantEmail, setApplicantEmail] = useState('');
+  const [cvFile, setCvFile] = useState(null);
+  const [videoFile, setVideoFile] = useState(null);
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -69,6 +76,21 @@ export default function JobDetail() {
 
   const handleLoginClick = () => {
     navigate('/login', { state: { from: location } });
+  };
+
+  const handleSubmitApplication = (e) => {
+    e.preventDefault();
+    console.log('Submitting application:', {
+      name: applicantName,
+      email: applicantEmail,
+      cvFile,
+      videoFile
+    });
+    setShowApplicationForm(false);
+  };
+
+  const handleFileChange = (e, setFile) => {
+    setFile(e.target.files[0]);
   };
 
   return (
@@ -105,14 +127,7 @@ export default function JobDetail() {
         <>
           <h2>תנאים</h2>
           <div className="job-conditions">
-            {[
-              { title: "מגורים", value: job.housing },
-              { title: "שכר", value: job.Salary },
-              { title: "היקף משרה", value: job.JobType },
-              { title: "ויזה/דרכון", value: job.visaRequirements },
-              { title: "התחייבות מינימום", value: job.minCommitment },
-              { title: "החזרי טיסות", value: job.flightReimbursement }
-            ].map((item, index) => (
+            {[{ title: "מגורים", value: job.housing }, { title: "שכר", value: job.Salary }, { title: "היקף משרה", value: job.JobType }, { title: "ויזה/דרכון", value: job.visaRequirements }, { title: "התחייבות מינימום", value: job.minCommitment }, { title: "החזרי טיסות", value: job.flightReimbursement }].map((item, index) => (
               <div key={index} className="condition-item">
                 <h3>{item.title}</h3>
                 <p>{item.value || 'מידע לא זמין'}</p>
@@ -162,12 +177,84 @@ export default function JobDetail() {
               </div>
             </div>
           )}
+
+          <button className="apply-button" onClick={() => setShowApplicationForm(true)}>
+            להגשת מועמדות
+          </button>
+
+          {showApplicationForm && (
+            <div className="modal-background" onClick={() => setShowApplicationForm(false)}>
+              <div className="modal-content application-modal" onClick={(e) => e.stopPropagation()}>
+                <h2>הגשת מועמדות</h2>
+                <form className="application-form" onSubmit={handleSubmitApplication}>
+                  <div>
+                    <label>שם מלא:</label>
+                    <input 
+                      type="text" 
+                      value={applicantName} 
+                      onChange={(e) => setApplicantName(e.target.value)} 
+                      required 
+                    />
+                  </div>
+                  <div>
+                    <label>אימייל:</label>
+                    <input 
+                      type="email" 
+                      value={applicantEmail} 
+                      onChange={(e) => setApplicantEmail(e.target.value)} 
+                      required 
+                    />
+                  </div>
+                  <div>
+                    <label>קורות חיים (PDF):</label>
+                    <input 
+                      type="file" 
+                      accept="application/pdf" 
+                      onChange={(e) => handleFileChange(e, setCvFile)} 
+                      required 
+                    />
+                  </div>
+                  <div>
+                    <label>סרטון קצר (MP4):</label>
+                    <input 
+                      type="file" 
+                      accept="video/mp4" 
+                      onChange={(e) => handleFileChange(e, setVideoFile)} 
+                    />
+                  </div>
+                  <button type="submit">שלח מועמדות</button>
+                </form>
+                <button onClick={() => setShowApplicationForm(false)} className="close-button">X</button>
+              </div>
+            </div>
+          )}
         </>
       ) : (
         <div className="login-prompt">
           <p>כדי לצפות בפרטים המלאים של המשרה, אנא התחבר או הירשם.</p>
           <button onClick={handleLoginClick} className="login-button">התחברות</button>
-          <Link to="/register" className="register-button">הרשמה</Link>
+          <button onClick={() => setShowRegisterPopup(true)} className="register-button">הרשמה</button>
+          
+          {showRegisterPopup && (
+            <div className="modal-background" onClick={() => setShowRegisterPopup(false)}>
+              <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                <h2>הרשמה</h2>
+                <form className="register-form">
+                  <label>שם מלא:</label>
+                  <input type="text" required />
+                  
+                  <label>אימייל:</label>
+                  <input type="email" required />
+                  
+                  <label>סיסמה:</label>
+                  <input type="password" required />
+                  
+                  <button type="submit">הרשמה</button>
+                  <button onClick={() => setShowRegisterPopup(false)} className="close-button">X</button>
+                </form>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>
