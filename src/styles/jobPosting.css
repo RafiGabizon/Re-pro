@@ -1,0 +1,115 @@
+/* Job Posting Form Styles */
+.jobposting-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 30px 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    direction: rtl; /* For Hebrew language */
+  }
+  
+  .form-title {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  .google-signin-button {
+    background-color: #4285f4;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 25px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .google-signin-button:hover {
+    background-color: #357ae8;
+  }
+  
+  .google-signin-button img {
+    margin-left: 10px;
+  }
+  
+  .jobposting-form .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .jobposting-form input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+  }
+  
+  .jobposting-form input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .terms {
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .terms label {
+    cursor: pointer;
+  }
+  
+  .terms input[type="checkbox"] {
+    margin-left: 5px;
+  }
+  
+  .terms a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .terms a:hover {
+    text-decoration: underline;
+  }
+  
+  .submit-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 14px;
+    border-radius: 5px;
+    font-size: 18px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .jobposting-container {
+      margin: 20px;
+      padding: 20px;
+    }
+  
+    .form-title {
+      font-size: 24px;
+    }
+  
+    .google-signin-button, .submit-button {
+      font-size: 16px;
+      padding: 12px;
+    }
+  }
+  

@@ -1,19 +1,20 @@
+/* Navbar Styles */
 .navbar {
-  background: linear-gradient(to right, #f8f9fa, #e9ecef);
+  background: linear-gradient(to left, #f8f9fa, #e9ecef);
   padding: 15px 20px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  position: relative;
+  z-index: 100;
+  direction: rtl; /* Set direction to right-to-left */
 }
 
 .nav-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
 }
 
+/* Logo */
 .logo-link {
   display: flex;
   align-items: center;
@@ -22,11 +23,14 @@
 .logo {
   width: 120px;
   height: auto;
+  margin-left: 20px; /* Adjusted for RTL */
 }
 
+/* Navigation Links */
 .links {
   display: flex;
   align-items: center;
+  margin-left: 420px; /* Increased space to push right-side buttons further right */
 }
 
 .nav-link {
@@ -41,86 +45,110 @@
   color: #007bff;
 }
 
-.login-button {
-  background-color: #007bff;
-  color: #ffffff;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  margin-right: 15px;
-  box-shadow: 0 2px 5px rgba(0, 123, 255, 0.3);
-  text-align: center;
-  width: 110px;
-}
-
-.login-button:hover {
-  background-color: #ec7d0a;
-  color: #ffffff;  
-}
-
-.whatsapp-link {
+/* Right-side Buttons */
+.right-buttons {
   display: flex;
   align-items: center;
 }
+
+/* WhatsApp Icon */
+.whatsapp-link {
+  display: flex;
+  align-items: center;
+  color: #25D366;
+  margin-right: 15px;
+  text-decoration: none;
+}
+
 .fa-whatsapp {
   font-size: 30px;
 }
 
+/* Updated Register and Job Posting Buttons */
+/* Base Styles */
+.register-button,
+.jobPosting-button {
+  color: #495057; /* Same as nav-link color */
+  background-color: transparent;
+  padding: 8px 15px;
+  border: 2px solid #495057; /* Added border for button appearance */
+  border-radius: 5px;
+  font-weight: bold;
+  transition: color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+  text-align: center;
+  margin-right: 10px;
+  text-decoration: none;
+}
 
+/* Hover Effects */
+.register-button:hover,
+.jobPosting-button:hover {
+  color: #007bff; /* Change text color on hover */
+  border-color: #007bff; /* Change border color on hover */
+  background-color: #f0f8ff; /* Light background on hover */
+}
+
+/* Menu Icon for Mobile */
 .menu-icon {
   display: none;
   flex-direction: column;
   cursor: pointer;
+  margin-left: 15px; /* Adjusted for RTL */
 }
 
 .menu-icon span {
   width: 25px;
   height: 3px;
-  background-color: #ec7d0a;
-  margin: 2px 0;
+  background-color: #495057;
+  margin: 4px 0;
   transition: 0.4s;
 }
 
-/* ... שאר הקוד נשאר ללא שינוי ... */
+/* Mobile Menu Icon Animation */
+.menu-icon.open span:nth-child(1) {
+  transform: rotate(-45deg) translate(5px, 6px);
+}
 
+.menu-icon.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-icon.open span:nth-child(3) {
+  transform: rotate(45deg) translate(5px, -6px);
+}
+
+/* Responsive Styles */
 @media (max-width: 768px) {
-  .navbar {
-    padding: 10px 15px;
-  }
-
   .nav-content {
     flex-wrap: wrap;
-    position: relative;
+    justify-content: center;
   }
 
   .logo-link {
-    order: 2;
-    width: 100%;
-    justify-content: center;
+    order: 1;
     margin-bottom: 10px;
   }
 
   .menu-icon {
     display: flex;
-    order: 1;
+    order: 2;
     position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    right: 20px; /* Adjusted for RTL */
+    top: 20px;
   }
 
   .links {
     display: none;
     flex-direction: column;
+    width: 100%;
+    background: #ffffff;
     position: absolute;
-    top: 100%;
-    right: 0;
-    left: 0;
-    background: #f8f9fa;
+    top: 70px;
+    left: 0; /* Adjusted for RTL */
+    padding: 10px 0;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    width: 60%;
+    z-index: 99;
+    margin-left: 0; /* Reset margin in mobile view */
   }
 
   .links.open {
@@ -129,43 +157,26 @@
 
   .nav-link {
     margin: 10px 0;
-    padding: 10px 20px;
+    text-align: center;
     width: 100%;
-    text-align: right;
-    background-color: #f8f9fa;
   }
 
-  .login-button {
-    font-size: 14px;
-    padding: 8px 15px;
-    margin: 10px 20px;
-    width: calc(60% - 40px);
-    text-align: center;
-    background-color: #1e5be9;
+  .right-buttons {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .register-button,
+  .jobPosting-button {
+    width: calc(100% - 40px);
+    margin: 5px 20px;
   }
 
   .whatsapp-link {
     order: 3;
     position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  .whatsapp-icon {
-    width: 20px;
-    height: 20px;
-  }
-
-  .menu-icon.open span:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
-  }
-
-  .menu-icon.open span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .menu-icon.open span:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
+    left: 20px; /* Adjusted for RTL */
+    top: 20px;
   }
 }
