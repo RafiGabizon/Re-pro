@@ -33,21 +33,19 @@
 
 .admin-nav-link {
     color: #ecf0f1;
-    /* שינוי צבע הטקסט */
+    font-weight: bold;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 17px;
     margin: 0 40px;
     transition: color 0.3s ease;
 }
 
 .admin-nav-link:hover {
     color: #3498db;
-    /* שינוי צבע ההובר */
 }
 
 .admin-login-button {
     background-color: #e74c3c;
-    /* שינוי צבע הכפתור */
     color: #ffffff;
     padding: 10px 20px;
     border-radius: 5px;
