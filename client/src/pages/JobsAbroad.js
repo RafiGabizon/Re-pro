@@ -3,12 +3,19 @@ import '../styles/jobs_abroad.css';
 import '../styles/styles.css';
 import JobsComp from '../Components/JobsComp';
 import { JobsContext } from '../context/JobsContext';
+import countriesData from '../data/countries.json';
 
 export default function JobsAbroad() {
   const { jobs } = useContext(JobsContext);
   const [filterTypes, setFilterTypes] = useState({ Continents: '', State: '', Domains: '', JobType: '' });
   const [searchText, setSearchText] = useState('');
   const [filteredJobs, setFilteredJobs] = useState([]);
+  const [countries, setCountries] = useState([]);
+
+  useEffect(() => {
+    // טעינת רשימת המדינות מקובץ ה-JSON
+    setCountries(countriesData.countries);
+  }, []);
 
   const handleFilterChange = (event) => {
     setFilterTypes({
@@ -52,11 +59,9 @@ export default function JobsAbroad() {
   }, [filterTypes, searchText, jobs]);
 
   const uniqueContinents = ['אסיה', 'אמריקה', 'אפריקה', 'אירופה', 'אוסטרליה'];
-  const uniqueStates = ['ישראל', 'ארצות הברית', 'קנדה', 'בריטניה', 'גרמניה', 'צרפת', 'הודו', 'יפן', 'אוסטרליה'];
-  const uniqueDomains = ['הנדסה', 'ניהול', 'טכנולוגיות מידע', 'שיווק', 'פיננסים', 'משאבי אנוש', 'עיצוב', 'הנדסה', 'מכירות', 'ייעוץ'];
+  const uniqueDomains = ['הנדסה', 'ניהול', 'טכנולוגיות מידע', 'שיווק', 'פיננסים', 'משאבי אנוש', 'עיצוב', 'מכירות', 'ייעוץ'];
   const uniqueJobTypes = ['חצי משרה', 'משרה מלאה', 'משרת אם'];
 
-  
   return (
     <div className="JobsAbroad">
       <h2>משרות בחו"ל</h2>
@@ -95,7 +100,7 @@ export default function JobsAbroad() {
               onChange={handleFilterChange}
             >
               <option value="">כל המדינות</option>
-              {uniqueStates.map((state, index) => (
+              {countries.map((state, index) => (
                 <option key={index} value={state}>
                   {state}
                 </option>
@@ -136,9 +141,9 @@ export default function JobsAbroad() {
           </div>
         </div>
       </div>
-       <div className="container">
+      <div className="container">
         {filteredJobs.length > 0 ? (
-          filteredJobs.map((job, index) => (
+          filteredJobs.map((job) => (
             <JobsComp key={job.id} item={job} />
           ))
         ) : (
