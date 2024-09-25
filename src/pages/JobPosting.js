@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/jobPosting.css'; 
+import '../styles/jobPosting.css';
 
+/* JobPosting component: handles the form state and submission for job postings */
 export default function JobPosting() {
   const navigate = useNavigate();
+
+  /* useState hook: manages form input data */
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -13,6 +16,7 @@ export default function JobPosting() {
     agreeTerms: false,
   });
 
+  /* handleChange: updates form data when user types or checks a box */
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prevData) => ({
@@ -21,6 +25,7 @@ export default function JobPosting() {
     }));
   };
 
+  /* handleSubmit: handles form submission, validates terms agreement, and navigates to the next step */
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formData.agreeTerms) {
@@ -31,13 +36,12 @@ export default function JobPosting() {
     }
   };
 
+  /* Render the Job Posting form */
   return (
     <div className="jobposting-container">
       <h2 className="form-title">הרשמת מעסיק</h2>
-      
-      {/* Google Sign-in Button */}
-      <button className="google-signin-button">להמשיך עם Google</button>
-      
+
+
       {/* Form Fields */}
       <form onSubmit={handleSubmit} className="jobposting-form">
         <div className="form-group">
@@ -96,7 +100,7 @@ export default function JobPosting() {
         </div>
 
         {/* Terms and Conditions */}
-        <div className="form-group terms">
+        <div className="terms">
           <label>
             <input
               type="checkbox"
@@ -104,11 +108,11 @@ export default function JobPosting() {
               checked={formData.agreeTerms}
               onChange={handleChange}
             />
-            אני מאשר/ת שקראתי ואני מסכים/ה
+            אני מאשר/ת שקראתי ואני מסכים/ה ל
+            <a href="/terms" target="_blank" rel="noopener noreferrer">
+              מדיניות הפרטיות ותנאי השימוש
+            </a>
           </label>
-          <a href="/terms" target="_blank" rel="noopener noreferrer">
-            למדיניות הפרטיות ולתנאי השימוש
-          </a>
         </div>
 
         {/* Submit Button */}

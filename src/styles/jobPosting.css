@@ -1,115 +1,192 @@
-/* Job Posting Form Styles */
+/* Container for the entire job posting section */
 .jobposting-container {
-    max-width: 500px;
-    margin: 50px auto;
-    padding: 30px 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    direction: rtl; /* For Hebrew language */
+  background: linear-gradient(135deg, #f5f7fa, #d3e0ec);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  direction: rtl;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Title for the form */
+.form-title {
+  color: #007bff;
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+/* Form styling */
+.jobposting-form {
+  background-color: white;
+  border-radius: 20px;
+  padding: 50px;
+  width: 100%;
+  max-width: 600px; /* Increased from 500px to make form wider */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-in-out;
+}
+
+.jobposting-form:hover {
+  transform: translateY(-5px);
+}
+
+/* Form group styling for each input field */
+.form-group {
+  margin-bottom: 25px;
+}
+
+/* Styling for input fields */
+.form-group input {
+  width: calc(100% + 60px); /* Make inputs extend beyond the form's padding */
+  margin-left: -30px; /* Adjust for the extended width */
+  margin-right: -30px; /* Adjust for the extended width */
+  padding: 18px 30px; /* Increased horizontal padding */
+  border: 1px solid #ced4da;
+  border-radius: 20px;
+  font-size: 18px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-group input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* Terms and conditions section */
+.terms {
+  font-size: 14px;
+  text-align: right;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px 30px; /* Increased padding to match input fields */
+  background-color: white;
+  border: 1px solid #e9ecef;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: calc(100% + 60px); /* Make terms box match input width */
+  margin-left: -30px;
+  margin-right: -30px;
+}
+
+.terms label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+.terms input[type="checkbox"] {
+  margin-left: 10px;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #007bff;
+  border-radius: 3px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: white;
+  cursor: pointer;
+  position: relative;
+}
+
+.terms input[type="checkbox"]:checked {
+  background-color: #007bff;
+}
+
+.terms input[type="checkbox"]:checked::after {
+  content: '\2714';
+  font-size: 14px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.terms a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 500;
+}
+
+.terms a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Styling for submit button */
+.submit-button {
+  width: calc(100% + 60px); /* Make button match input width */
+  margin-left: -30px;
+  margin-right: -30px;
+  padding: 18px 30px; /* Increased padding to match input fields */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Media query for small screen devices */
+@media (max-width: 480px) {
+  .jobposting-form {
+    padding: 30px;
   }
-  
+
   .form-title {
-    font-size: 28px;
-    color: #333;
-    margin-bottom: 30px;
-    text-align: center;
+    font-size: 26px;
   }
-  
-  .google-signin-button {
-    background-color: #4285f4;
-    color: #fff;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 5px;
+
+  .form-group input {
+    padding: 16px 25px; /* Slightly reduced padding for small screens */
     font-size: 16px;
-    cursor: pointer;
-    margin-bottom: 25px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: calc(100% + 40px); /* Adjust for smaller padding on mobile */
+    margin-left: -20px;
+    margin-right: -20px;
   }
-  
-  .google-signin-button:hover {
-    background-color: #357ae8;
-  }
-  
-  .google-signin-button img {
-    margin-left: 10px;
-  }
-  
-  .jobposting-form .form-group {
-    margin-bottom: 20px;
-  }
-  
-  .jobposting-form input {
-    width: 100%;
-    padding: 14px 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: border-color 0.3s;
-  }
-  
-  .jobposting-form input:focus {
-    border-color: #007bff;
-    outline: none;
-  }
-  
-  .terms {
-    font-size: 14px;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .terms label {
-    cursor: pointer;
-  }
-  
-  .terms input[type="checkbox"] {
-    margin-left: 5px;
-  }
-  
-  .terms a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .terms a:hover {
-    text-decoration: underline;
-  }
-  
+
   .submit-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 14px;
-    border-radius: 5px;
+    padding: 16px 25px; /* Match input padding */
     font-size: 18px;
-    width: 100%;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    width: calc(100% + 40px);
+    margin-left: -20px;
+    margin-right: -20px;
   }
-  
-  .submit-button:hover {
-    background-color: #0056b3;
+
+  .terms {
+    font-size: 12px;
+    padding: 15px 25px;
+    width: calc(100% + 40px);
+    margin-left: -20px;
+    margin-right: -20px;
   }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .jobposting-container {
-      margin: 20px;
-      padding: 20px;
-    }
-  
-    .form-title {
-      font-size: 24px;
-    }
-  
-    .google-signin-button, .submit-button {
-      font-size: 16px;
-      padding: 12px;
-    }
+
+  .terms input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
   }
-  
+}
