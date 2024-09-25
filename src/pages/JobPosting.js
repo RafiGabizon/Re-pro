@@ -2,11 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/jobPosting.css';
 
-/* JobPosting component: handles the form state and submission for job postings */
 export default function JobPosting() {
   const navigate = useNavigate();
-
-  /* useState hook: manages form input data */
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -16,16 +13,26 @@ export default function JobPosting() {
     agreeTerms: false,
   });
 
-  /* handleChange: updates form data when user types or checks a box */
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+
+    // Allow only numeric input and restrict phone number to 12 digits
+    if (name === 'phoneNumber') {
+      const onlyNumbers = value.replace(/\D/g, ''); // Remove non-numeric characters
+      if (onlyNumbers.length > 12) return; // Limit the phone number to 12 digits
+      setFormData((prevData) => ({
+        ...prevData,
+        phoneNumber: onlyNumbers,
+      }));
+      return;
+    }
+
     setFormData((prevData) => ({
       ...prevData,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: type === 'checkbox' ? checked : value.trim(),
     }));
   };
 
-  /* handleSubmit: handles form submission, validates terms agreement, and navigates to the next step */
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formData.agreeTerms) {
@@ -36,88 +43,114 @@ export default function JobPosting() {
     }
   };
 
-  /* Render the Job Posting form */
   return (
-    <div className="jobposting-container">
-      <h2 className="form-title">הרשמת מעסיק</h2>
+    <div className="unique-jobposting-container">
+      <div className="unique-jobposting-content">
+        <h2>הרשמת מעסיק</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="unique-form-group">
+            <label htmlFor="firstName">שם פרטי</label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              placeholder="שם פרטי"
+              value={formData.firstName}
+              onChange={handleChange}
+              required
+              maxLength="20" // Limit to 20 characters
+              title="Letters and numbers only, max 20 characters"
+            />
+          </div>
 
+          <div className="unique-form-group">
+            <label htmlFor="lastName">שם משפחה</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              placeholder="שם משפחה"
+              value={formData.lastName}
+              onChange={handleChange}
+              required
+              maxLength="20" // Limit to 20 characters
+              title="Letters and numbers only, max 20 characters"
+            />
+          </div>
 
-      {/* Form Fields */}
-      <form onSubmit={handleSubmit} className="jobposting-form">
-        <div className="form-group">
-          <input
-            type="text"
-            name="firstName"
-            placeholder="שם פרטי"
-            value={formData.firstName}
-            onChange={handleChange}
-            required
-          />
-        </div>
+          <div className="unique-form-group">
+            <label htmlFor="companyName">שם חברה</label>
+            <input
+              type="text"
+              id="companyName"
+              name="companyName"
+              placeholder="שם חברה"
+              value={formData.companyName}
+              onChange={handleChange}
+              required
+              maxLength="20" // Limit to 20 characters
+              title="Letters and numbers only, max 20 characters"
+            />
+          </div>
 
-        <div className="form-group">
-          <input
-            type="text"
-            name="lastName"
-            placeholder="שם משפחה"
-            value={formData.lastName}
-            onChange={handleChange}
-            required
-          />
-        </div>
+          <div className="unique-form-group">
+            <label htmlFor="phoneNumber">מספר טלפון</label>
+            <input
+              type="tel"
+              id="phoneNumber"
+              name="phoneNumber"
+              placeholder="WhatsApp מספר"
+              value={formData.phoneNumber}
+              onChange={handleChange}
+              required
+              maxLength="12" // Restrict to a maximum of 12 digits
+              pattern="[0-9]*" // Ensure only numeric characters are allowed
+              inputMode="numeric" // Helps mobile devices show numeric keyboard
+            />
+          </div>
 
-        <div className="form-group">
-          <input
-            type="text"
-            name="companyName"
-            placeholder="Company name"
-            value={formData.companyName}
-            onChange={handleChange}
-            required
-          />
-        </div>
+          <div className="unique-form-group">
+            <label htmlFor="email">מייל להתחברות</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="מייל להתחברות"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              maxLength="20" // Limit to 20 characters
+              pattern="[A-Za-z0-9@.]*" // Allow only letters, digits, @, and .
+              title="Letters, numbers, '@', and '.', max 20 characters"
+            />
+          </div>
 
-        <div className="form-group">
-          <input
-            type="tel"
-            name="phoneNumber"
-            placeholder="WhatsApp מספר"
-            value={formData.phoneNumber}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <input
-            type="email"
-            name="email"
-            placeholder="מייל להתחברות"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        {/* Terms and Conditions */}
-        <div className="terms">
-          <label>
+          <div className="unique-form-group checkbox">
             <input
               type="checkbox"
+              id="agreeTerms"
               name="agreeTerms"
               checked={formData.agreeTerms}
               onChange={handleChange}
             />
-            אני מאשר/ת שקראתי ואני מסכים/ה ל
-            <a href="/terms" target="_blank" rel="noopener noreferrer">
-              מדיניות הפרטיות ותנאי השימוש
-            </a>
-          </label>
-        </div>
+            <label htmlFor="agreeTerms" className="unique-checkbox-label">
+              אני מאשר/ת את{' '}
+              <a
+                href="/TermsOfUse"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="unique-terms-link"
+              >
+                תנאי השימוש
+              </a>
+            </label>
+          </div>
 
-        {/* Submit Button */}
-        <button type="submit" className="submit-button">לשלב הבא</button>
-      </form>
+          <button type="submit" className="unique-submit-button">
+            לשלב הבא
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

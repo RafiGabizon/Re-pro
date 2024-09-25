@@ -14,19 +14,18 @@ export default function LogIn() {
     try {
       const response = await authService.login({ email, password });
       console.log('Login successful:', response);
-      // Save the token and role in localStorage or state management
-      navigate('/');  // Redirect to home page or desired page after login
+      navigate('/');
     } catch (error) {
       console.error('Login error:', error);
     }
   };
 
   return (
-    <div className="login-container">
-      <div className="login-content">
+    <div className="unique-login-container">
+      <div className="unique-login-content">
         <h2>התחברות ל-Re-Pro</h2>
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
+          <div className="unique-form-group">
             <label htmlFor="email">כתובת אימייל</label>
             <input
               type="email"
@@ -36,7 +35,7 @@ export default function LogIn() {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="unique-form-group">
             <label htmlFor="password">סיסמה</label>
             <input
               type="password"
@@ -46,11 +45,11 @@ export default function LogIn() {
               required
             />
           </div>
-          <button type="submit" className="login-button">התחבר</button>
+          <button type="submit" className="unique-login-button">התחבר</button>
         </form>
-        <div className="additional-options">
+        <div className="unique-additional-options">
           <a href="#forgot-password">שכחת סיסמה?</a>
-          <span className="separator">|</span>
+          <span className="unique-separator">|</span>
           <a href="/register">הרשמה לחשבון חדש</a>
         </div>
       </div>

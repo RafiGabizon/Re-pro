@@ -1,0 +1,110 @@
+/* General form and container styling */
+.step-two-register-container {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    direction: rtl; /* Keep RTL for Hebrew */
+  }
+  
+  .step-two-register-content {
+    background-color: white;
+    border-radius: 15px;
+    padding: 40px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Prevent any overflow */
+  }
+  
+  .step-two-register-content h2 {
+    color: #007bff;
+    font-size: 28px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  .step-two-form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+  }
+  
+  .step-two-register-content .step-two-form-group label {
+    margin-bottom: 8px;
+    color: #495057;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .step-two-register-content .step-two-form-group input,
+  .step-two-register-content .step-two-form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .step-two-form-group input:focus,
+  .step-two-form-group select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  }
+  
+  .step-two-checkbox {
+    display: flex;
+    align-items: center;
+  }
+  
+  .step-two-checkbox input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  .step-two-register-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .step-two-register-button:hover {
+    background-color: #0056b3;
+  }
+  
+  @media (max-width: 480px) {
+    .step-two-register-content {
+      padding: 30px;
+    }
+  
+    .step-two-register-content h2 {
+      font-size: 24px;
+    }
+  
+    .step-two-form-group label {
+      font-size: 14px;
+    }
+  
+    .step-two-form-group input,
+    .step-two-form-group select {
+      padding: 10px;
+      font-size: 14px;
+    }
+  
+    .step-two-register-button {
+      padding: 10px;
+      font-size: 16px;
+    }
+  }
+  

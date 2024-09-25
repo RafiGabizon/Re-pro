@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import '../styles/register.css';
-import authService from '../services/authService';  // Corrected import path
+import '../styles/registerStepTwo.css';
+import authService from '../services/authService';
 
 export default function RegisterStepTwo() {
   const location = useLocation();
@@ -25,7 +25,7 @@ export default function RegisterStepTwo() {
 
   useEffect(() => {
     if (location.state?.formData) {
-      setFormData(prevState => ({...prevState, ...location.state.formData}));
+      setFormData(prevState => ({ ...prevState, ...location.state.formData }));
     }
   }, [location.state]);
 
@@ -50,11 +50,11 @@ export default function RegisterStepTwo() {
   };
 
   return (
-    <div className="register-container">
-      <div className="register-content">
+    <div className="step-two-register-container">
+      <div className="step-two-register-content">
         <h2>השלמת פרטי הרשמה</h2>
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
+          <div className="step-two-form-group">
             <label>מין</label>
             <select name="gender" value={formData.gender} onChange={handleChange} required>
               <option value="">בחר</option>
@@ -63,19 +63,40 @@ export default function RegisterStepTwo() {
               <option value="other">אחר</option>
             </select>
           </div>
-          <div className="form-group">
+          <div className="step-two-form-group">
             <label htmlFor="birthDate">תאריך לידה</label>
-            <input type="date" id="birthDate" name="birthDate" value={formData.birthDate} onChange={handleChange} required />
+            <input
+              type="date"
+              id="birthDate"
+              name="birthDate"
+              value={formData.birthDate}
+              onChange={handleChange}
+              required
+            />
           </div>
-          <div className="form-group">
+          <div className="step-two-form-group">
             <label htmlFor="country">ארץ מגורים</label>
-            <input type="text" id="country" name="country" value={formData.country} onChange={handleChange} required />
+            <input
+              type="text"
+              id="country"
+              name="country"
+              value={formData.country}
+              onChange={handleChange}
+              required
+            />
           </div>
-          <div className="form-group">
+          <div className="step-two-form-group">
             <label htmlFor="city">עיר מגורים</label>
-            <input type="text" id="city" name="city" value={formData.city} onChange={handleChange} required />
+            <input
+              type="text"
+              id="city"
+              name="city"
+              value={formData.city}
+              onChange={handleChange}
+              required
+            />
           </div>
-          <div className="form-group">
+          <div className="step-two-form-group">
             <label>רמת שליטה באנגלית</label>
             <select name="englishLevel" value={formData.englishLevel} onChange={handleChange} required>
               <option value="">בחר</option>
@@ -85,14 +106,25 @@ export default function RegisterStepTwo() {
               <option value="fluent">שוטפת</option>
             </select>
           </div>
-          <div className="form-group">
+          <div className="step-two-form-group">
             <label htmlFor="additionalLanguage">שפה נוספת (אופציונלי)</label>
-            <input type="text" id="additionalLanguage" name="additionalLanguage" value={formData.additionalLanguage} onChange={handleChange} />
+            <input
+              type="text"
+              id="additionalLanguage"
+              name="additionalLanguage"
+              value={formData.additionalLanguage}
+              onChange={handleChange}
+            />
           </div>
           {formData.additionalLanguage && (
-            <div className="form-group">
+            <div className="step-two-form-group">
               <label>רמת שליטה בשפה הנוספת</label>
-              <select name="additionalLanguageLevel" value={formData.additionalLanguageLevel} onChange={handleChange} required>
+              <select
+                name="additionalLanguageLevel"
+                value={formData.additionalLanguageLevel}
+                onChange={handleChange}
+                required
+              >
                 <option value="">בחר</option>
                 <option value="basic">בסיסית</option>
                 <option value="intermediate">בינונית</option>
@@ -101,37 +133,83 @@ export default function RegisterStepTwo() {
               </select>
             </div>
           )}
-          <div className="form-group checkbox">
-            <input type="checkbox" id="usVisa" name="usVisa" checked={formData.usVisa} onChange={handleChange} />
+          <div className="step-two-form-group step-two-checkbox">
+            <input
+              type="checkbox"
+              id="usVisa"
+              name="usVisa"
+              checked={formData.usVisa}
+              onChange={handleChange}
+            />
             <label htmlFor="usVisa">יש לי ויזה לארה"ב</label>
           </div>
-          <div className="form-group checkbox">
-            <input type="checkbox" id="additionalPassport" name="additionalPassport" checked={formData.additionalPassport} onChange={handleChange} />
+          <div className="step-two-form-group step-two-checkbox">
+            <input
+              type="checkbox"
+              id="additionalPassport"
+              name="additionalPassport"
+              checked={formData.additionalPassport}
+              onChange={handleChange}
+            />
             <label htmlFor="additionalPassport">יש לי דרכון נוסף</label>
           </div>
           {formData.additionalPassport && (
-            <div className="form-group">
+            <div className="step-two-form-group">
               <label htmlFor="additionalPassportCountry">מדינת הדרכון הנוסף</label>
-              <input type="text" id="additionalPassportCountry" name="additionalPassportCountry" value={formData.additionalPassportCountry} onChange={handleChange} required />
+              <input
+                type="text"
+                id="additionalPassportCountry"
+                name="additionalPassportCountry"
+                value={formData.additionalPassportCountry}
+                onChange={handleChange}
+                required
+              />
             </div>
           )}
-          <div className="form-group">
+          <div className="step-two-form-group">
             <label htmlFor="availabilityDate">זמינות לתחילת עבודה</label>
-            <input type="date" id="availabilityDate" name="availabilityDate" value={formData.availabilityDate} onChange={handleChange} required />
+            <input
+              type="date"
+              id="availabilityDate"
+              name="availabilityDate"
+              value={formData.availabilityDate}
+              onChange={handleChange}
+              required
+            />
           </div>
-          <div className="form-group">
+          <div className="step-two-form-group">
             <label htmlFor="jobTitle">תפקיד נוכחי</label>
-            <input type="text" id="jobTitle" name="jobTitle" value={formData.jobTitle} onChange={handleChange} required />
+            <input
+              type="text"
+              id="jobTitle"
+              name="jobTitle"
+              value={formData.jobTitle}
+              onChange={handleChange}
+              required
+            />
           </div>
-          <div className="form-group">
+          <div className="step-two-form-group">
             <label htmlFor="companyName">שם החברה</label>
-            <input type="text" id="companyName" name="companyName" value={formData.companyName} onChange={handleChange} required />
+            <input
+              type="text"
+              id="companyName"
+              name="companyName"
+              value={formData.companyName}
+              onChange={handleChange}
+              required
+            />
           </div>
-          <div className="form-group checkbox">
-            <input type="checkbox" id="currentlyEmployed" name="currentlyEmployed" checked={formData.currentlyEmployed} onChange={handleChange} />
+          <div className="step-two-form-group step-two-checkbox">
+            <input
+              type="checkbox"
+              id="currentlyEmployed"
+              name="currentlyEmployed"
+              checked={formData.currentlyEmployed}
+              onChange={handleChange}
+            />
             <label htmlFor="currentlyEmployed">אני עדיין עובד/ת בתפקיד זה</label>
           </div>
-          <button type="submit" className="register-button">סיום הרשמה</button>
+          <button type="submit" className="step-two-register-button">סיום הרשמה</button>
         </form>
       </div>
     </div>

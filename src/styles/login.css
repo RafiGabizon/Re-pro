@@ -1,5 +1,5 @@
-.login-container {
-    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+.unique-login-container {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef); /* Match background with others */
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -8,50 +8,56 @@
     direction: rtl;
 }
 
-.login-content {
+.unique-login-content {
     background-color: white;
     border-radius: 15px;
     padding: 40px;
     width: 100%;
     max-width: 400px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Match shadow effect */
+    overflow: hidden;
 }
 
-.login-content h2 {
+.unique-login-content h2 {
     color: #007bff;
     font-size: 28px;
     margin-bottom: 30px;
     text-align: center;
 }
 
-.form-group {
+.unique-form-group {
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
 }
 
-.form-group label {
-    display: block;
+.unique-form-group label {
     margin-bottom: 8px;
     color: #495057;
     font-size: 16px;
     font-weight: bold;
+    text-align: right;
 }
 
-.form-group input {
+.unique-form-group input {
     width: 100%;
     padding: 12px;
     border: 1px solid #ced4da;
     border-radius: 5px;
     font-size: 16px;
     transition: border-color 0.3s ease;
+    text-align: right;
 }
 
-.form-group input:focus {
+.unique-form-group input:focus {
     border-color: #007bff;
     outline: none;
     box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
 
-.login-button {
+.unique-login-button {
     width: 100%;
     padding: 12px;
     background-color: #007bff;
@@ -61,57 +67,58 @@
     font-size: 18px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    text-align: center;
 }
 
-.login-button:hover {
+.unique-login-button:hover {
     background-color: #0056b3;
 }
 
-.additional-options {
+.unique-additional-options {
     margin-top: 20px;
     text-align: center;
     font-size: 14px;
 }
 
-.additional-options a {
+.unique-additional-options a {
     color: #007bff;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.additional-options a:hover {
+.unique-additional-options a:hover {
     color: #0056b3;
 }
 
-.separator {
+.unique-separator {
     margin: 0 10px;
     color: #6c757d;
 }
 
 @media (max-width: 480px) {
-    .login-content {
+    .unique-login-content {
         padding: 30px;
     }
 
-    .login-content h2 {
+    .unique-login-content h2 {
         font-size: 24px;
     }
 
-    .form-group label {
+    .unique-form-group label {
         font-size: 14px;
     }
 
-    .form-group input {
+    .unique-form-group input {
         padding: 10px;
         font-size: 14px;
     }
 
-    .login-button {
+    .unique-login-button {
         padding: 10px;
         font-size: 16px;
     }
 
-    .additional-options {
+    .unique-additional-options {
         font-size: 12px;
     }
 }
