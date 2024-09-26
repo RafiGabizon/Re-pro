@@ -33,10 +33,16 @@ export default function InitialRegister() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Navigate to /register2 page with formData
-    navigate('/register2', { state: { formData } });
+    const { acceptTerms, ...userData } = formData; // remove acceptTerms before sending
+    try {
+      const response = await authService.register(userData);
+      console.log('Registration successful:', response);
+      navigate('/register2', { state: { formData } });  // Navigate to RegisterStepTwo
+    } catch (error) {
+      console.error('Registration error:', error);
+    }
   };
 
   return (
