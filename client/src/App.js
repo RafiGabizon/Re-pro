@@ -28,6 +28,10 @@ import ManageArticles from './pages/admin/ManageArticles';
 import ManageHomePage from './pages/admin/ManageHomePage';
 import UserProfile from './pages/admin/UserProfile';
 import PostJob from './pages/PostJob';
+import JobPosting from './pages/JobPosting';
+import JobPostingForm from './pages/JobPostingForm';
+import JobDetailsForm from './pages/JobDetailsForm';
+
 
 function NavbarSelector() {
   const location = useLocation();
@@ -78,6 +82,9 @@ function App() {
         <Route path="/RegisterConfirm" element={<ConfirmRegistration />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/postJob" element={<PostJob />} />
+        <Route path = "/JobPosting" element = {<JobPosting />} />
+        <Route path="/jobPostingForm" element={<JobPostingForm />} />
+        <Route path="/jobDetailsForm" element={<JobDetailsForm />} />
         <Route path="/admin" element={<AdminHome />} />
         <Route path="/admin/jobs" element={<ManageJobs />} />
         <Route path="/admin/hot-jobs" element={<ManageHotJobs />} />

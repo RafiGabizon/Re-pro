@@ -76,7 +76,7 @@ export default function LogIn() {
               required
             />
           </div>
-          <button type="submit" className="login-button">התחבר</button>
+          <button type="submit" className="login-button_p">התחבר</button>
         </form>
         <div className="additional-options">
           <a href="#forgot-password">שכחת סיסמה?</a>

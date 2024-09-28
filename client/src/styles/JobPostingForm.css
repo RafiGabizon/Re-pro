@@ -1,0 +1,116 @@
+/* JobPostingForm.css */
+
+.job-posting-container {
+    text-align: right;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    direction: rtl;
+}
+
+.form-title {
+    text-align: right;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.form-subtitle {
+    text-align: right;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.job-posting-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    flex: 0 0 48%;
+}
+
+.full-width {
+    flex: 0 0 100%;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.additional-requirements-btn {
+    background-color: transparent;
+    border: 1px solid #0056b3;
+    color: #0056b3;
+    padding: 8px 15px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+.description-hints {
+    list-style-type: disc;
+    padding-right: 20px;
+    color: #666;
+    font-size: 14px;
+}
+
+.char-count {
+    text-align: right;
+    color: #666;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+.submit-button {
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* מדיה קוורי לתצוגה במסכים קטנים */
+@media (max-width: 600px) {
+    .form-row {
+        flex-direction: column;
+    }
+
+    .form-group {
+        flex: 0 0 100%;
+        margin-bottom: 15px;
+    }
+}

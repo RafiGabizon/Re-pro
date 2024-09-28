@@ -62,11 +62,11 @@ export default function NavbarTop() {
           <Link to="/Articles" className="nav-link" onClick={closeMenu}>כתבות</Link>
           <Link to="/QustionAsk" className="nav-link" onClick={closeMenu}>שאלות ותשובות</Link>
           <Link to="/About" className="nav-link" onClick={closeMenu}>אודות</Link>
-          <Link to={isLoggedIn ? '/profile' : '/login'} className="nav-link login-button" onClick={handleProfileClick}>
+          <Link to='JobPosting' className="nav-link post-button" onClick={closeMenu}>פרסום משרה</Link>
+          <Link to={isLoggedIn ? '/profile' : '/login'} className="nav-link login-button_nav" onClick={handleProfileClick}>
                   {isLoggedIn ? 'אזור אישי' : 'התחברות'}
           </Link>
         </nav>
-
         <Link to="https://wa.link/oc0fb6" className="whatsapp-link">
          <FaWhatsapp className='fa-whatsapp' />
         </Link>

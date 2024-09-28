@@ -51,7 +51,7 @@
     box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
 
-.login-button {
+.login-button_p {
     width: 100%;
     padding: 12px;
     background-color: #007bff;
@@ -63,7 +63,7 @@
     transition: background-color 0.3s ease;
 }
 
-.login-button:hover {
+.login-button_p:hover {
     background-color: #0056b3;
 }
 
@@ -137,7 +137,7 @@
         font-size: 14px;
     }
 
-    .login-button {
+    .login-button_p {
         padding: 10px;
         font-size: 16px;
     }

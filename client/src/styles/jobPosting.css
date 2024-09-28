@@ -1,0 +1,149 @@
+.unique-jobposting-container {
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  direction: rtl;
+}
+
+.unique-jobposting-content {
+  background-color: white;
+  border-radius: 15px;
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.unique-jobposting-content h2 {
+  color: #007bff;
+  font-size: 28px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.unique-jobposting-content h4{
+  color: #ec7d0a;
+  font-size: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.unique-form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+
+.unique-form-group label {
+  margin-bottom: 8px;
+  color: #495057;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: right;
+}
+
+.unique-form-group input,
+.unique-form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  text-align: right;
+}
+
+.unique-form-group input:focus,
+.unique-form-group select:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.unique-form-group input:invalid,
+.unique-form-group select:invalid {
+  border-color: #dc3545;
+}
+
+.unique-submit-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.unique-submit-button:hover {
+  background-color: #0056b3;
+}
+
+.unique-checkbox-label {
+  margin-right: 8px;
+}
+
+.unique-terms-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.unique-terms-link:hover {
+  color: #0056b3;
+}
+
+.phone-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.phone-input-container {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+
+.phone-input-container select {
+  width: 30%;
+  max-height: fit-content;
+}
+
+.phone-input-container input {
+  width: 70%;
+}
+
+.unique-form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23495057' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: left 12px center;
+  background-size: 12px;
+  padding-left: 30px;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* כוכבית אדומה לשדות חובה */
+.unique-form-group label::after {
+  content: '*';
+  color: #dc3545;
+  margin-right: 4px;
+}
+
+.unique-form-group.checkbox label::after {
+  content: '';
+  margin:flex-end;
+}

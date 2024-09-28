@@ -1,0 +1,94 @@
+/* JobDetailsForm.css */
+
+.job-details-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.form-title {
+    text-align: right;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.form-subtitle {
+    text-align: right;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.job-details-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-align: right;
+}
+
+select,
+input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.salary-group {
+    margin-bottom: 15px;
+}
+
+.salary-inputs {
+    display: flex;
+    gap: 10px;
+}
+
+.salary-inputs input {
+    flex: 1;
+}
+
+.salary-inputs select {
+    flex: 2;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.back-button,
+.next-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.back-button {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.next-button {
+    background-color: #0056b3;
+    color: white;
+}
+
+/* מדיה קוורי לתצוגה במסכים קטנים */
+@media (max-width: 600px) {
+    .salary-inputs {
+        flex-direction: column;
+    }
+}

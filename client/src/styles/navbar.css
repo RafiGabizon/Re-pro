@@ -1,5 +1,5 @@
 .navbar {
-  background: linear-gradient(to right, #f8f9fa, #e9ecef);
+  background: linear-gradient(to right, #1671cd, #1a8cfd);
   padding: 15px 20px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -31,31 +31,49 @@
 }
 
 .nav-link {
-  color: #495057;
+  color: #ffffff;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 17px;
   margin: 0 15px;
   transition: color 0.3s ease;
 }
 
 .nav-link:hover {
-  color: #007bff;
+  color: #ec7d0a;
 }
 
-.login-button {
-  background-color: #007bff;
+.login-button_nav {
+  background-color: #308ff5;
   color: #ffffff;
   padding: 10px 20px;
   border-radius: 5px;
   font-weight: bold;
   transition: all 0.3s ease;
   margin-right: 15px;
-  box-shadow: 0 2px 5px rgba(0, 123, 255, 0.3);
+  box-shadow: 0 2px 5px rgba(108, 179, 255, 0.3);
   text-align: center;
   width: 110px;
 }
 
-.login-button:hover {
+.post-button{
+  background-color: #308ff5;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  margin-right: 15px;
+  box-shadow: 0 2px 5px rgba(108, 179, 255, 0.3);
+  text-align: center;
+  min-width: 135px;
+
+}
+.post-button:hover {
+  background-color: #ec7d0a;
+  color: #ffffff;  
+}
+
+.login-button_nav:hover {
   background-color: #ec7d0a;
   color: #ffffff;  
 }
@@ -63,11 +81,15 @@
 .whatsapp-link {
   display: flex;
   align-items: center;
+  color: chartreuse;
 }
+.whatsapp-link:hover {
+  color: #25d366;
+}
+
 .fa-whatsapp {
   font-size: 30px;
 }
-
 
 .menu-icon {
   display: none;
@@ -83,7 +105,6 @@
   transition: 0.4s;
 }
 
-/* ... שאר הקוד נשאר ללא שינוי ... */
 
 @media (max-width: 768px) {
   .navbar {
@@ -118,7 +139,7 @@
     top: 100%;
     right: 0;
     left: 0;
-    background: #f8f9fa;
+    background: #1a8cfd;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     width: 60%;
@@ -133,16 +154,29 @@
     padding: 10px 20px;
     width: 100%;
     text-align: right;
-    background-color: #f8f9fa;
+    background-color: #1a8cfd;
   }
 
-  .login-button {
+  .login-button_nav {
     font-size: 14px;
     padding: 8px 15px;
     margin: 10px 20px;
     width: calc(60% - 40px);
     text-align: center;
-    background-color: #1e5be9;
+    background-color: #007bff;
+  }
+
+  .post-button {
+    background-color: #007bff;
+      color: #ffffff;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      margin: 10px 20px;
+      box-shadow: 0 2px 5px rgba(0, 123, 255, 0.3);
+      text-align: center;
+      width: 50px;
+      position: relative;
   }
 
   .whatsapp-link {
