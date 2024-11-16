@@ -9,81 +9,177 @@ function ManageJobs() {
   const { jobs, updateJobs } = useContext(JobsContext);
   const [editedJobs, setEditedJobs] = useState({});
   const [openJobId, setOpenJobId] = useState(null);
+  const [viewMode, setViewMode] = useState('all'); // all, pending, approved, rejected
 
+  // טיפול בשינויים בשדות
   const handleFieldChange = (id, field, value) => {
-  setEditedJobs(prevState => ({
-    ...prevState,
-    [id]: {
-      ...prevState[id],
-      [field]: value
-    }
-  }));
-};
+    setEditedJobs(prevState => ({
+      ...prevState,
+      [id]: {
+        ...prevState[id],
+        [field]: value
+      }
+    }));
+  };
 
-const saveJobChanges = (updatedJob) => {
+  // שמירת שינויים במשרה
+  const saveJobChanges = (updatedJob) => {
+    // בדיקת תקינות לפני שמירה
+    if (!validateJobData(updatedJob)) {
+      alert('אנא מלא את כל השדות הנדרשים');
+      return;
+    }
+
     const newJobs = jobs.map(job => 
-      job.id === updatedJob.id ? updatedJob : job
+      job.id === updatedJob.id ? { ...updatedJob, lastModified: Date.now() } : job
     );
     updateJobs(newJobs);
     alert('המשרה עודכנה בהצלחה');
   };
 
-  const approveJob = (id) => {
-    const newJobs = jobs.map(job => 
-      job.id === id ? { ...job, status: 'מאושר' } : job
-    );
-    updateJobs(newJobs);
-    alert('המשרה אושרה בהצלחה');
+  // וולידציה למשרה
+  const validateJobData = (job) => {
+    const requiredFields = [
+      'jobTitle',
+      'companyName',
+      'jobType',
+      'state',
+      'city',
+      'minCommitment',
+      'description',
+      'visaType',
+      'flightType',
+      'accommodationType',
+      'salaryType'
+    ];
+
+    return requiredFields.every(field => job[field] && job[field].trim() !== '');
   };
 
-  const rejectJob = (id) => {
+  // אישור משרה
+  const approveJob = (id) => {
+    const jobToApprove = jobs.find(job => job.id === id);
+    if (!validateJobData(jobToApprove)) {
+      alert('לא ניתן לאשר משרה - חסרים פרטים חיוניים');
+      return;
+    }
+
     const newJobs = jobs.map(job => 
-      job.id === id ? { ...job, status: 'נדחה' } : job
+      job.id === id ? { 
+        ...job, 
+        status: 'מאושר',
+        approvalDate: Date.now(),
+        lastModified: Date.now()
+      } : job
+    );
+    updateJobs(newJobs);
+    alert('המשרה אושרה בהצלחה ותפורסם באתר');
+  };
+
+  // דחיית משרה
+  const rejectJob = (id, reason = '') => {
+    const newJobs = jobs.map(job => 
+      job.id === id ? { 
+        ...job, 
+        status: 'נדחה',
+        rejectionReason: reason,
+        rejectionDate: Date.now(),
+        lastModified: Date.now()
+      } : job
     );
     updateJobs(newJobs);
     alert('המשרה נדחתה');
   };
 
+  // מחיקת משרה
   const deleteJob = (id) => {
-    const newJobs = jobs.filter(job => job.id !== id);
-    updateJobs(newJobs);
-    alert('המשרה נמחקה בהצלחה');
+    if (window.confirm('האם אתה בטוח שברצונך למחוק משרה זו?')) {
+      const newJobs = jobs.filter(job => job.id !== id);
+      updateJobs(newJobs);
+      alert('המשרה נמחקה בהצלחה');
+    }
   };
 
+  // פתיחת/סגירת פרטי משרה
   const toggleJobDetails = (id) => {
     setOpenJobId(openJobId === id ? null : id);
+  };
+
+  // סינון משרות לפי סטטוס
+  const getFilteredJobs = () => {
+    switch (viewMode) {
+      case 'pending':
+        return jobs.filter(job => job.status === 'ממתין לאישור');
+      case 'approved':
+        return jobs.filter(job => job.status === 'מאושר');
+      case 'rejected':
+        return jobs.filter(job => job.status === 'נדחה');
+      default:
+        return jobs;
+    }
   };
 
   return (
     <div className="mj-container">
       <h1 className="mj-title">ניהול ואישור משרות</h1>
       
-      <NewJobForm updateJobs={updateJobs} />
+      {/* פילטרים */}
+      <div className="mj-filters">
+        <button 
+          className={`filter-btn ${viewMode === 'all' ? 'active' : ''}`}
+          onClick={() => setViewMode('all')}
+        >
+          כל המשרות
+        </button>
+        <button 
+          className={`filter-btn ${viewMode === 'pending' ? 'active' : ''}`}
+          onClick={() => setViewMode('pending')}
+        >
+          ממתינות לאישור
+        </button>
+        <button 
+          className={`filter-btn ${viewMode === 'approved' ? 'active' : ''}`}
+          onClick={() => setViewMode('approved')}
+        >
+          מאושרות
+        </button>
+        <button 
+          className={`filter-btn ${viewMode === 'rejected' ? 'active' : ''}`}
+          onClick={() => setViewMode('rejected')}
+        >
+          נדחו
+        </button>
+      </div>
       
-      <h2 className="mj-subtitle">משרות קיימות</h2>
-      <JobList 
-        jobs={jobs}
-        editedJobs={editedJobs}
-        openJobId={openJobId}
-        handleFieldChange={handleFieldChange}
-        saveJobChanges={saveJobChanges}
-        approveJob={approveJob}
-        rejectJob={rejectJob}
-        deleteJob={deleteJob}
-        toggleJobDetails={toggleJobDetails}
-      />
+      {/* טבלת משרות למחשב */}
+      <div className="desktop-view">
+        <JobList 
+          jobs={getFilteredJobs()}
+          editedJobs={editedJobs}
+          openJobId={openJobId}
+          handleFieldChange={handleFieldChange}
+          saveJobChanges={saveJobChanges}
+          approveJob={approveJob}
+          rejectJob={rejectJob}
+          deleteJob={deleteJob}
+          toggleJobDetails={toggleJobDetails}
+        />
+      </div>
       
-      <MobileJobList 
-        jobs={jobs}
-        editedJobs={editedJobs}
-        openJobId={openJobId}
-        handleFieldChange={handleFieldChange}
-        saveJobChanges={saveJobChanges}
-        approveJob={approveJob}
-        rejectJob={rejectJob}
-        deleteJob={deleteJob}
-        toggleJobDetails={toggleJobDetails}
-      />
+      {/* תצוגת משרות למובייל */}
+      <div className="mobile-view">
+        <MobileJobList 
+          jobs={getFilteredJobs()}
+          editedJobs={editedJobs}
+          openJobId={openJobId}
+          handleFieldChange={handleFieldChange}
+          saveJobChanges={saveJobChanges}
+          approveJob={approveJob}
+          rejectJob={rejectJob}
+          deleteJob={deleteJob}
+          toggleJobDetails={toggleJobDetails}
+        />
+      </div>
     </div>
   );
 }

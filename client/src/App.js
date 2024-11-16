@@ -31,6 +31,10 @@ import PostJob from './pages/PostJob';
 import JobPosting from './pages/JobPosting';
 import JobPostingForm from './pages/JobPostingForm';
 import JobDetailsForm from './pages/JobDetailsForm';
+import PostJobStep1 from './Components/PostJobStep1';
+import PostJobStep2 from './Components/PostJobStep2';
+import PostJobStep3 from './Components/PostJobStep3';
+
 
 
 function NavbarSelector() {
@@ -82,6 +86,9 @@ function App() {
         <Route path="/RegisterConfirm" element={<ConfirmRegistration />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/postJob" element={<PostJob />} />
+        <Route path="/postJobStep1" element={<PostJobStep3/>} />
+        <Route path="/postJobStep2" element={<PostJobStep2/>} />
+        <Route path="/postJobStep3" element={<PostJobStep3/>} />
         <Route path = "/JobPosting" element = {<JobPosting />} />
         <Route path="/jobPostingForm" element={<JobPostingForm />} />
         <Route path="/jobDetailsForm" element={<JobDetailsForm />} />

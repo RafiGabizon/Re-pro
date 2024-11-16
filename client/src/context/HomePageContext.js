@@ -1,4 +1,8 @@
 import React, { createContext, useState, useEffect } from 'react';
+import israelImg from "../images/israel_israeli_img.jpg";
+import saraImg from "../images/sara_cohen_img.jpg";
+
+
 
 export const HomePageContext = createContext();
 
@@ -27,13 +31,13 @@ export const HomePageProvider = ({ children }) => {
         recoName: "ישראל ישראלי",
         jobType: "מהנדס תוכנה",
         spich: "העבודה בחו\"ל פתחה בפני אפשרויות חדשות ומרגשות. ממליץ בחום!",
-        mainVid: "https://www.youtube.com/embed/example1"
+        mainImg: "../images/israel_israeli_img.jpg"
       },
       {
         recoName: "שרה כהן",
         jobType: "מנהלת שיווק",
         spich: "החוויה התרבותית והמקצועית שרכשתי היא בלתי נשכחת. תודה על ההזדמנות!",
-        mainVid: "https://www.youtube.com/embed/example2"
+        mainImg: "../images/sara_cohen_img.jpg"
       }
     ]
   });

@@ -147,7 +147,7 @@ export default function JobsAbroad() {
             <JobsComp key={job.id} item={job} />
           ))
         ) : (
-          <p>!מצטערים אך לא מצאנו את העבודה שחיפשת</p>
+          <p>מצטערים אך לא מצאנו את העבודה שחיפשת !</p>
         )}
       </div>
     </div>
