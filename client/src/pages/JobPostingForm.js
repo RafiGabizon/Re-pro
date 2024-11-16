@@ -118,6 +118,7 @@ const JobPostingForm = ({ onNextStep }) => {
               name="jobTitle"
               value={formData.jobTitle}
               onChange={handleChange}
+              maxLength={25}
               required
             />
             {errors.jobTitle && <span className="error">{errors.jobTitle}</span>}
@@ -125,27 +126,34 @@ const JobPostingForm = ({ onNextStep }) => {
         </div>
         <div className="form-row">
           <div className="form-group">
-            <label htmlFor="company">שם מותג</label>
+            <label htmlFor="company">שם מותג\חברה</label>
             <input
               type="text"
               id="company"
               name="company"
               value={formData.company}
               onChange={handleChange}
+              maxLength={30}
               required
             />
             {errors.company && <span className="error">{errors.company}</span>}
           </div>
           <div className="form-group">
-            <label htmlFor="location">התחייבות עתידית</label>
-            <input
+            <label htmlFor="location">התחייבות מינימלית</label>
+            <select
               type="text"
               id="location"
               name="location"
               value={formData.location}
               onChange={handleChange}
               required
-            />
+            >
+              <option value="">התחייבות מינימלית</option>
+              <option value="three-months">מינימום 3 חודשים</option>
+              <option value="six-months">מינימום 6 חודשים</option>
+              <option value="a-year">שנה ויותר</option>
+              <option value="without">ללא התחייבות</option>
+            </select>
             {errors.location && <span className="error">{errors.location}</span>}
           </div>
         </div>
@@ -195,14 +203,13 @@ const JobPostingForm = ({ onNextStep }) => {
             name="description"
             value={formData.description}
             onChange={handleChange}
-            placeholder='
+            placeholder='כמה מילים על החברה כמו :
             החברה הוקמה בשנת...
             החברה עוסקת בתחום...
             העבודה במשרה תכלול...'
-            maxLength={500}
+            maxLength={300}
             required
           ></textarea>
-          <p className="char-count">{formData.description.length} / 500</p>
           {errors.description && <span className="error">{errors.description}</span>}
         </div>
         <div className="form-group">
@@ -234,22 +241,10 @@ const JobPostingWizard = () => {
     setStep(prevStep => prevStep + 1);
   };
 
-  const renderStep = () => {
-    switch (step) {
-      case 1:
-        return <JobPostingForm onNextStep={handleNextStep} />;
-      case 2:
-        return <div>קומפוננטה לשלב 2 (יש ליישם)</div>;
-      case 3:
-        return <div>קומפוננטה לשלב 3 (יש ליישם)</div>;
-      default:
-        return <div>הטופס הושלם</div>;
-    }
-  };
-
+  
   return (
     <div className="job-posting-wizard">
-      {renderStep()}
+    
     </div>
   );
 };
