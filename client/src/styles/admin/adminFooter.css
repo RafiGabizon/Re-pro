@@ -1,106 +1,165 @@
+/* Styles for the footer container */
 .admin-footer {
+    /* Sets a gradient background from orange to light brown */
     background: linear-gradient(to left, #ec7d0a, #dba265);
+    /* Adds internal spacing: top 25px, sides 15px, bottom 30px */
     padding: 25px 15px 30px;
+    /* Adds a subtle shadow to the footer */
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    /* Positions the footer relative to its parent */
     position: relative;
 }
 
+/* Main container for the footer elements */
 .footer-container {
+    /* Sets a maximum width of 1200px and centers the footer horizontally */
     max-width: 1200px;
     margin: 0 auto;
+    /* Flexbox layout for arranging children elements horizontally */
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
 }
 
+/* Flex container for the main content of the footer */
 .footer-content {
+    /* Flexbox for evenly spacing child elements */
     display: flex;
     justify-content: space-between;
+    /* Occupies 70% of the container's width */
     width: 70%;
 }
 
+/* Individual link group container */
 .link-group {
+    /* Sets lighter font weight for the links */
     font-weight: 300;
+    /* Allows equal distribution of space between groups */
     flex: 1;
+    /* Adds space to the left */
     margin-left: 20px;
+    /* Aligns text to the right */
     text-align: right;
 }
 
+/* Title for each link group */
 .link-group-title {
+    /* Slightly larger font for titles */
     font-size: 18px;
+    /* Adds spacing below the title */
     margin-bottom: 15px;
+    /* Darker color for emphasis */
     color: #333;
+    /* Makes the text bold */
     font-weight: bold;
 }
 
+/* Individual link styles */
 .link-item {
+    /* Block display for stacking links vertically */
     display: block;
+    /* Adds spacing below each link */
     margin-bottom: 10px;
+    /* Default text color */
     color: #3f3f3f;
+    /* Slightly larger font size for readability */
     font-size: 17px;
+    /* Bold text */
     font-weight: bold;
+    /* Smooth transition for hover effects */
     transition: color 0.2s ease-in-out;
 }
 
+/* Hover state for links */
 .link-item:hover {
+    /* Changes color to blue on hover */
     color: #007bff;
 }
 
+/* Section for social icons and credits */
 .social-and-credits {
+    /* Occupies 30% of the container's width */
     width: 30%;
+    /* Aligns text to the left */
     text-align: left;
 }
 
+/* Container for social media icons */
 .social-icons {
+    /* Flexbox for horizontal alignment */
     display: flex;
+    /* Aligns icons to the right */
     justify-content: flex-end;
+    /* Adds spacing below the icons */
     margin-bottom: 20px;
 }
 
+/* Individual social media icon styles */
 .social-icon {
+    /* Larger font size for icons */
     font-size: 24px;
+    /* Default icon color */
     color: #666;
+    /* Adds space between icons */
     margin-left: 15px;
+    /* Smooth transition for hover effects */
     transition: color 0.2s ease-in-out;
 }
 
+/* Hover state for social media icons */
 .social-icon:hover {
+    /* Changes icon color to blue on hover */
     color: #007bff;
 }
 
+/* Styling for the footer credits text */
 .admin-credits {
+    /* Light gray color for subtlety */
     color: #636363;
+    /* Smaller font size for credits */
     font-size: 13px;
+    /* Aligns text to the left */
     text-align: left;
+    /* Positions credits at the bottom of the footer */
     position: absolute;
     bottom: 20px;
+    /* Ensures proper spacing within the footer */
     width: calc(100% - 40px);
 }
 
+/* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
+
+    /* Footer container switches to vertical layout */
     .footer-container {
         flex-direction: column;
     }
 
+    /* Footer content adjusts to full width */
     .footer-content {
         width: 100%;
         flex-direction: column;
         margin-bottom: 30px;
     }
 
+    /* Adjusts link group margins for smaller screens */
     .link-group {
         margin-left: 0;
         margin-bottom: 20px;
     }
 
+    /* Social icons and credits align to the right */
     .social-and-credits {
         width: 100%;
         text-align: right;
     }
 
+    /* Social icons align to the left */
     .social-icons {
         justify-content: flex-start;
     }
+
+    /* Footer credits are no longer absolutely positioned */
     .admin-credits {
         position: static;
         margin-top: 20px;

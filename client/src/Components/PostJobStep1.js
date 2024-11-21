@@ -1,23 +1,27 @@
-// PostJobStep1.js - שלב ראשון
-import React, { useState } from 'react';
+// Importing necessary dependencies
+import React, { useState } from 'react'; // Import React and useState hook for managing state
 
-const uniqueJobTypes = ['משרה מלאה', 'חצי משרה', 'משרת אם', 'משרת סטודנט', 'פרילנס'];
-const uniqueStates = ['ישראל', 'ארצות הברית', 'קנדה', 'בריטניה', 'גרמניה', 'צרפת'];
+// Defining unique options for job types, states, and cities
+const uniqueJobTypes = ['משרה מלאה', 'חצי משרה', 'משרת אם', 'משרת סטודנט', 'פרילנס']; // Job types
+const uniqueStates = ['ישראל', 'ארצות הברית', 'קנדה', 'בריטניה', 'גרמניה', 'צרפת']; // States
 const uniqueCities = {
-  'ישראל': ['תל אביב', 'ירושלים', 'חיפה', 'באר שבע', 'רמת גן', 'הרצליה'],
-  'ארצות הברית': ['ניו יורק', 'לוס אנג\'לס', 'שיקגו', 'מיאמי'],
-  // Add more cities as needed
+  'ישראל': ['תל אביב', 'ירושלים', 'חיפה', 'באר שבע', 'רמת גן', 'הרצליה'], // Cities in Israel
+  'ארצות הברית': ['ניו יורק', 'לוס אנג\'לס', 'שיקגו', 'מיאמי'], // Cities in the USA
+  // Add more states and cities as needed
 };
 
+// Functional component for the first step of job posting
 export default function PostJobStep1({ formData, setFormData, onNext }) {
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({}); // State to track form validation errors
 
+  // Handle changes to form fields
   const handleInputChange = (field, value) => {
     setFormData(prev => ({
       ...prev,
       [field]: value
     }));
     
+    // Clear errors for the field if it was previously invalid
     if (errors[field]) {
       setErrors(prev => ({
         ...prev,
@@ -25,6 +29,7 @@ export default function PostJobStep1({ formData, setFormData, onNext }) {
       }));
     }
 
+    // Reset city selection if the state changes
     if (field === 'state') {
       setFormData(prev => ({
         ...prev,
@@ -33,25 +38,27 @@ export default function PostJobStep1({ formData, setFormData, onNext }) {
     }
   };
 
+  // Validate form fields before proceeding
   const validateForm = () => {
     const newErrors = {};
-    
-    if (!formData.jobTitle.trim()) newErrors.jobTitle = 'שדה חובה';
-    if (!formData.companyName.trim()) newErrors.companyName = 'שדה חובה';
-    if (!formData.jobType) newErrors.jobType = 'נא לבחור היקף משרה';
-    if (!formData.state) newErrors.state = 'נא לבחור מדינה';
-    if (!formData.city) newErrors.city = 'נא לבחור עיר';
-    if (!formData.minCommitment.trim()) newErrors.minCommitment = 'שדה חובה';
-    if (!formData.description.trim()) newErrors.description = 'שדה חובה';
 
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    if (!formData.jobTitle.trim()) newErrors.jobTitle = 'שדה חובה'; // Job title is required
+    if (!formData.companyName.trim()) newErrors.companyName = 'שדה חובה'; // Company name is required
+    if (!formData.jobType) newErrors.jobType = 'נא לבחור היקף משרה'; // Job type is required
+    if (!formData.state) newErrors.state = 'נא לבחור מדינה'; // State is required
+    if (!formData.city) newErrors.city = 'נא לבחור עיר'; // City is required
+    if (!formData.minCommitment.trim()) newErrors.minCommitment = 'שדה חובה'; // Minimum commitment is required
+    if (!formData.description.trim()) newErrors.description = 'שדה חובה'; // Job description is required
+
+    setErrors(newErrors); // Update errors state
+    return Object.keys(newErrors).length === 0; // Return true if no errors
   };
 
+  // Handle form submission
   const handleSubmit = () => {
     if (validateForm()) {
-      localStorage.setItem('jobPostingStep1', JSON.stringify(formData));
-      onNext();
+      localStorage.setItem('jobPostingStep1', JSON.stringify(formData)); // Save form data to local storage
+      onNext(); // Proceed to the next step
     }
   };
 
@@ -60,6 +67,7 @@ export default function PostJobStep1({ formData, setFormData, onNext }) {
       <h2>פרסום משרה חדשה</h2>
       <h4>שלב 1 מתוך 3 - פרטי המשרה</h4>
 
+      {/* Job Title */}
       <div className="unique-form-group">
         <label>תפקיד</label>
         <input
@@ -70,6 +78,7 @@ export default function PostJobStep1({ formData, setFormData, onNext }) {
         {errors.jobTitle && <span className="error-message">{errors.jobTitle}</span>}
       </div>
 
+      {/* Company Name */}
       <div className="unique-form-group">
         <label>שם החברה/מותג</label>
         <input
@@ -80,6 +89,7 @@ export default function PostJobStep1({ formData, setFormData, onNext }) {
         {errors.companyName && <span className="error-message">{errors.companyName}</span>}
       </div>
 
+      {/* Job Type */}
       <div className="unique-form-group">
         <label>היקף משרה</label>
         <select
@@ -94,6 +104,7 @@ export default function PostJobStep1({ formData, setFormData, onNext }) {
         {errors.jobType && <span className="error-message">{errors.jobType}</span>}
       </div>
 
+      {/* State */}
       <div className="unique-form-group">
         <label>מדינה</label>
         <select
@@ -108,12 +119,13 @@ export default function PostJobStep1({ formData, setFormData, onNext }) {
         {errors.state && <span className="error-message">{errors.state}</span>}
       </div>
 
+      {/* City */}
       <div className="unique-form-group">
         <label>עיר</label>
         <select
           value={formData.city}
           onChange={(e) => handleInputChange('city', e.target.value)}
-          disabled={!formData.state}
+          disabled={!formData.state} // Disable if no state is selected
         >
           <option value="">בחר עיר</option>
           {formData.state && uniqueCities[formData.state]?.map(city => (
@@ -123,6 +135,7 @@ export default function PostJobStep1({ formData, setFormData, onNext }) {
         {errors.city && <span className="error-message">{errors.city}</span>}
       </div>
 
+      {/* Minimum Commitment */}
       <div className="unique-form-group">
         <label>התחייבות מינימלית</label>
         <input
@@ -134,6 +147,7 @@ export default function PostJobStep1({ formData, setFormData, onNext }) {
         {errors.minCommitment && <span className="error-message">{errors.minCommitment}</span>}
       </div>
 
+      {/* Job Description */}
       <div className="unique-form-group">
         <label>תיאור המשרה והחברה</label>
         <textarea
@@ -145,6 +159,7 @@ export default function PostJobStep1({ formData, setFormData, onNext }) {
         {errors.description && <span className="error-message">{errors.description}</span>}
       </div>
 
+      {/* Additional Requirements */}
       <div className="unique-form-group checkbox">
         <label>
           <input
@@ -156,6 +171,7 @@ export default function PostJobStep1({ formData, setFormData, onNext }) {
         </label>
       </div>
 
+      {/* Display additional requirements if checkbox is checked */}
       {formData.showAdditionalReq && (
         <div className="unique-form-group">
           <label>דרישות נוספות</label>
@@ -168,6 +184,7 @@ export default function PostJobStep1({ formData, setFormData, onNext }) {
         </div>
       )}
 
+      {/* Submit button to proceed to the next step */}
       <button className="unique-submit-button" onClick={handleSubmit}>
         המשך לשלב הבא
       </button>

@@ -1,24 +1,24 @@
-import React from "react";
-import { Link } from 'react-router-dom';
-import '../styles/JobsComp.css';
-import { PiAirplaneTakeoff } from "react-icons/pi";
-import ReactCountryFlag from "react-country-flag";
+// Importing necessary dependencies and components
+import React from "react"; // Import React to enable JSX syntax
+import { Link } from 'react-router-dom'; // Import Link component for navigation
+import '../styles/JobsComp.css'; // Import CSS file for styling the job component
+import { PiAirplaneTakeoff } from "react-icons/pi"; // Import icon for the job link
+import ReactCountryFlag from "react-country-flag"; // Import React Country Flag component for displaying country flags
 
-
-// מיפוי שמות המדינות לקודי מדינות
+// Mapping of country names to country codes
 const countryCodeMap = {
-    "הודו": "IN",
-    "ארצות הברית": "US",
-    "ישראל": "IL",
-    "אוסטרליה": "AU",
-    "גרמניה": "DE",
-    "צרפת": "FR",
-    "בריטניה": "GB",
-    "יפן": "JP",
-    "קנדה": "CA"
-    
+    "הודו": "IN", // India
+    "ארצות הברית": "US", // United States
+    "ישראל": "IL", // Israel
+    "אוסטרליה": "AU", // Australia
+    "גרמניה": "DE", // Germany
+    "צרפת": "FR", // France
+    "בריטניה": "GB", // United Kingdom
+    "יפן": "JP", // Japan
+    "קנדה": "CA" // Canada
 };
 
+// Mapping of country names to country images
 const countryImg = {
     "הודו": "https://i0.wp.com/eos.org/wp-content/uploads/2022/10/mumbai-skyline.jpg?fit=1200%2C675&ssl=1",
     "ארצות הברית": "https://www.imagesfromtexas.com/images/xl/Aerial-View-of-Downtown-Austin-in-January-1.jpg",
@@ -29,53 +29,59 @@ const countryImg = {
     "יפן": "https://media.timeout.com/images/105434111/1024/576/image.webp",
     "קנדה": "https://media.timeout.com/images/105434111/1024/576/image.webp",
     "אוסטרליה": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3iDdyaEyo9cN2tOlL9wwSoUeKzaK1goEb8w&s"
-
 };
 
-// פונקציה להמרת שם המדינה לקוד מדינה
+// Function to get the country code for a given country name
 const getCountryCode = (countryName) => {
-    return countryCodeMap[countryName] || "UN"; // UN כברירת מחדל אם לא נמצא קוד
+    return countryCodeMap[countryName] || "UN"; // Default to "UN" if no code is found
 };
 
+// Function to get the country image for a given country name
 const getCountryImg = (countryName) => {
-    return countryImg[countryName] || "https://via.placeholder.com/150";
-}
+    return countryImg[countryName] || "https://via.placeholder.com/150"; // Default to placeholder image if no image is found
+};
 
+// Functional component for rendering individual job details
 export default function JobsComp({ item }) {
     if (!item) {
-        return null;
+        return null; // Do not render if no job item is provided
     }
-    console.log('item:', item);
+    console.log('item:', item); // Log job details for debugging
 
     return (
         <div className="job-item">
+            {/* Image container for the job */}
             <div className="img-container">
                 <div className="text-content">
-                    <img className="main-img" src= {getCountryImg(item.State)} alt="country" />
-                    
+                    {/* Display the country image */}
+                    <img className="main-img" src={getCountryImg(item.State)} alt="country" />
                 </div>
                 <div className="text-wrapper">
+                    {/* Display the country flag */}
                     <ReactCountryFlag 
                         className="country-flag"
-                        countryCode={getCountryCode(item.State)}
-                        svg
+                        countryCode={getCountryCode(item.State)} // Get country code
+                        svg // Use SVG format for flag
                         style={{
-                        width: '30px',
-                        height: '23px',
-                        marginBottom: 0.2,
-                        borderRadius: '50%',
-                        objectFit: 'cover',
-                        display: 'inline-block',
-                        overflow: 'hidden',
-                        boxShadow: 'inset 0 0 8px rgba(255,255,255,0.6), 0 0 2px rgba(0,0,0,0.3)'
+                            width: '30px', // Set flag width
+                            height: '23px', // Set flag height
+                            marginBottom: 0.2, // Add spacing below the flag
+                            borderRadius: '50%', // Make flag circular
+                            objectFit: 'cover', // Maintain aspect ratio
+                            display: 'inline-block', // Display inline
+                            overflow: 'hidden', // Hide overflow
+                            boxShadow: 'inset 0 0 8px rgba(255,255,255,0.6), 0 0 2px rgba(0,0,0,0.3)' // Add shadow
                         }}
-                        title={item.State}
+                        title={item.State} // Tooltip showing the state name
                     />
+                    {/* Text content for the job */}
                     <div className="text-content">
+                        {/* Link to the job details page */}
                         <Link to={`/job/${item.id}`} className="button-link"><PiAirplaneTakeoff /></Link>
-                        <p>{item.Continents}, {item.State}</p>
-                        <p>{item.Domains}</p>
-                        <p>{item.JobType}</p>
+                        {/* Display job details */}
+                        <p>{item.Continents}, {item.State}</p> {/* Continent and state */}
+                        <p>{item.Domains}</p> {/* Job domain */}
+                        <p>{item.JobType}</p> {/* Job type */}
                     </div>
                 </div>
             </div>

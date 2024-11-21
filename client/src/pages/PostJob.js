@@ -1,15 +1,17 @@
-// PostJob.js - הקומפוננטה הראשית
+// PostJob.js - Main Component for Job Posting
+// This component handles the multi-step form for posting a new job. It uses context for managing jobs and state for form progress.
+
 import React, { useState, useContext } from 'react';
-import { JobsContext } from '../context/JobsContext';
-import PostJobStep1 from '../Components/PostJobStep1';
-import PostJobStep2 from '../Components/PostJobStep2';
-import PostJobStep3 from '../Components/PostJobStep3';
+import { JobsContext } from '../context/JobsContext'; // Context for managing job data
+import PostJobStep1 from '../Components/PostJobStep1'; // Step 1 Component
+import PostJobStep2 from '../Components/PostJobStep2'; // Step 2 Component
+import PostJobStep3 from '../Components/PostJobStep3'; // Step 3 Component
 
 export default function PostJob() {
-  const { jobs, updateJobs } = useContext(JobsContext);
-  const [currentStep, setCurrentStep] = useState(1);
+  const { jobs, updateJobs } = useContext(JobsContext); // Access jobs context
+  const [currentStep, setCurrentStep] = useState(1); // Tracks the current step in the form
   const [formData, setFormData] = useState({
-    // שלב ראשון
+    // Step 1 fields
     jobTitle: '',
     companyName: '',
     jobType: '',
@@ -19,29 +21,31 @@ export default function PostJob() {
     description: '',
     additionalRequirements: '',
     showAdditionalReq: false,
-    // שלב שני
+    // Step 2 fields
     visaType: '',
     flightType: '',
     accommodationType: '',
     salaryType: '',
     salaryAmount: '',
-    // שלב שלישי
+    // Step 3 fields
     mainImage: '',
     videoUrl: '',
     environmentImages: [],
-    status: 'ממתין לאישור'
+    status: 'ממתין לאישור' // Default job status
   });
 
+  // Move to the next step
   const handleNext = () => {
     setCurrentStep(prevStep => prevStep + 1);
   };
 
+  // Move back to the previous step
   const handleBack = () => {
     setCurrentStep(prevStep => prevStep - 1);
   };
 
+  // Reset the form and return to step 1
   const handleComplete = () => {
-    // איפוס הטופס והחזרה לשלב הראשון
     setCurrentStep(1);
     setFormData({
       jobTitle: '',
@@ -65,44 +69,45 @@ export default function PostJob() {
     });
   };
 
+  // Render the current step of the form
   const renderStep = () => {
     switch (currentStep) {
       case 1:
         return (
           <PostJobStep1
-            formData={formData}
-            setFormData={setFormData}
-            onNext={handleNext}
+            formData={formData} // Pass form data
+            setFormData={setFormData} // Update form data
+            onNext={handleNext} // Proceed to step 2
           />
         );
       case 2:
         return (
           <PostJobStep2
-            formData={formData}
-            setFormData={setFormData}
-            onNext={handleNext}
-            onBack={handleBack}
+            formData={formData} // Pass form data
+            setFormData={setFormData} // Update form data
+            onNext={handleNext} // Proceed to step 3
+            onBack={handleBack} // Return to step 1
           />
         );
       case 3:
         return (
           <PostJobStep3
-            formData={formData}
-            setFormData={setFormData}
-            onBack={handleBack}
-            jobs={jobs}
-            updateJobs={updateJobs}
-            onComplete={handleComplete}
+            formData={formData} // Pass form data
+            setFormData={setFormData} // Update form data
+            onBack={handleBack} // Return to step 2
+            jobs={jobs} // Access existing jobs
+            updateJobs={updateJobs} // Update the jobs list
+            onComplete={handleComplete} // Reset form after submission
           />
         );
       default:
-        return null;
+        return null; // Fallback for invalid step
     }
   };
 
   return (
     <div className="unique-jobposting-container">
-      {renderStep()}
+      {renderStep()} {/* Display the current step */}
     </div>
   );
 }

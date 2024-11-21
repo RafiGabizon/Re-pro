@@ -1,17 +1,19 @@
-import React, { useContext, useState } from 'react';
-import { JobsContext } from '../../context/JobsContext';
-import NewJobForm from '../../Components/admin/NewJobForm';
-import JobList from '../../Components/admin/JobList';
-import MobileJobList from '../../Components/admin/MobileJobList';
-import '../../styles/admin/manageJobs.css';
+// Importing necessary dependencies
+import React, { useContext, useState } from 'react'; // Import React and hooks for state and context management
+import { JobsContext } from '../../context/JobsContext'; // Import JobsContext for accessing jobs data
+// import NewJobForm from '../../Components/admin/NewJobForm'; // Import component for creating new jobs
+import JobList from '../../Components/admin/JobList'; // Import component for desktop job list view
+import MobileJobList from '../../Components/admin/MobileJobList'; // Import component for mobile job list view
+import '../../styles/admin/manageJobs.css'; // Import CSS for styling the component
 
+// Functional component for managing and approving jobs
 function ManageJobs() {
-  const { jobs, updateJobs } = useContext(JobsContext);
-  const [editedJobs, setEditedJobs] = useState({});
-  const [openJobId, setOpenJobId] = useState(null);
-  const [viewMode, setViewMode] = useState('all'); // all, pending, approved, rejected
+  const { jobs, updateJobs } = useContext(JobsContext); // Access jobs and updater function from JobsContext
+  const [editedJobs, setEditedJobs] = useState({}); // State for tracking edits to jobs
+  const [openJobId, setOpenJobId] = useState(null); // State for tracking expanded job details
+  const [viewMode, setViewMode] = useState('all'); // State for filtering jobs by status
 
-  // טיפול בשינויים בשדות
+  // Handle field changes for editing a job
   const handleFieldChange = (id, field, value) => {
     setEditedJobs(prevState => ({
       ...prevState,
@@ -22,9 +24,8 @@ function ManageJobs() {
     }));
   };
 
-  // שמירת שינויים במשרה
+  // Save changes made to a job
   const saveJobChanges = (updatedJob) => {
-    // בדיקת תקינות לפני שמירה
     if (!validateJobData(updatedJob)) {
       alert('אנא מלא את כל השדות הנדרשים');
       return;
@@ -37,7 +38,7 @@ function ManageJobs() {
     alert('המשרה עודכנה בהצלחה');
   };
 
-  // וולידציה למשרה
+  // Validate job data before saving or approving
   const validateJobData = (job) => {
     const requiredFields = [
       'jobTitle',
@@ -56,7 +57,7 @@ function ManageJobs() {
     return requiredFields.every(field => job[field] && job[field].trim() !== '');
   };
 
-  // אישור משרה
+  // Approve a job
   const approveJob = (id) => {
     const jobToApprove = jobs.find(job => job.id === id);
     if (!validateJobData(jobToApprove)) {
@@ -76,7 +77,7 @@ function ManageJobs() {
     alert('המשרה אושרה בהצלחה ותפורסם באתר');
   };
 
-  // דחיית משרה
+  // Reject a job
   const rejectJob = (id, reason = '') => {
     const newJobs = jobs.map(job => 
       job.id === id ? { 
@@ -91,7 +92,7 @@ function ManageJobs() {
     alert('המשרה נדחתה');
   };
 
-  // מחיקת משרה
+  // Delete a job
   const deleteJob = (id) => {
     if (window.confirm('האם אתה בטוח שברצונך למחוק משרה זו?')) {
       const newJobs = jobs.filter(job => job.id !== id);
@@ -100,12 +101,12 @@ function ManageJobs() {
     }
   };
 
-  // פתיחת/סגירת פרטי משרה
+  // Toggle the expansion of job details
   const toggleJobDetails = (id) => {
     setOpenJobId(openJobId === id ? null : id);
   };
 
-  // סינון משרות לפי סטטוס
+  // Filter jobs based on the selected view mode
   const getFilteredJobs = () => {
     switch (viewMode) {
       case 'pending':
@@ -122,8 +123,8 @@ function ManageJobs() {
   return (
     <div className="mj-container">
       <h1 className="mj-title">ניהול ואישור משרות</h1>
-      
-      {/* פילטרים */}
+
+      {/* Filters for job status */}
       <div className="mj-filters">
         <button 
           className={`filter-btn ${viewMode === 'all' ? 'active' : ''}`}
@@ -150,8 +151,8 @@ function ManageJobs() {
           נדחו
         </button>
       </div>
-      
-      {/* טבלת משרות למחשב */}
+
+      {/* Desktop job list view */}
       <div className="desktop-view">
         <JobList 
           jobs={getFilteredJobs()}
@@ -165,8 +166,8 @@ function ManageJobs() {
           toggleJobDetails={toggleJobDetails}
         />
       </div>
-      
-      {/* תצוגת משרות למובייל */}
+
+      {/* Mobile job list view */}
       <div className="mobile-view">
         <MobileJobList 
           jobs={getFilteredJobs()}
@@ -184,4 +185,4 @@ function ManageJobs() {
   );
 }
 
-export default ManageJobs;
+export default ManageJobs; // Export the component for use in other parts of the application

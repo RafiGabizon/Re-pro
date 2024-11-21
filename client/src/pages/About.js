@@ -1,22 +1,27 @@
-import React from 'react';
-import '../styles/about.css';
+// Importing necessary dependencies
+import React from 'react'; // Import React library
+import '../styles/about.css'; // Import CSS for styling the component
 
+// Functional component for the "About" page
 export default function About() {
   return (
     <div className="about-container">
-      <h2>אודות Re-Pro</h2>
+      <h2>אודות Re-Pro</h2> {/* Title of the page */}
       <div className="about-content">
+        
+        {/* Section: About Us */}
         <section className="about-section">
           <h3>מי אנחנו</h3>
-            <p>
-              Re-Pro היא חברה מקצועית ובעלת ניסיון רב בתחום השמת עובדים למשרות בחו"ל.<br/>
-              אנו מתמחים בקישור בין עסקים ומעסיקים במדינות שונות לבין אנשי מקצוע ישראליים שמחפשים הזדמנויות תעסוקה בינלאומיות.<br/>
-              תפקידנו הוא לספק פתרונות מיידיים ויעילים הן למעסיקים המבקשים למצוא את המועמדים המתאימים והן למועמדים המחפשים את הזדמנות הקריירה הבאה שלהם בחו"ל.<br/>
-              ב-Re-Pro אנו רואים את עצמנו כמגשרים חשובים בתהליך ההתאמה בין דרישות השוק הגלובלי לציפיות של אנשי מקצוע ישראליים.<br/>
-              אנו מבינים שהמעבר לעבודות בינלאומיות מצריך תהליך מדויק ומורכב, ולכן אנו מספקים ליווי מקצועי ואישי לכל שלב בתהליך. מהשלב הראשוני של זיהוי הזדמנויות תעסוקה מתאימות ועד לתהליך ההשתלבות המלא בעבודה, צוות המומחים שלנו כאן כדי להנחות ולתמוך בכל שלב.
-            </p>
+          <p>
+            Re-Pro היא חברה מקצועית ובעלת ניסיון רב בתחום השמת עובדים למשרות בחו"ל.<br/>
+            אנו מתמחים בקישור בין עסקים ומעסיקים במדינות שונות לבין אנשי מקצוע ישראליים שמחפשים הזדמנויות תעסוקה בינלאומיות.<br/>
+            תפקידנו הוא לספק פתרונות מיידיים ויעילים הן למעסיקים המבקשים למצוא את המועמדים המתאימים והן למועמדים המחפשים את הזדמנות הקריירה הבאה שלהם בחו"ל.<br/>
+            ב-Re-Pro אנו רואים את עצמנו כמגשרים חשובים בתהליך ההתאמה בין דרישות השוק הגלובלי לציפיות של אנשי מקצוע ישראליים.<br/>
+            אנו מבינים שהמעבר לעבודות בינלאומיות מצריך תהליך מדויק ומורכב, ולכן אנו מספקים ליווי מקצועי ואישי לכל שלב בתהליך. מהשלב הראשוני של זיהוי הזדמנויות תעסוקה מתאימות ועד לתהליך ההשתלבות המלא בעבודה, צוות המומחים שלנו כאן כדי להנחות ולתמוך בכל שלב.
+          </p>
         </section>
 
+        {/* Section: Our Vision */}
         <section className="about-section">
           <h3>החזון שלנו</h3>
           <p>
@@ -24,6 +29,7 @@ export default function About() {
           </p>
         </section>
 
+        {/* Section: Our Support */}
         <section className="about-section">
           <h3>הליווי שלנו</h3>
           <p>
@@ -31,6 +37,7 @@ export default function About() {
           </p>
         </section>
 
+        {/* Section: Our Uniqueness */}
         <section className="about-section">
           <h3>הייחודיות שלנו</h3>
           <p>
@@ -38,6 +45,7 @@ export default function About() {
           </p>
         </section>
 
+        {/* Section: Our Commitment */}
         <section className="about-section">
           <h3>המחויבות שלנו</h3>
           <p>
@@ -45,6 +53,8 @@ export default function About() {
           </p>
         </section>
       </div>
+      
+      {/* Contact Button */}
       <button className="info-button">צור קשר</button>
     </div>
   );
