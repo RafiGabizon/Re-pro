@@ -13,13 +13,16 @@ export const HomePageProvider = ({ children }) => {
     openComp: {
       mainTitle: "הזדמנות שלך לקריירה גלובלית", // Main title for the opening component
       description: "אנו מציעים לכם הזדמנות ייחודית לקחת את הקריירה שלכם צעד קדימה ולהתחיל לעבוד בחו\"ל. עם מגוון רחב של משרות בתחומים שונים, נעזור לכם למצוא את ההזדמנות המושלמת עבורכם.", // Description for the opening component
-      videoUrl: "https://www.youtube.com/embed/N1QtAXj9y48?si=7F_4SPD5-_aw1uyg", // YouTube video URL
+      videoUrl: "https://www.youtube.com/embed/kxf1V9vgUyQ?si=m5EAR1_pMfjNDnjm", // YouTube video URL
       features: [
         "מגוון משרות ברחבי העולם", // List of features
         "התאמה אישית לכישורים וניסיון",
         "חוויה תרבותית ייחודית",
         "תמיכה מקצועית לאורך כל הדרך"
       ]
+
+
+
     },
     stages: [
       // Steps for the placement process
